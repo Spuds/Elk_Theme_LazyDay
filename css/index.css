@@ -1158,7 +1158,7 @@ a.bbc_link {
 	padding: 0;
 	text-transform: uppercase;
 	font-size: 1em;
-	line-height: 3em;
+	line-height: 2.9em;
 }
 
 .poster .listlevel1 {
@@ -1185,7 +1185,7 @@ a.bbc_link {
 /* Level 1 Menu bar: link or button. */
 .linklevel1 {
 	display: block;
-	padding: 0 0.6em;
+	padding: 1px 0.6em;
 	white-space: nowrap;
 }
 
@@ -1412,7 +1412,7 @@ a.bbc_link {
 	position: relative;
 	float: right;
 	margin: 2px 0;
-	padding: 2px 0;
+	padding: 0;
 	font-size: 0.857em;
 }
 
@@ -2229,7 +2229,7 @@ img.new_posts {
 	margin-top: 0.5em;
 }
 
-/* The header abover the posts */
+/* The header above the posts */
 #forumposts .category_header {
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -2252,6 +2252,11 @@ img.new_posts {
 #description_board .generalinfo {
 	display: table;
 	width: 100%;
+}
+
+.topic_class {
+	width: 24px;
+	vertical-align: middle;
 }
 
 .topic_listing {
@@ -2301,7 +2306,7 @@ img.new_posts {
 .topic_icons {
 	position: relative;
 	float: left;
-	padding: 6px 16px 0 0;
+	margin: 6px 16px 0 0;
 	min-width: 50px;
 	text-align: center;
 }
@@ -2371,8 +2376,12 @@ img.new_posts {
 	line-height: 1.429em;
 }
 
+ul.small_pagelinks + .img_last_post {
+	padding: 0 0 0 5px;
+}
+
 .img_last_post {
-	padding: 0 0 0 10px;
+	padding: 0;
 }
 
 .topic_moderation, .topic_moderation_alt {

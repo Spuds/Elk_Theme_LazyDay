@@ -3,9 +3,6 @@ html, body, p, code:before, table {
 	padding: 0;
 	color: #111;
 }
-html>body>p, html>body>div {
-	font: 83.33%/150% "Segoe UI", "Helvetica Neue", "Liberation Sans", "Nimbus Sans L", Arial, sans-serif;
-}
 ul, ol {
 	margin-top: 0;
 	margin-bottom: 0;

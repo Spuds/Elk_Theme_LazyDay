@@ -726,8 +726,8 @@ div.bbc_footnotes .meaction {
 	float: left;
 	padding: 0 0.6em;
 	border: 1px solid #555555;
-	border-radius: 0;
-	background: #EBECEF;
+	border-radius: 50%;
+	background: #4A4E51;
 	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
 	color: #FFFFFF;
 	font-weight: bold;
@@ -812,7 +812,7 @@ div.bbc_footnotes .meaction {
 	border: 1px solid #DDE0E3;
 	border-radius: 0;
 	box-shadow: 1px 1px 2px #E5E5E5;
-	color: #566E4B;
+	color: #555555;
 }
 
 /* Level 1 button hover and focus effects. */
@@ -1129,7 +1129,7 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 
 /* Cancel generic border-radius. */
 .quickbuttons .linklevel1 {
-	margin: 2px 0;
+	margin: 0;
 	border: 1px solid #AFAFAF;
 	border-top: 1px solid #BBBBBB;
 	border-radius: 0;
@@ -1264,10 +1264,11 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	box-shadow: 1px 2px 3px #EEEEEE;
 }
 
-.fred {
-	width: 53px;
-	height: 53px;
-	border-radius: 50%;
+.topic_icons .fred {
+	top: -8px;
+	left: -4px;
+	position: relative;
+	padding: 0;
 }
 
 /* @todo - Clean this up, once new classes are assigned to old windowbg stuffz. */

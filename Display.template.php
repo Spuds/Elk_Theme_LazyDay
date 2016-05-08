@@ -48,7 +48,7 @@ function template_messages_informations_above()
 	echo '
 		<div id="forumposts" class="forumposts">
 			<h2 class="category_header">
-				<img src="', $settings['images_url'], '/topic/', $context['class'], '.png" alt="" />
+				<img class="topic_class" src="', $settings['images_url'], '/topic/', $context['class'], '.png" alt="" />
 				', $txt['topic'], ': ', $context['subject'], '&nbsp;<span class="views_text">(', $context['num_views_text'], ')</span>
 				<span class="nextlinks">',
 					!empty($context['links']['go_prev']) ? '<a href="' . $context['links']['go_prev'] . '">' . $txt['previous_next_back'] . '</a>' : '',
