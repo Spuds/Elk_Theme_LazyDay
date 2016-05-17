@@ -33,7 +33,7 @@ function template_build_poster_div($message, $ignoring = false)
 							<li class="' . ($ignoring ? 'subsections"' : 'listlevel1 "') . ' aria-haspopup="true">';
 
 	// Show a link to the member's profile.
-	if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']))
+	if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && empty($options['hide_poster_area']) && !empty($message['member']['avatar']['image']))
 	{
 		$poster_div .= ' 		
  							<div class="poster_avatar">
@@ -48,7 +48,7 @@ function template_build_poster_div($message, $ignoring = false)
 	{
 		if (!empty($message['member']['id']))
 			$poster_div .= '
-								<a class="centertext name" href="' . $scripturl . '?action=profile;u=' . $message['member']['id'] . '">
+									<a class="linklevel1 name" href="' . $scripturl . '?action=profile;u=' . $message['member']['id'] . '">
 									' . $message['member']['name'] . '
 								</a>';
 		else
@@ -217,7 +217,7 @@ function template_build_poster_div($message, $ignoring = false)
 								</ul>
 							</li>';
 
-	if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']))
+	if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']) && empty($options['hide_poster_area']))
 	{
 		if (!empty($message['member']['id']))
 		{
