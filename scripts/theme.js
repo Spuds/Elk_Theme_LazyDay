@@ -152,7 +152,7 @@ var head_pos = $('#wrapper').offset().left,
 				});
 			}
 
-			// Set the parent as active, show the seach form
+			// Set the parent as active, show the search form
 			$this.addClass('active');
 			$this.find('#controls').slideDown(0);
 
