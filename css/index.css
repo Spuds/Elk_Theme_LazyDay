@@ -311,7 +311,7 @@ input[type=submit][disabled]:hover, button[disabled], button[disabled]:hover {
 /* @todo - Also, look at deprecating spans here. */
 .new_posts, .require_approval {
 	font-weight: bold;
-	line-height: 1.12px;
+	line-height: 1px;
 }
 
 .new_posts, .require_approval {
@@ -1201,7 +1201,7 @@ a.bbc_link {
 	z-index: 90;
 	margin: 0;
 	padding: 0.6em;
-	width: 19em;
+	width: 20em;
 	line-height: 2em;
 }
 
@@ -1236,7 +1236,7 @@ a.bbc_link {
 	position: relative;
 	float: none;
 	padding: 0;
-	width: 18em;
+	width: 19em;
 }
 
 /* Levels 2 and 3 drop menus: link or button. */
@@ -2041,7 +2041,7 @@ dl.settings label {
 }
 
 .lastpost_link, .board_lastposter, .board_lasttime {
-	white-space: pre;
+	white-space: normal;
 }
 
 .lastpost_link > a {
@@ -2312,7 +2312,6 @@ img.new_posts {
 }
 
 .fred {
-	/*	box-shadow: 1px 1px 1px #6699cc, -1px -1px 1px #6699cc;*/
 	box-sizing: border-box;
 	padding: 2px;
 	border: 2px solid #6699CC;
@@ -5708,7 +5707,8 @@ dl.no_members {
 	}
 
 	.poster_container {
-		width: 8em;
+		width: 7em;
+		padding: .1em;
 		margin-top: 2em;
 	}
 
@@ -5737,7 +5737,7 @@ dl.no_members {
 
 	.postarea, .forumtitle {
 		padding: 0;
-		margin-left: 10em;
+		margin-left: 8em;
 	}
 
 	.linktree .board_moderators {
@@ -5872,7 +5872,7 @@ dl.no_members {
 		display: none;
 	}
 
-	.whos online dd, .whos_online dd div {
+	.whos_online dd, .whos_online dd div {
 		display: block;
 	}
 }

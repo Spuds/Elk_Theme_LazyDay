@@ -88,13 +88,12 @@
 }
 
 /* Admin_menu indicators */
---------------------------------------------- *
+/*--------------------------------------------- */
 
-/
 .admin_menu .subsections:hover .linklevel1:after {
 	top: 72%;
 	color: #555555;
-	font-size: 1.214em;
+	font-size: 1em;
 }
 
 .admin_menu .listlevel1.subsections .linklevel1:after {
@@ -318,6 +317,9 @@ fieldset dl {
 #live_news div.content, #supportVersionsTable div.content {
 	padding: 0 4px;
 	font-size: 0.929em;
+}
+#live_news div.windowbg {
+	overflow: hidden;
 }
 
 #supportVersionsTable div.content {
