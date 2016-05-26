@@ -619,6 +619,11 @@ em {
 	background-position: 0 -576px;
 }
 
+.cat_img_blank:before {
+	background-position: 0 24px;
+	width: 0;
+}
+
 h2 a.collapse {
 	float: right;
 	margin: 2px 4px -2px 0;
@@ -1207,7 +1212,7 @@ a.bbc_link {
 
 /* Level 3: drop menu positioning. */
 .menulevel3 {
-	margin: -2em 0 0 15.3em;
+	margin: -2em 0 0 16em;
 }
 
 /* Reposition Level 2 drop menu as visible on hover. */

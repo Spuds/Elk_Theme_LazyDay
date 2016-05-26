@@ -131,7 +131,7 @@ function template_html_above()
 	echo '<!DOCTYPE html>
 <html', $context['right_to_left'] ? ' dir="rtl"' : '', '>
 <head>
-	<title>', $context['page_title_html_safe'], '</title>';
+	<title>', trim($context['page_title_html_safe']), '</title>';
 
 	// Tell IE to render the page in standards not compatibility mode. really for ie >= 8
 	// Note if this is not in the first 4k, its ignored, that's why its here
@@ -147,6 +147,7 @@ function template_html_above()
 	template_css();
 
 	echo '
+	<link href="//ajax.googleapis.com" rel="dns-prefetch" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width" />
 	<meta name="mobile-web-app-capable" content="yes" />

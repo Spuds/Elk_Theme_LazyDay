@@ -269,7 +269,7 @@ function template_build_poster_div($message, $ignoring = false)
 		{
 			$poster_div .= '
 						</ul>
-						<ul style="margin-top:5px;padding:6px 0 0" class="poster">';
+						<ul style="margin-top:5px;" class="poster">';
 
 			// we start with their own..
 			if ($context['can_send_pm'] && $message['is_message_author'])
