@@ -130,7 +130,13 @@ function template_html_above()
 	// Show right to left and the character set for ease of translating.
 	echo '<!DOCTYPE html>
 <html', $context['right_to_left'] ? ' dir="rtl"' : '', '>
-<head>
+<head>';
+
+	// Load the font stack as soon as possible
+	echo '
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700" rel="stylesheet" type="text/css">';
+
+	echo '
 	<title>', trim($context['page_title_html_safe']), '</title>';
 
 	// Tell IE to render the page in standards not compatibility mode. really for ie >= 8
@@ -138,21 +144,21 @@ function template_html_above()
 	if (isBrowser('ie'))
 		echo '
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />';
-			
-	// Load the fonts
-	echo '
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic" rel="stylesheet" type="text/css">';
 
 	// load in any css from addons or themes so they can overwrite if wanted
 	template_css();
+
+	$context['meta_description'] = trim(str_replace(' - Index', '', $context['page_title_html_safe']));
 
 	echo '
 	<link href="//ajax.googleapis.com" rel="dns-prefetch" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width" />
 	<meta name="mobile-web-app-capable" content="yes" />
-	<meta name="description" content="', $context['page_title_html_safe'], '" />', !empty($context['meta_keywords']) ? '
-	<meta name="keywords" content="' . $context['meta_keywords'] . '" />' : '';
+	<meta name="description" content="', $context['meta_description'], '" />', !empty($context['meta_keywords']) ? '
+	<meta name="keywords" content="' . $context['meta_keywords'] . '" />' : '', '
+	<meta property="og:title" content="', $context['page_title_html_safe'], '" />
+	<meta property="og:type" content="website" />';
 
 	// OpenID enabled? Advertise the location of our endpoint using YADIS protocol.
 	if (!empty($modSettings['enableOpenID']))
