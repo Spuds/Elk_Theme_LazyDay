@@ -63,6 +63,27 @@ a:hover, a.new_win:hover {
 	cursor: pointer;
 }
 
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Open Sans'), local('OpenSans');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 600;
+	src: local('Open Sans Semibold'), local('OpenSans-Semibold');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Open Sans Bold'), local('OpenSans-Bold');
+}
+
 body {
 	margin: 0;
 	padding: 0 0 0 0;
@@ -72,7 +93,11 @@ body {
 	/* 9 - .643, 10 - .714, 11 - .786, 12 - .857, 13 - .929, 14 - 1, 15 - 1.071, 16 - 1.143
 	/* 17 - 1.214, 18 - 1.286, 19 - 1.357, 20 - 1.429, 21 - 1.5, 22 - 1.571, 23 - 1.643
 	/* 24 - 1.714, 25 - 1.786, 26 - 1.857, 27 - 1.929, 28 - 2, 29 - 2.071 */
-	font: 87.5%/150% "Open Sans", Arial, sans-serif;
+	font: 87.5%/150% "Open Sans", "Segoe UI", "Helvetica Neue", "Liberation Sans", "Nimbus Sans L", "Trebuchet MS", Arial, sans-serif;
+}
+
+html {
+	overflow-y: scroll;
 }
 
 /* Tables should show empty cells. */
@@ -1159,8 +1184,7 @@ a.bbc_link {
 .listlevel1 {
 	position: relative;
 	float: left;
-	margin: 0 2px;
-	padding: 0;
+	margin: 0 0.25em;
 	text-transform: uppercase;
 	font-size: 1em;
 	line-height: 2.9em;
@@ -2319,9 +2343,7 @@ img.new_posts {
 .fred {
 	box-sizing: border-box;
 	padding: 2px;
-	border: 2px solid #6699CC;
-	border: 2px solid rgba(102, 153, 204, .45);
-	background-clip: padding-box;
+	box-shadow: 1px 1px 1px rgba(102, 153, 204, .45), -1px -1px 1px rgba(102, 153, 204, .45);
 }
 
 .topic_name, .topic_starter {
@@ -2720,6 +2742,12 @@ div.core_posts {
 	margin: 0;
 	min-width: 0;
 	font-size: 1em;
+	top: .5em;
+	width: 19em;
+}
+
+.poster.poster2 .name {
+	border-bottom: none;
 }
 
 .poster .listlevel1, .poster.poster2 .listlevel1 {
@@ -5361,7 +5389,7 @@ dl.no_members {
 }
 
 /* This one does 540 and smaller screens at default font size. */
-@media screen and (max-width: 33.750em) {
+@media screen and (max-width: 33.75em) {
 	select, .input_text, .input_password {
 		max-width: 12em;
 	}
@@ -5707,10 +5735,6 @@ dl.no_members {
 		padding: 5px 0 0 0;
 	}
 
-	.poster li.membergroup {
-		display: none;
-	}
-
 	.poster_container {
 		width: 7em;
 		padding: .1em;
@@ -5725,14 +5749,6 @@ dl.no_members {
 		max-height: 1.5em;
 	}
 
-	.poster .membergroup {
-		float: right;
-	}
-
-	.poster .title, .icons img {
-		display: none;
-	}
-
 	.poster:after, .posterarea:before {
 		display: block;
 		clear: both;
@@ -5742,7 +5758,7 @@ dl.no_members {
 
 	.postarea, .forumtitle {
 		padding: 0;
-		margin-left: 8em;
+		margin-left: 1em;
 	}
 
 	.linktree .board_moderators {
@@ -5774,7 +5790,9 @@ dl.no_members {
 	}
 
 	.quickbuttons {
-		margin: 8px 8px 6px 3px;
+		clear: both;
+		margin: 8px 0 6px 0;
+		font-size: .9em;
 	}
 
 	#search_form {
@@ -5896,6 +5914,20 @@ dl.no_members {
 		max-width: 12em;
 	}
 
+	#main_menu .listlevel1 {
+		font-size: .9em;
+		margin: 0;
+	}
+
+	#menu_nav {
+		height: 38px !important;
+	}
+
+	.navigate_section {
+		margin: 1em 5px 0 5px;
+		padding-right: 5px;
+	}
+
 	#button_admin {
 		display: none;
 	}
@@ -5969,4 +6001,17 @@ dl.no_members {
 		position: relative;
 		left: auto;
 	}
+}
+
+/* This one does 360px screens at default font size. */
+@media screen and (max-width: 22.5em) {
+
+	.poster li.membergroup {
+		display: none;
+	}
+
+	.poster .title, .icons img {
+		display: none;
+	}
+
 }
