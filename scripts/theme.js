@@ -9,7 +9,7 @@
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:		BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.0 Release Candidate 2
+ * @version 1.0.6
  *
  * This file contains javascript associated with the current theme
  */
@@ -41,6 +41,7 @@ $(document).ready(function() {
 		$('#search_form').elk_QuickSearch();
 
 	// Tooltips
+	if ((!is_mobile && !is_touch) || use_click_menu)
 	$('.preview').SiteTooltip({hoverIntent: {sensitivity: 10, interval: 750, timeout: 50}});
 
 	// Find all nested linked images and turn off the border
