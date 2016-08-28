@@ -5284,6 +5284,7 @@ dl.no_members {
 
 	.poster, .poster_container {
 		width: 12em;
+		background-color: inherit;
 	}
 
 	.poster_avatar a {
@@ -5299,7 +5300,7 @@ dl.no_members {
 	}
 
 	.postarea {
-		margin: 0 0 0 13em;
+		margin: 0 0 0 1em;
 		padding-left: 0;
 	}
 
@@ -5324,7 +5325,6 @@ dl.no_members {
 	}
 
 	#forumposts .nextlinks {
-		width: 100%;
 		text-align: right;
 		white-space: normal;
 	}
@@ -5385,6 +5385,15 @@ dl.no_members {
 
 	#ps_recentposts .recentposter {
 		display: table-cell;
+	}
+
+	.buttonlist {
+		padding: 5px 0 0;
+		font-size: .95em;
+	}
+
+	.buttonlist > li {
+		font-size: .95em;
 	}
 }
 
@@ -5494,6 +5503,12 @@ dl.no_members {
 	.pagesection .buttonlist li {
 		margin-bottom: 4px;
 		white-space: nowrap;
+	}
+
+	#forumposts .nextlinks {
+		width: 100%;
+		text-align: right;
+		white-space: normal;
 	}
 
 	.topic_name, .topic_starter {
@@ -6000,6 +6015,16 @@ dl.no_members {
 	.hide_30.hamburger_30_target.visible {
 		position: relative;
 		left: auto;
+	}
+
+	.buttonlist {
+		padding: 5px 0 0;
+		font-size: .9em;
+	}
+
+	.buttonlist > li {
+		font-size: .9em;
+		border: none !important;
 	}
 }
 

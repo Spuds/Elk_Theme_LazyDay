@@ -2496,8 +2496,8 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	}
 }
 
-/* This one does up to 320 screens. */
-@media screen and (max-width: 20em) {
+/* This one does up to 360 screens. */
+@media screen and (max-width: 22.5em) {
 	#button_media {
 		display: none;
 	}
