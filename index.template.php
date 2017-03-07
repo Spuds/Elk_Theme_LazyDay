@@ -312,7 +312,7 @@ function template_login_bar()
 					</form>
 				</div>
 			</div>
-			<div id="toggle" class="tab">
+			<div id="toggle" class="paneltab">
 				<a id="open" class="open" href="#">Log In | Register</a>
 				<a id="close" style="display: none;" class="close" href="#">Close Panel</a>
 			</div>

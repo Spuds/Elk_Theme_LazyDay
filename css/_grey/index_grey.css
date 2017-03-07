@@ -2247,7 +2247,7 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 }
 
 /* Panel Tab/button */
-.tab {
+.paneltab {
 	position: absolute;
 	right: 120px;
 	z-index: 1;
@@ -2260,11 +2260,11 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	border-top: none;
 }
 
-.tab a:hover {
+.paneltab a:hover {
 	color: #222222;;
 }
 
-.tab a.open, .tab a.close {
+.paneltab a.open, .paneltab a.close {
 	display: block;
 	width: 100px;
 	color: #f0f0f0;
