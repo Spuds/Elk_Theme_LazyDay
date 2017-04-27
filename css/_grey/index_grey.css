@@ -67,6 +67,12 @@ body {
 	background: #F6F8F9;
 }
 
+.wf-loading {
+	background: #F6F8F9;
+	height: 100%;
+	overflow: hidden;
+}
+
 fieldset {
 	margin: 5px 0;
 	padding: 6px;
@@ -619,6 +625,10 @@ div.bbc_footnotes .meaction {
 	border: none;
 	box-shadow: none;
 	color: #FFFFFF;
+}
+
+#main_menu .listlevel1 {
+	background: #4A4E51;
 }
 
 /* Level 1 button hover and focus effects. */
@@ -2368,6 +2378,7 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	#main_menu .linklevel1.active, #main_menu .linklevel1.active:hover {
 		border: 1px solid transparent;
 		background: transparent;
+		height: 40px;
 	}
 
 	.listlevel1#button_profile .linklevel1 {
@@ -2426,6 +2437,11 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 
 	.poster_area_avatar, .poster_avatar img {
 		height: 40px;
+	}
+
+	.poster_container {
+		padding: .1em .1em 0 0;
+		margin: 1.9em .5em 0 0;
 	}
 
 	.board_icon {
@@ -2496,8 +2512,8 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	}
 }
 
-/* This one does up to 360 screens. */
-@media screen and (max-width: 22.5em) {
+/* This one does up to 320 screens. */
+@media screen and (max-width: 20em) {
 	#button_media {
 		display: none;
 	}

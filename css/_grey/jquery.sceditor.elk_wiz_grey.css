@@ -1,7 +1,18 @@
 html, body, p, code:before, table {
 	margin: 0;
-	padding: 0;
+	padding: 0 0 0 0;
 	color: #111;
+}
+html {
+	overflow: auto;
+	height: 100%;
+	-webkit-overflow-scrolling: touch;
+}
+body {
+	position: relative;
+	overflow: auto;
+	min-height: 100%;
+	word-wrap: break-word;
 }
 ul, ol {
 	margin-top: 0;
