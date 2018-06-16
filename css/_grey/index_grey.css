@@ -1,48 +1,51 @@
 /* INTRODUCTION
-/* This variant is the standard, light, Elkarte default theme.
-/* This is eye candy only. All the layout code is in index.css.
-/*
-/* All theme variants depend on the layout code for stability.
-/* It is better to copy code to a variant CSS file for testing.
-/* ------------------------------------------------------- */
-/* $CONTENTS - still a bit WIP. @todo
-/*
-/*		$GENERAL.............Global resets, clearfixes, etc.
-/*		$COMMON..............Common classes to drive you bonkers.
-/*		$BBC.................Quotes, code blocks, BBC styles.
-/*		$AJAX................The "loading" bar (quick edit, etc).
-/*
-/*		$MAIN................Forum header, wrapper, and footer.
-/*		$MENUS...............Main and secondary menus.
-/*		$LINKTREE............The breadcrumbs.
-/*		$BUTTONS.............Most button strips.
-/*		$PAGELINKS...........Page navigation links.
-/*
-/*		$TABLES..............Generic tables (memberlist, error log, etc).
-/*		$SETTINGS............Generic lists for settings pages.
-/*		$BOARDS..............Board index, sub-boards, and message index.
-/*
-/*		$TOPICS..............The display template (topic view), including send.
-/*		$EDITOR..............Main editor (posts, events, polls) and topic summary.
-/*		$MODERATE............Move topic, split topic, merge topic.
-/*
-/*		$PROFILE.............The profile areas.
-/*		$PERSONAL............The personal messages (PM) areas.
-/*		$CALENDAR............Wombats (and the calendar).
-/*		$STATISTICS..........The statistics centre.
-/*
-/*		$HELP................Help pages, help icons and pop-ups, tooltips.
-/*		$SEARCH..............Search pages, including memberlist search.
-/*		$MEMBERLIST..........The memberlist table.
-/*		$LOGIN...............Login and registration, maintenance mode.
-/*
-/*		$BOXES...............Message boxes (error, warning, info, etc).
-/*		$PROGRESS............Nifty progress bars.
-/*		$MEDIA...............Experimental media queries.
-/* ------------------------------------------------------- */
+ * This variant is the standard, light, Elkarte default theme.
+ * This is eye candy only. All the layout code is in index.css.
+ *
+ * All theme variants depend on the layout code for stability.
+ * It is better to copy code to a variant CSS file for testing.
+ * -------------------------------------------------------
+ * $CONTENTS - still a bit WIP. @todo
+ *
+ *		$GENERAL.............Global resets, clearfixes, etc.
+ *		$COMMON..............Common classes to drive you bonkers.
+ *		$BBC.................Quotes, code blocks, BBC styles.
+ *		$AJAX................The "loading" bar (quick edit, etc).
+ *
+ *		$MAIN................Forum header, wrapper, and footer.
+ *		$MENUS...............Main and secondary menus.
+ *		$LINKTREE............The breadcrumbs.
+ *		$BUTTONS.............Most button strips.
+ *		$PAGELINKS...........Page navigation links.
+ *
+ *		$TABLES..............Generic tables (memberlist, error log, etc).
+ *		$SETTINGS............Generic lists for settings pages.
+ *		$BOARDS..............Board index, sub-boards, and message index.
+ *
+ *		$TOPICS..............The display template (topic view), including send.
+ *		$EDITOR..............Main editor (posts, events, polls) and topic summary.
+ *		$MODERATE............Move topic, split topic, merge topic.
+ *
+ *		$PROFILE.............The profile areas.
+ *		$PERSONAL............The personal messages (PM) areas.
+ *		$CALENDAR............The calendar
+ *		$STATISTICS..........The statistics centre.
+ *
+ *		$HELP................Help pages, help icons and pop-ups, tooltips.
+ *		$SEARCH..............Search pages, including memberlist search.
+ *		$MEMBERLIST..........The memberlist table.
+ *		$LOGIN...............Login and registration, maintenance mode.
+ *
+ *		$BOXES...............Message boxes (error, warning, info, etc).
+ *		$PROGRESS............Nifty progress bars.
+ *		$MEDIA...............Experimental media queries.
+ */
 
-/*	$GENERAL	*/
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ *	$GENERAL
+ * -------------------------------------------------------
+ */
+
 /* Normal, standard links. */
 a, a:link, a:visited,
 	/* Links that open in a new window. */
@@ -127,14 +130,10 @@ input[disabled].input_text, input[disabled].input_password {
 }
 
 /* Common button styling. */
-/* It is being replaced with three classes: */
-/*    .button_submit is not floated */
-/*    .right_submit is right floated */
-/*    .left_submit is left floated */
-/* The button_reset class may need attention too. */
+input[type="submit"], .drop_area_fileselect_text, button[type="submit"], input[type="button"],
 .button_submit, .right_submit, .left_submit, .button_reset, .drop_area_fileselect_text,
-	/* Anchors styled to look like buttons. */
-	/* These have standard body text size. Can be chained with smalltext class. */
+/* Anchors styled to look like buttons. */
+/* These have standard body text size. Can be chained with smalltext class. */
 .linkbutton:link, .linkbutton_right:link, .linkbutton_left:link,
 .linkbutton:visited, .linkbutton_right:visited, .linkbutton_left:visited {
 	border: 1px solid #AFAFAF;
@@ -147,6 +146,7 @@ input[disabled].input_text, input[disabled].input_password {
 }
 
 /* Hover effects. */
+input[type="submit"]:hover, button[type="submit"]:hover, input[type="button"]:hover,
 .button_submit:hover, .right_submit:hover, .left_submit:hover,
 .button_reset:hover,
 .linkbutton:hover, .linkbutton_right:hover, .linkbutton_left:hover {
@@ -239,7 +239,9 @@ strong {
 	color: #FFFFFF;
 }
 
-.category_header a:link, .category_header a:visited, .category_header a.new_win:link, .category_header a.new_win:visited, h3.category_header {
+.category_header a:link, .category_header a:visited,
+.category_header a.new_win:link, .category_header a.new_win:visited,
+h3.category_header, h2.category_header {
 	color: #ffffff;;
 	text-transform: uppercase;
 	font-weight: 600;
@@ -255,8 +257,9 @@ strong {
 	border-radius: 0;
 }
 
-/* Custom highlighted text style for modern browsers. */
-/* Nicer than default blue. Needs two separate rules. */
+/* Custom highlighted text style for modern browsers.
+ * Nicer than default. Needs two separate rules.
+ */
 ::-moz-selection {
 	background: #D8FFDF;
 	color: #444444;
@@ -273,7 +276,7 @@ strong {
 }
 
 /* Used for sections that need somewhat larger corners */
-.roundframe {
+.roundframe, .well {
 	border: 1px solid #C5C5C5;
 	border-radius: 0;
 	background: #F5F5F5;
@@ -320,8 +323,11 @@ strong {
 	color: #EEEEEE;
 }
 
-/*	$BBC		*/
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ * $BBC
+ * -------------------------------------------------------
+ */
+
 /* The "Quote:" and "Code:" header parts... */
 .codeheader, .quoteheader {
 	border: 1px solid #CCCCCC;
@@ -340,6 +346,7 @@ strong {
 }
 
 /* A quote, perhaps from another post. */
+.bbc_quote,
 .bbc_standard_quote, .bbc_alternate_quote,
 /* A code block - maybe PHP ;) - shared styles. */
 .bbc_code {
@@ -349,7 +356,7 @@ strong {
 }
 
 /* Extra quote styling */
-.bbc_standard_quote, .bbc_alternate_quote, .quoteheader {
+.bbc_quote, .bbc_standard_quote, .bbc_alternate_quote, .quoteheader {
 	box-shadow: 2px 2px 2px #DDDDDD;
 }
 
@@ -373,16 +380,20 @@ strong {
 }
 
 /* Styling for tables inside posts */
-.inner > .bbc_table_container > .bbc_table td {
+.inner > .bbc_table_container > .bbc_table td,
+.messageContent > .bbc_table_container > .bbc_table td {
 	border-bottom: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 }
-.inner > .bbc_table_container > .bbc_table th {
+.inner > .bbc_table_container > .bbc_table th,
+.messageContent > .bbc_table_container > .bbc_table th {
 	border-bottom: 1px solid #bbb;
 	border-right: 1px solid #ccc;
 }
 .inner > .bbc_table_container > .bbc_table td:last-child,
-.inner > .bbc_table_container > .bbc_table th:last-child  {
+.inner > .bbc_table_container > .bbc_table th:last-child,
+.messageContent > .bbc_table_container > .bbc_table td:last-child,
+.messageContent > .bbc_table_container > .bbc_table th:last-child {
 	border-right: none;
 }
 
@@ -427,10 +438,13 @@ div.bbc_footnotes .meaction {
 	display: inline-block;
 }
 
-/*	$AJAX		*/
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ *	$AJAX
+ * -------------------------------------------------------
+ */
+
 /* The "Loading" bar for quick edit, etc. */
-#ajax_in_progress {
+#ajax_in_progress, .ajax_infobar {
 	border-bottom: 4px solid #EBECEF;
 	background: #FFFFFF;
 	color: #306430;
@@ -440,8 +454,11 @@ div.bbc_footnotes .meaction {
 	text-decoration: underline;
 }
 
-/*	$MAIN.		*/
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ *	$MAIN.
+ * -------------------------------------------------------
+ */
+
 /* The top bar. */
 
 #top_section {
@@ -468,7 +485,7 @@ div.bbc_footnotes .meaction {
 }
 
 /* Maintenance mode warning. */
-.notice {
+#top_section_notice, .notice {
 	color: #A80000;
 	font-weight: 700;
 }
@@ -488,6 +505,7 @@ div.bbc_footnotes .meaction {
 	padding: 5px;
 	background-color: rgb(255, 255, 255);
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+	z-index: 100;
 }
 
 #search_form .input_text {
@@ -537,6 +555,7 @@ div.bbc_footnotes .meaction {
 #news {
 	font-size: 0.929em;
 	border-radius: 4px;
+	clear: both;
 }
 
 #news > h2 {
@@ -601,6 +620,7 @@ div.bbc_footnotes .meaction {
 	text-shadow: 1px 1px 0 #000000;
 }
 
+.action_viewquery a, .action_viewquery strong,
 #debug_logging a, #debug_logging strong {
 	color: yellow;
 }
@@ -617,8 +637,10 @@ div.bbc_footnotes .meaction {
 	background: #222222;
 }
 
-/*	$MENUS		*/
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ *	$MENUS
+ * -------------------------------------------------------
+ */
 /* Top Menu */
 /* Level 1 Menu bar: link or button. General styling. */
 #main_menu .linklevel1, #main_menu .linklevel1:link, #main_menu .linklevel1:visited {
@@ -945,12 +967,11 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 }
 
 .poster_noavatar {
-	margin-bottom: 5px;
 	border-bottom: 1px solid #ccc;
 	display: block;
 	float: left;
-	margin: 0px;
-	min-width: 0px;
+	margin: 0;
+	min-width: 0;
 	font-size: 1em;
 }
 
@@ -962,10 +983,14 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	margin-bottom: 5px;
 }
 
-.poster_area_avatar, .poster_avatar img {
+.poster_area_avatar,
+.poster_avatar img,
+.poster_area_avatar > .avatar.avatarresize {
 	display: inline-block;
 	width: 120px;
 	height: 120px;
+	max-width: 120px;
+	max-height: 120px;
 	border-radius: 50%;
 	object-fit: cover;
 }
@@ -975,7 +1000,9 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	padding: 3px 0;
 }
 
-.poster .name, .poster .membergroup, .poster .icons {
+.poster .name,
+.poster .membergroup,
+.poster .icons {
 	margin: 0;
 	font-size: 1em;
 }
@@ -1183,7 +1210,6 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	border: 1px solid #AFAFAF;
 	border-top: 1px solid #CFCFCF;
 	border-left: 1px solid #BFBFBF;
-	border-radius: 0;
 	background: #F4F4F4 linear-gradient(to bottom, #FFFFFF, #E4E4E4);
 	box-shadow: 1px 1px 2px #E5E5E5, 0 -1px 0 #E4E4E4 inset;
 	color: #555555;
@@ -1334,7 +1360,7 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	background: #FFFFFF;
 }
 
-.forumposts .windowbg, .forumposts .windowbg2 {
+.forumposts .content, .forumposts .windowbg, .forumposts .windowbg2 {
 	margin-top: 2px;
 }
 
@@ -1554,7 +1580,7 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 }
 
 /* Poster and postarea + moderation area underneath */
-.forumposts .windowbg, .forumposts .windowbg2,
+.forumposts, .forumposts .windowbg, .forumposts .windowbg2,
 .forumposts .approvebg, .forumposts .approvebg2, .core_posts {
 	border: 1px solid #DDDDDD;
 	border-bottom: 1px solid #CCCCCC;
@@ -1702,7 +1728,6 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	border: solid 1px #CCCCCC;
 	background-color: rgb(230, 230, 230);
 	color: #444444;
-	-webkit-font-smoothing: antialiased;
 }
 
 .statusbar {
@@ -1718,13 +1743,6 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 .progressBar div {
 	background-color: green;
 	color: #FFFFFF;
-}
-
-.abort, .remove {
-	border-radius: 0;
-	background-color: #A8352F;
-	color: #FFFFFF;
-	cursor: pointer;
 }
 
 .drop_attachments_error {
@@ -1746,10 +1764,16 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	border-top: 1px solid #FFFFFF;
 }
 
-/* Styles for the $TABS	*/
-/* We can't control what jqueryui pollutes the DOM with, so deal with it */
-/* Styles for the profile summary tabs, or any jquery ui tabs */
-/* ---------------------------------------------------------- */
+/* -------------------------------------------------------
+ * $TABS
+ * -------------------------------------------------------
+ */
+
+.ui-tabs .ui-tabs-panel {
+	border-color: #DDDDDD;
+	border-top-color: #CCCCCC;
+	background: #FFFFFF none repeat scroll 0 0;
+}
 
 .ui-tabs .ui-tabs-nav li {
 	border: 1px #CCCCCC solid;
@@ -1757,18 +1781,19 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	color: #FFFFFF;
 }
 
-.ui-tabs .ui-tabs-nav li a {
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
 	outline: none;
 	border-bottom-color: #CCCCCC;
 	border-radius: 0;
 	background: #F0F0F0;
 }
 
-.ui-tabs .ui-tabs-nav .ui-state-default a {
+.ui-tabs .ui-tabs-nav .ui-state-default .ui-tabs-anchor {
 	background: linear-gradient(to bottom, #FFFFFF, #E4E4E4) repeat scroll 0 0 #F4F4F4;
 }
 
-.ui-tabs .ui-tabs-nav .ui-state-active a {
+.ui-tabs .ui-tabs-nav .ui-state-active .ui-tabs-anchor,
+.ui-tabs .ui-tabs-nav .ui-state-active {
 	border-radius: 0;
 	background: #808C9B;
 	box-shadow: 1px 1px 2px #BBBBBB;
@@ -1776,20 +1801,24 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	font-weight: bold;
 }
 
-/* Hover effects for those buttons. */
-.ui-state-default.ui-corner-top.ui-state-hover, .ui-state-default.ui-corner-top.ui-state-hover a {
+.ui-tabs .ui-tabs-nav li.ui-state-hover .ui-tabs-anchor {
 	background: linear-gradient(to bottom, #E4E4E4, #FFFFFF) repeat scroll 0 0 #F4F4F4;
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0.3) inset;
 }
 
-.ui-tabs-active.ui-state-active.ui-state-hover a {
+li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover,
+li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
+
 	background: #9FBFDF;
 	background: linear-gradient(to bottom, #9FBFDF, #EBECEF);
 	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3) inset;
 }
 
-/* $PROFILE	*/
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ * $PROFILE
+ * -------------------------------------------------------
+ */
+
 /* Profile colors */
 
 .ui-tabs .ui-tabs-panel {
@@ -1805,7 +1834,7 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
 }
 
-#profilecenter .windowbg, #profilecenter .windowbg2,
+#profilecenter .content, #profilecenter .windowbg, #profilecenter .windowbg2,
 #profile_attachments .windowbg, #profile_attachments .windowbg2,
 #unwatched_topics .windowbg, #unwatched_topics .windowbg2 {
 	border: none;
@@ -1879,8 +1908,14 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	background: red;
 }
 
-/* $PERSONAL	*/
-/* ------------------------------------------------------- */
+#creator dt strong {
+	color: #585858;
+}
+
+/* -------------------------------------------------------
+ * $PERSONAL
+ * -------------------------------------------------------
+ */
 
 #personal_messages .capacity_bar {
 	border: 1px solid #ADADAD;
@@ -1906,8 +1941,11 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	color: #555555;
 }
 
-/* $CALENDAR	*/
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ * $CALENDAR
+ * -------------------------------------------------------
+ */
+
 /* Calendar colors for birthdays, events and holidays */
 .birthday {
 	color: #920AC4;
@@ -1980,8 +2018,10 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	border-top: none;
 }
 
-/*	$HELP		*/
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ *	$HELP
+ * -------------------------------------------------------
+ */
 
 #helpmain {
 	border: 1px solid #CCCCCC;
@@ -2021,8 +2061,10 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.15);
 }
 
-/*	$SEARCH		*/
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ *	$SEARCH
+ * -------------------------------------------------------
+ */
 
 #mlsearch_options {
 	border: 1px solid #DDDDDD;
@@ -2043,8 +2085,11 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	border-bottom: 4px solid #DDDDDD;
 }
 
-/*	$MEMBERLIST		*/
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ *	$MEMBERLIST
+ * -------------------------------------------------------
+ */
+
 .mlist .mlist_header div {
 	border-top: none;
 }
@@ -2076,13 +2121,15 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	border-right: 1px solid #CCCCCC;
 }
 
-.letter_row h3 {
+.letter_row > h3 {
 	border: 1px solid #CCCCCC;
 	border-radius: 0;
 }
 
-/*	$LOGIN		*/
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ *	$LOGIN
+ * -------------------------------------------------------
+ */
 
 .coppa_contact {
 	border: 1px solid #555555;
@@ -2098,8 +2145,10 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	background: #FFF0F0;
 }
 
-/*	$BOXES		*/
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ *	$BOXES
+ * -------------------------------------------------------
+ */
 
 /* Lotsa boxes. */
 .description, .information, .warningbox, .successbox, .infobox, .errorbox {
@@ -2156,8 +2205,10 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	color: #555555;
 }
 
-/*	$PROGRESS	*/
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ *	$PROGRESS
+ * -------------------------------------------------------
+ */
 /* Styles for the progress bar */
 .progress_bar {
 	border: 1px solid black;
@@ -2179,8 +2230,10 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	background-color: blue;
 }
 
-/* $STATISTICS	*/
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ * $STATISTICS
+ * -------------------------------------------------------
+ */
 .statistics .category_header {
 	border: none;
 	border-bottom: 2px solid #CCCCCC;
@@ -2226,8 +2279,7 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	height: 5em;
 }
 
-/* floating error box */
-/* currently used by like functionality */
+/* floating error box currently used by like functionality */
 .floating_error {
 	border: solid 1px #E4E4E4;
 	border-radius: 0;
@@ -2303,6 +2355,30 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	background: #FAFAFA;
 }
 
+/* -------------------------------------------------------
+ * $ICONS
+ * -------------------------------------------------------
+ */
+.i-comments::before {
+	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' stroke='%23555555' fill='%23FFFFFF' viewBox='0 0 36 32'%3E%3Cpath d='M15 0c8.284 0 15 5.435 15 12.14s-6.716 12.138-15 12.138c-.796 0-1.576-.05-2.34-.147C9.44 27.34 5.72 27.918 2 28v-.785c2.008-.98 3.625-2.765 3.625-4.804 0-.283-.022-.562-.063-.835C2.17 19.35 0 15.95 0 12.14 0 5.436 6.716 0 15 0zm16.125 27.21c0 1.747 1.135 3.277 2.875 4.117V32c-3.223-.072-6.18-.566-8.973-3.316-.66.083-1.337.126-2.027.126-2.983 0-5.732-.805-7.925-2.157 4.52-.016 8.79-1.464 12.026-4.084 1.633-1.32 2.92-2.87 3.827-4.607.96-1.84 1.45-3.8 1.45-5.825 0-.327-.015-.652-.04-.975C34.604 13.038 36 15.59 36 18.405c0 3.265-1.88 6.18-4.82 8.086-.036.236-.055.476-.055.72z'/%3E%3C/svg%3E");
+}
+
+.i-comments-blank::before {
+	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' stroke='%23555555' fill='%23FFFFFF' viewBox='0 0 36 32'%3E%3Cpath d='M15 4c-1.583 0-3.112.248-4.543.738-1.34.46-2.535 1.107-3.547 1.926C5.034 8.182 4 10.127 4 12.138c0 1.125.315 2.217.935 3.247.646 1.073 1.622 2.056 2.82 2.842.952.624 1.593 1.623 1.762 2.748.028.187.05.375.068.564.085-.08.17-.16.254-.25.75-.75 1.77-1.17 2.82-1.17.16 0 .33.01.5.03.6.08 1.22.112 1.83.112 1.58 0 3.11-.248 4.54-.738 1.34-.46 2.535-1.11 3.547-1.928 1.88-1.516 2.91-3.46 2.91-5.47s-1.03-3.958-2.91-5.476c-1.01-.82-2.205-1.464-3.546-1.923C18.115 4.25 16.585 4 15 4zm0-4c8.284 0 15 5.435 15 12.14s-6.716 12.138-15 12.138c-.796 0-1.576-.05-2.34-.147C9.44 27.34 5.72 27.92 2 28v-.785c2.008-.98 3.625-2.765 3.625-4.804 0-.28-.022-.56-.063-.83C2.17 19.35 0 15.95 0 12.14 0 5.436 6.716 0 15 0zm16.125 27.21c0 1.747 1.135 3.277 2.875 4.117V32c-3.223-.072-6.18-.566-8.973-3.316-.66.083-1.337.126-2.027.126-2.983 0-5.732-.805-7.925-2.157 4.52-.016 8.79-1.464 12.026-4.084 1.64-1.32 2.92-2.87 3.83-4.61.96-1.84 1.45-3.8 1.45-5.83 0-.33-.01-.65-.04-.98 2.27 1.88 3.66 4.43 3.66 7.246 0 3.265-1.88 6.18-4.82 8.086-.03.24-.05.48-.05.72z'/%3E%3C/svg%3E");
+}
+
+.i-share::before {
+	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' stroke='%23EEEEEE' stroke-width='.07em' fill='green' viewBox='0 0 32 32'%3E%3Cpath d='M27 22c-1.4 0-2.7.6-3.6 1.53L9.95 16.8c.04-.27.06-.53.06-.8s0-.53-.02-.8L23.4 8.5c.92.94 2.2 1.52 3.6 1.52 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .27.02.54.06.8L8.6 12.52C7.67 11.6 6.4 11 5 11c-2.76 0-5 2.24-5 5s2.24 5 5 5c1.4 0 2.7-.58 3.6-1.52l13.46 6.73c-.04.3-.06.57-.06.8 0 2.8 2.24 5 5 5s5-2.2 5-5-2.24-5-5-5z'/%3E%3C/svg%3E");
+}
+
+.i-bell::before {
+	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' stroke='%23555555' stroke-width='.07em' fill='%23FFFFFF' viewBox='0 0 32 32'%3E%3Cpath d='M32.047 25c0-9-8-7-8-14 0-.58-.056-1.076-.158-1.498-.53-3.532-2.88-6.366-5.93-7.23.023-.123.04-.25.04-.382C18 .85 17.1 0 16 0s-2 .85-2 1.89c0 .13.014.258.04.382-3.42.97-5.965 4.416-6.038 8.545L8 11c0 7-8 5-8 14 0 2.382 5.33 4.375 12.468 4.878C13.14 31.14 14.47 32 16 32s2.86-.86 3.532-2.122C26.67 29.375 32 27.383 32 25v-.02l.047.02zm-6.227 1.69c-1.695.453-3.692.778-5.837.96C19.805 25.604 18.09 24 16 24s-3.806 1.605-3.985 3.65c-2.144-.18-4.142-.507-5.837-.96-2.332-.62-3.447-1.317-3.855-1.69.408-.372 1.523-1.068 3.855-1.69 2.712-.725 6.2-1.123 9.82-1.123s7.11.398 9.82 1.122c2.332.62 3.447 1.314 3.855 1.69-.408.37-1.523 1.065-3.855 1.69z'/%3E%3C/svg%3E");
+}
+
+.i-envelope::before {
+	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23FFFFFF' viewBox='0 0 32 32'%3E%3Cpath d='M32 12.68v14.178q0 1.18-.84 2.018t-2.017.84H2.857q-1.18 0-2.018-.84T0 26.858v-14.18q.786.876 1.804 1.555 6.464 4.393 8.875 6.16 1.013.75 1.65 1.17t1.69.858 1.96.44h.035q.91 0 1.963-.44t1.69-.852 1.65-1.17q3.037-2.196 8.894-6.16 1.02-.697 1.786-1.557zm0-5.25q0 1.41-.875 2.695t-2.18 2.196l-8.355 5.81q-.18.125-.76.545t-.967.68-.93.58-1.026.48-.894.163h-.036q-.41 0-.892-.16t-1.027-.483-.928-.58-.964-.68-.76-.545q-1.625-1.143-4.68-3.26T3.07 12.32q-1.11-.75-2.09-2.06t-.982-2.44q0-1.393.74-2.32t2.117-.93H29.14q1.162 0 2.01.84t.848 2.017z'/%3E%3C/svg%3E");
+}
+
 /*	$MEDIA		*/
 /* Experimental media queries.
 /* ------------------------------------------------------- */
@@ -2336,7 +2412,7 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 	}
 
 	#menu_nav {
-		height: 43px;
+		height: 55px;
 	}
 
 	#main_menu .menulevel2 {
@@ -2349,22 +2425,6 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 
 	#main_menu .listlevel1 {
 		line-height: 3.077em;
-	}
-
-	[data-icon]:before {
-		display: inline-block;
-		margin: 3px 1px;
-		padding: 0;
-		width: 1.15em;
-		height: 1.15em;
-		border: 3px solid #777777;
-		border-radius: 0;
-		color: #CCCCCC;
-		content: attr(data-icon);
-		text-align: center;
-		font-size: 1.8em;
-		font-family: 'FontAwesome';
-		line-height: 1.2em;
 	}
 
 	.indicator[data-icon]:before {
@@ -2453,7 +2513,7 @@ linear-gradient(to bottom, #DDE0E3, #EFF0F3);
 		background-color: #FAFAFA;
 	}
 
-	.forumposts .windowbg, .forumposts .windowbg2 {
+	.forumposts, .forumposts .windowbg, .forumposts .windowbg2 {
 		margin-top: 8px;
 		border: 1px solid #BFBFBF;
 		border-radius: 0;

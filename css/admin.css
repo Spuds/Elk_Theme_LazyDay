@@ -23,26 +23,31 @@
 	overflow: auto;
 }
 
+#admin_content .content,
 #admin_content .windowbg, #admin_content .windowbg2 {
 	margin-bottom: 5px;
 }
 
-#admincenter {
+.admincenter {
 	overflow: auto;
 }
 
-#admincenter .content {
+.admincenter .content {
 	padding: 12px;
 }
 
-#admincenter .content .settings {
+.admincenter .content .settings {
 	padding: 0 0 0 8px;
+}
+
+.admincenter .content hr.clear {
+	margin-left: 12px;
 }
 
 /* @todo - A general admin wrapper class. */
 #admin_main_section, div.quick_tasks, #mod_main_section,
 #support_credits, #admin_newsletters,
-#core_features, #generate_reports_type,
+#core_features,
 #groupForm, #mailqueue_stats, #manage_maintenance,
 #new_group, #view_group, #admin_form_wrapper, .action_admin .generic_list_wrapper {
 	margin: 12px 0 0 0;
@@ -50,11 +55,20 @@
 	overflow: auto;
 }
 
-#admin_form_wrapper div.windowbg, #support_credits div.windowbg,
-#generate_reports_type div.windowbg, #new_group div.windowbg,
-#view_group div.windowbg, #admin_newsletters .windowbg {
+#admin_main_section, .quick_tasks, #mod_main_section,
+#support_credits, #admin_newsletters,
+#core_features, #entry_form,
+#groupForm, #mailqueue_stats, #manage_maintenance,
+#new_group, #view_group, #admin_form_wrapper, .action_admin .generic_list_wrapper {
+	border: 1px solid;
+	border-radius: 7px;
+}
+
+#new_group div.content,
+#view_group div.content,
+#admin_newsletters .content {
 	background: none;
-	padding: 0;
+	padding:0;
 	margin: 0 4px;
 }
 
@@ -62,11 +76,13 @@
 	padding: 8px 8px 0 8px;
 }
 
+#mailqueue_stats .content,
 #mailqueue_stats .windowbg {
 	background: none;
 	padding: 0;
 }
 
+#mailqueue_stats .content,
 #mailqueue_stats .windowbg .content {
 	padding: 12px 9px 0 9px;
 }
@@ -156,11 +172,13 @@ h3.category_header form {
 	white-space: nowrap;
 }
 
+.content.nopadding,
 .windowbg.nopadding {
 	margin: 4px 0 0 0;
 	padding: 0;
 }
 
+.content ol ,
 .windowbg ol {
 	margin-top: 0;
 	margin-bottom: 0;
@@ -217,14 +235,19 @@ fieldset dl {
 #admin_content .category_header h3 {
 	text-transform: uppercase;
 	font-weight: 600;
-	padding-top: 6px;
+	padding-top: 4px;
 }
 
 #admin_content div.category_header {
 	padding: 6px 10px;
 }
 
+#search_go {
+	margin-top: 2px;
+}
+
 /* @todo - The welcome thingy. */
+.admincenter .well, #modcenter .well,
 #admincenter .roundframe, #modcenter .roundframe {
 	background: none;
 	border: none;
@@ -256,6 +279,7 @@ fieldset dl {
 	padding: 5px 0;
 	overflow: auto;
 	line-height: 1.7em;
+	border-bottom: double;
 }
 
 .search_results li p {
@@ -281,7 +305,7 @@ fieldset dl {
 }
 
 .censorWords {
-	margin-top: 1ex;
+	margin: 1em 0 0 1em;
 }
 
 /* Cleaned this up a bit for less clutter.
@@ -289,13 +313,11 @@ fieldset dl {
 /* Live news from elkarte.net and support information. */
 #admin_main_section {
 	margin: 12px 0 20px 0;
-	padding: 8px 12px 4px 12px;
+	padding: 8px 8px 4px 8px;
 }
 
 #live_news, #supportVersionsTable {
 	width: 70%;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
@@ -304,6 +326,7 @@ fieldset dl {
 	padding-left: 6px;
 }
 
+#admin_main_section .content,
 #admin_main_section .windowbg {
 	padding: 6px 0;
 	height: 12em;
@@ -318,7 +341,8 @@ fieldset dl {
 	padding: 0 4px;
 	font-size: 0.929em;
 }
-#live_news div.windowbg {
+
+#live_news div.content {
 	overflow: hidden;
 }
 
@@ -357,7 +381,7 @@ fieldset dl {
 /* and the advantage is that a clean layout is always maintained.
 /* The <li>'s could be set to auto overflow instead, but that just clutters things up with scrollbars.
 /* Scrollbars here look worse, take up space, and don't really add anything useful in this context. */
-div.quick_tasks {
+.quick_tasks {
 	margin: -8px 0 0 0;
 	border-radius: 0;
 	box-shadow: none;
@@ -387,6 +411,14 @@ div.quick_tasks {
 	margin: 0 0 0 70px;
 }
 
+#quick_tasks li:first-child, #quick_tasks li:nth-child(2) {
+	border-top: none;
+}
+
+#quick_tasks li:last-child, #quick_tasks li:nth-child(7) {
+	border-bottom: none;
+}
+
 /* Styles for the support and credits page.
 /* Hey, people might actually want to put their names on it now!
 /* Only a couple of trivial markup hacks that wont break any mods or themes.
@@ -398,7 +430,7 @@ div.quick_tasks {
 	padding: 6px 12px 12px 12px;
 }
 
-#support_resources {
+#support_resources, #credits_sections {
 	margin: 16px 0 -24px 0;
 }
 
@@ -410,21 +442,13 @@ div.quick_tasks {
 }
 
 #support_credits .content {
-	padding: 0 18px;
+	padding: 5px 18px;
 	line-height: 1.6em;
 }
 
 #support_credits .content p {
-	margin: 12px 0 0 0;
+	margin: 1.75em 0 0 0;
 	padding: 0;
-}
-
-#latestSupport {
-	padding: 0 25px 15px 25px;
-}
-
-#credits_sections {
-	margin: 0 0 -24px 0;
 }
 
 #support_credits dl {
@@ -453,9 +477,12 @@ div.quick_tasks {
 	margin: 4px 0 12px 0;
 }
 
-#core_features .content {
+#core_features .features {
 	padding: 0 12px;
 	overflow: auto;
+	box-sizing: border-box;
+	float: left;
+	width: 50%;
 }
 
 .core_features_status_box {
@@ -468,7 +495,7 @@ div.quick_tasks {
 /* Still works without it if you reload the page, but rather odd that it's hiding. */
 .features_image {
 	float: left;
-	margin: 0 12px 0 0;
+	margin: 0 6px;
 }
 
 .features_switch {
@@ -477,7 +504,7 @@ div.quick_tasks {
 
 .features h3 {
 	padding: 0;
-	margin: 0 6px 0 105px;
+	margin: 0 .5em 0 6em;
 	font-size: 1.071em;
 	overflow: hidden;
 	white-space: pre;
@@ -487,9 +514,10 @@ div.quick_tasks {
 }
 
 .features p {
-	margin: 0 105px;
+	margin: 0 4.5em 0 6.426em;
 	padding: 0;
-	min-height: 56px;
+	height: 8.5em;
+	overflow: auto;
 }
 
 #private {
@@ -499,25 +527,26 @@ div.quick_tasks {
 /* Styles for the package manager.
 /* Haven't got here yet. :P
 ------------------------------------------------- */
-#package_list ol, #package_list ol li {
+#package_list ol {
 	list-style: decimal;
 	margin-left: 50px;
 	border: none;
 }
 
-#package_list ol ul, #package_list ol ul li {
+#package_list, .package_section {
 	margin-left: 0;
 	list-style: none;
 	border-radius: 3px;
 }
 
-#package_list {
-	list-style-type: none;
+.package_section > ul {
+	margin-left: 5em;
 }
 
 #package_list li {
 	padding: 0.2em;
 	margin: 1px;
+	font-weight: 600;
 }
 
 .package_id {
@@ -531,11 +560,6 @@ div.quick_tasks {
 	max-height: 16em;
 	overflow: auto;
 	padding-bottom: .5em;
-}
-
-.packages {
-	border: none !important;
-	list-style: none;
 }
 
 #find_code, #replace_code {
@@ -629,31 +653,34 @@ ul.package_servers li {
 
 /* Styles for anti-spam questions.
 ------------------------------------------------------- */
-dl.settings dt.questions {
+.settings dt.questions {
 	width: 65%;
+	margin: 0;
 }
 
-dl.settings dd.questions {
+.settings dd.questions {
 	width: 35%;
 }
 
-dl.settings dt.questions input {
+.settings dt.questions input {
 	width: 80%;
 }
 
-dl.settings dd.questions input {
+.settings dd.questions input {
 	width: 90%;
 }
 
 /* Styles for the BBC permissions
 ------------------------------------------------- */
 .list_bbc {
-	width: 33%;
+	-moz-column-count: 3;
+	-webkit-column-count: 3;
+	column-count: 3;
 }
 
 /* Styles for the manage boards section.
 ------------------------------------------------- */
-#manage_boards .windowbg {
+#manage_boards .content {
 	margin: 0;
 	padding: 0;
 }
@@ -673,25 +700,25 @@ dl.settings dd.questions input {
 	width: 100%;
 }
 
-#manage_boards ul {
-	margin: 0 0 12px;
+#manage_boards ul li {
+	border-top: 1px solid;
 }
 
-#manage_boards ul:nth-child(n+2) {
-	min-height: 12px;
+#manage_boards ul:nth-child(n+2) li {
 	padding-left: 30px;
-	margin: 0 0 -12px;
+	border: none;
 }
 
-.ui-state-highlight {
-	height: 25px;
-	cursor: move;
+/* This is the UL drop zone , normally not visible */
+#manage_boards ul.elk_droppings:nth-child(n+2) {
+	min-height: 1em;
+	margin: 0 0 -1em;
+	padding-left: 30px !important;
 }
 
-#manage_boards li, #manage_boards li.windowbg, #manage_boards li.windowbg2 {
+#manage_boards li, #manage_boards li.content {
 	list-style: none;
-	margin: 0;
-	padding-top: 12px;
+	line-height: 3em;
 }
 
 #manage_boards li img {
@@ -707,15 +734,6 @@ dl.settings dd.questions input {
 	width: 60%;
 }
 
-#manage_boards li .floatleft:before {
-	font-family: "Segoe UI Symbol", "DejaVu Sans", "GNU Unifont";
-	content: "\21f3";
-	padding-right: 5px;
-	font-size: 1.286em;
-	float: left;
-	margin-top: -1px;
-}
-
 .move_links {
 	padding: 0 13px 0 0;
 }
@@ -728,6 +746,7 @@ dl.settings dd.questions input {
 	border-radius: 0;
 	padding: 3px 6px;
 	font-size: 1em;
+	text-transform: capitalize;
 }
 
 #manage_boards span.modify_boards a:hover {
@@ -744,6 +763,7 @@ dl.settings dd.questions input {
 
 #manage_boards .post_group, #manage_boards .regular_members {
 	cursor: help;
+	border-bottom: 1px dotted;
 }
 
 .select_all_box {
@@ -754,8 +774,14 @@ dl.settings dd.questions input {
 .visible_boards .board label,
 .select_all_box label,
 .select_category label {
-	width: 30%;
+	width: 32%;
 	display: inline-block;
+}
+
+.select_category, .select_all_box {
+	font-style: italic;
+	border-top: 1px dashed;
+	border-bottom: 1px dashed;
 }
 
 .visible_boards .select_all_box .floatright,
@@ -793,15 +819,6 @@ dl.settings dd.questions input {
 
 /* Styles for the manage maintenance section.
 ------------------------------------------------- */
-#manage_maintenance div.windowbg, #manage_maintenance div.windowbg2 {
-	padding: 0;
-	margin: 0 0 4px 0;
-}
-
-#manage_maintenance .button_submit {
-	margin: 4px 10px 10px 10px;
-}
-
 #membersText, #rotText {
 	font-weight: bold;
 }
@@ -832,6 +849,10 @@ dl.settings dd.questions input {
 
 #manage_maintenance h3 a.help .icon {
 	padding: 4px 0 0;
+}
+
+#manage_maintenance div.content {
+	border-bottom: 1px solid;
 }
 
 /* Styles for the manage calendar section.
@@ -875,12 +896,17 @@ dl.admin_permissions dd {
 
 /* Styles for the manage search section.
 ------------------------------------------------- */
-dl.settings dt.large_caption {
+.large_caption > dt {
 	width: 70%;
 }
 
-dl.settings dd.large_caption {
+.large_caption > dd {
 	width: 29%;
+}
+
+.large_caption > dt a img {
+	vertical-align: middle;
+	margin-top: -1px;
 }
 
 .search_weight {
@@ -996,12 +1022,12 @@ dl.settings dd.large_caption {
 
 /* Styles for the themes section.
 ------------------------------------------------- */
-ul.theme_options {
+ul.theme_options, ul.basic_options {
 	padding: 0;
 	margin: 0;
 }
 
-ul.theme_options li {
+ul.theme_options li, ul.basic_options li {
 	list-style: none;
 	padding: 0.4em;
 }
@@ -1024,11 +1050,13 @@ dl.themes_list {
 
 dl.themes_list dt {
 	margin-bottom: 3px;
+	margin-top: 5px;
 }
 
 dl.themes_list dd {
 	font-style: italic;
 	white-space: nowrap;
+	margin-top: 5px;
 }
 
 .theme_options dt {
@@ -1036,12 +1064,53 @@ dl.themes_list dd {
 }
 
 .theme_options dd {
-	width: 40%
+	width: 40%;
+}
+
+/* Theme Management>Member Options>Change Current Options
+Adjusts display of wording and selections to one line.
+----------------------------------------------------------------*/
+#admin_form_wrapper .theme_options dt {
+    float: left;
+    clear: both;
+    margin: 0 0 10px 0;
+    padding: 0;
+    width: 55%;
+}
+
+#admin_form_wrapper .theme_options dd {
+    float: right;
+    overflow: auto;
+    margin: 0 0 3px 0;
+    padding: 0;
+    width: 45%;
+    min-height: 2em;
+}
+
+#admin_form_wrapper .input_check, .input_radio {
+    border: none;
+    background: none;
+    vertical-align: top;
+    margin: 0 2px 4px 4px;
+}
+
+/* alternate row colors on Modify Themes,Copy a template */
+.theme_options .content:nth-child(even), .theme_options li:nth-child(even) {
+	border-top: 1px solid;
+	border-bottom: 1px solid;
 }
 
 .theme_settings .input_text {
 	max-width: 100%;
 	width: 30em;
+}
+
+#css_preview_box {
+	display: none;
+	margin-bottom: 2ex;
+	width: 99%;
+	height: 300px;
+	border: 1px solid;
 }
 
 /* Styles for the registration center.
@@ -1062,7 +1131,8 @@ dl.themes_list dd {
 	width: 100%;
 }
 
-#modcenter .windowbg, #modcenter .windowbg2, #modcenter .generic_list_wrapper {
+#modcenter .content, #modcenter .generic_list_wrapper,
+#modcenter .windowbg, #modcenter .windowbg2 {
 	overflow: visible;
 	margin: 4px 0 0 0;
 }
@@ -1071,6 +1141,7 @@ dl.themes_list dd {
 	padding: 12px;
 }
 
+#mod_main_section .content,
 #mod_main_section .windowbg {
 	padding: 6px 0;
 	height: 14em;
@@ -1101,7 +1172,7 @@ dl.themes_list dd {
 }
 
 /* Moderation Notes */
-ul.moderation_notes {
+.moderation_notes {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -1109,7 +1180,7 @@ ul.moderation_notes {
 	height: auto;
 }
 
-ul.moderation_notes li {
+.moderation_notes li {
 	padding: 0.2em;
 	border-bottom: 1px solid #CCCCCC;
 }
@@ -1133,24 +1204,23 @@ ul.moderation_notes li {
 	width: 100%;
 }
 
+#error_log tr.content td,
 #error_log tr.windowbg td, #error_log tr.windowbg2 td {
 	padding: 8px;
 	line-height: 160%;
 }
 
 #error_log td div {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	/* The next bits should fix https://github.com/elkarte/Elkarte/issues/567 */
 	word-wrap: break-word;
 	word-break: break-all;
+	hyphens: auto;
 	-webkit-hyphens: auto;
 	-moz-hyphens: auto;
 	-ms-hyphens: auto;
 }
 
-#error_log .error_who, #error_log .error_type {
+#error_log .error_who, #error_log .error_type, #error_log .error_where {
 	float: left;
 	width: 50%;
 	line-height: 1.8em;
@@ -1165,7 +1235,8 @@ ul.moderation_notes li {
 	line-height: 1.6em;
 }
 
-.error_where .scope {
+#error_log .error_who li>a, #error_log .error_type li>a, #error_log .error_where li>a,
+#error_log .error_who span, #error_log .error_type span, #error_log .error_where span {
 	display: table-cell;
 	padding: 4px;
 	width: 20px;
@@ -1183,6 +1254,17 @@ ul.moderation_notes li {
 	margin: 0 8px 0 0;
 }
 
+#errorfile_table .current .linenumber:before {
+	content: '==>';
+}
+#errorfile_table .linetext {
+	white-space: nowrap;
+}
+#errorfile_table .current .linetext {
+	border: 1px solid;
+	border-left-width: 0;
+}
+
 /* Styles for the Report generation
 ------------------------------------------------- */
 #report_buttons {
@@ -1190,10 +1272,13 @@ ul.moderation_notes li {
 	padding: 3px 0;
 }
 
-/* Admin menu icons as sprites @todo - Can clean this up some more. */
-/* Use some longhand declarations to cut the length of the entire list. */
-/* ------------------------------------------------- */
+.report_results th {
+	border-left: 1px solid;
+	border-right: 1px solid;
+}
 
+/* Admin menu icons as sprites
+/* Use some longhand declarations to cut the length of the entire list. */
 /* Admin menu icons as sprites
 ------------------------------------------------- */
 .linklevel2 > img {
@@ -1201,137 +1286,41 @@ ul.moderation_notes li {
 	background-repeat: no-repeat;
 }
 
-.admin_img_administration {
-	background-position: 0 0;
-}
-
-.admin_img_attachment {
-	background-position: -16px 0;
-}
-
-.admin_img_ban {
-	background-position: -32px 0;
-}
-
-.admin_img_boards {
-	background-position: -48px 0;
-}
-
-.admin_img_calendar {
-	background-position: -64px 0;
-}
-
-.admin_img_corefeatures {
-	background-position: -80px 0;
-}
-
-.admin_img_current_theme {
-	background-position: -96px 0;
-}
-
-.admin_img_engines {
-	background-position: -112px 0;
-}
-
-.admin_img_exit {
-	background-position: -128px 0;
-}
-
-.admin_img_features {
-	background-position: -144px 0;
-}
-
-.admin_img_languages {
-	background-position: -160px 0;
-}
-
-.admin_img_logs {
-	background-position: -176px 0;
-}
-
-.admin_img_mail {
-	background-position: -192px 0;
-}
-
-.admin_img_maintain {
-	background-position: -208px 0;
-}
-
-.admin_img_membergroups {
-	background-position: -224px 0;
-}
-
-.admin_img_members {
-	background-position: -240px 0;
-}
-
-.admin_img_modifications {
-	background-position: -256px 0;
-}
-
-.admin_img_news {
-	background-position: -272px 0;
-}
-
-.admin_img_packages {
-	background-position: -288px 0;
-}
-
-.admin_img_paid {
-	background-position: -304px 0;
-}
-
-.admin_img_permissions {
-	background-position: -320px 0;
-}
-
-.admin_img_posts {
-	background-position: -336px 0;
-}
-
-.admin_img_regcenter {
-	background-position: -352px 0;
-}
-
-.admin_img_reports {
-	background-position: -368px 0;
-}
-
-.admin_img_scheduled {
-	background-position: -384px 0;
-}
-
-.admin_img_search {
-	background-position: -400px 0;
-}
-
-.admin_img_security {
-	background-position: -416px 0;
-}
-
-.admin_img_server {
-	background-position: -432px 0;
-}
-
-.admin_img_smiley {
-	background-position: -448px 0;
-}
+.admin_img_administration {background-position: 0 0;}
+.admin_img_attachment     {background-position: -16px 0;}
+.admin_img_ban            {background-position: -32px 0;}
+.admin_img_boards         {background-position: -48px 0;}
+.admin_img_calendar       {background-position: -64px 0;}
+.admin_img_corefeatures   {background-position: -80px 0;}
+.admin_img_current_theme  {background-position: -96px 0;}
+.admin_img_engines        {background-position: -112px 0;}
+.admin_img_exit           {background-position: -128px 0;}
+.admin_img_features       {background-position: -144px 0;}
+.admin_img_languages      {background-position: -160px 0;}
+.admin_img_logs           {background-position: -176px 0;}
+.admin_img_mail           {background-position: -192px 0;}
+.admin_img_maintain       {background-position: -208px 0;}
+.admin_img_membergroups   {background-position: -224px 0;}
+.admin_img_members        {background-position: -240px 0;}
+.admin_img_modifications  {background-position: -256px 0;}
+.admin_img_news           {background-position: -272px 0;}
+.admin_img_packages       {background-position: -288px 0;}
+.admin_img_paid           {background-position: -304px 0;}
+.admin_img_permissions    {background-position: -320px 0;}
+.admin_img_posts          {background-position: -336px 0;}
+.admin_img_regcenter      {background-position: -352px 0;}
+.admin_img_reports        {background-position: -368px 0;}
+.admin_img_scheduled      {background-position: -384px 0;}
+.admin_img_search         {background-position: -400px 0;}
+.admin_img_security       {background-position: -416px 0;}
+.admin_img_server         {background-position: -432px 0;}
+.admin_img_smiley         {background-position: -448px 0;}
+.admin_img_support        {background-position: -464px 0;}
+.admin_img_themes         {background-position: -480px 0;}
 
 .sortable_smiley li {
 	display: inline;
 	padding: 0 6px;
-}
-
-.ui-sortable li > a {
-	cursor: move;
-}
-
-.admin_img_support {
-	background-position: -464px 0;
-}
-
-.admin_img_themes {
-	background-position: -480px 0;
 }
 
 .pagelink, .current_page, .expand_pages {
@@ -1339,24 +1328,6 @@ ul.moderation_notes li {
 	background-color: transparent;
 }
 
-#taskpad select {
-	margin-top: 3px;
-}
-
-#taskpad {
-	margin: 2px 8px 2px 0;
-}
-
-/* Try out some nifty small screen friendliness, for the cost of a few more bytes. */
-/*@media screen and (max-width: 85em) {
-	.features p {
-		margin: 0;
-		padding: 0;
-		min-height: 10em;
-		max-height: 10em;
-	}
-
-}*/
 @media screen and (max-width: 33.750em) {
 	body {
 		padding: 0;
@@ -1437,6 +1408,7 @@ ul.moderation_notes li {
 		overflow: auto;
 	}
 
+	#manage_boards .content,
 	#manage_boards .windowbg {
 		line-height: 3.2em;
 	}
@@ -1463,9 +1435,16 @@ ul.moderation_notes li {
 #sort_email_fp td, #custom_profile_fields td:nth-child(2), #message_icon_list td:nth-child(-n+3) {
 	cursor: move;
 }
+#message_icon_list img {
+	vertical-align: middle;
+}
 
-#sort_email_fp td:nth-child(2):before, #custom_profile_fields td:nth-child(2):before, #message_icon_list td:nth-child(1):before {
-	font-family: "Segoe UI Symbol", "DejaVu Sans", "GNU Unifont";
+/* Styles for the D&D indicators
+------------------------------------------------- */
+#sort_email_fp td:nth-child(2):before,
+#custom_profile_fields td:nth-child(2):before,
+#message_icon_list td:nth-child(1):before,
+#manage_boards li .floatleft:before {
 	content: "\21f3";
 	padding-right: 5px;
 	font-size: 1.786em;
@@ -1492,6 +1471,16 @@ ul.moderation_notes li {
 	content: "";
 	display: table;
 }
+.ui-sortable li > a {
+	cursor: move;
+}
+
+.ui-state-highlight {
+	height: 2em;
+	cursor: move;
+	border: 1px dashed;
+}
+
 
 /* jQuery Dialog */
 .ui-dialog {
@@ -1526,6 +1515,13 @@ ul.moderation_notes li {
 	height: 16px;
 	margin: 0.7em 0;
 	background: url(../images/buttons/delete.png) no-repeat scroll left center transparent;
+}
+
+.ui-button-icon-only {
+	width: 2em;
+	box-sizing: border-box;
+	text-indent: -9999px;
+	white-space: nowrap;
 }
 
 .ui-dialog .ui-dialog-titlebar-close .ui-button-text {
