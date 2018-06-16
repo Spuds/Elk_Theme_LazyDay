@@ -890,15 +890,15 @@ strong, .bbc_strong {
 }
 
 .bbc_img.floatleft {
-	padding-right: .25em;
+	padding: .1em .75em .1em 0;
 }
 
 .bbc_img.floatright {
-	padding-left: .25em;
+	padding: .1em 0 .1em .75em;
 }
 
 .bbc_img.floatcenter {
-	padding: 0 .25em;
+	padding: .5em .25em;
 }
 
 .bbc_table {
@@ -1375,7 +1375,7 @@ a.bbc_link {
 }
 
 #main_content_section .navigate_section {
-	margin: 12px 0 6px 0;
+	margin: 1em 0 .5em 0;
 }
 
 .linktree {
@@ -1478,7 +1478,9 @@ a.bbc_link {
 
 /* The quick buttons. */
 .quickbuttons {
+	clear: both;
 	margin: 8px 0 6px 0;
+	padding-top: .5em;
 	text-align: right;
 }
 
