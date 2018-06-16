@@ -5,13 +5,11 @@
  * @copyright ElkArte Forum contributors
  * @license   BSD http://opensource.org/licenses/BSD-3-Clause
  *
- * This software is a derived product, based on:
- *
- * Simple Machines Forum (SMF)
+ * This file contains code covered by:
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.0.3
+ * @version 1.1
  *
  */
 
@@ -42,25 +40,25 @@ function template_boards_list()
 
 		// @todo - Invent nifty class name for boardindex header bars.
 		echo '
-				<div class="forum_category" id="category_', $category['id'], '">
-					<h2 class="category_header">';
+				<h2 class="category_header">';
 
 		// If this category even can collapse, show a link to collapse it.
 		if ($category['can_collapse'])
 			echo '
-						<a class="collapse" href="', $category['collapse_href'], '" title="', $category['is_collapsed'] ? $txt['show'] : $txt['hide'], '">', $category['collapse_image'], '</a>';
+					<a class="collapse" href="', $category['collapse_href'], '" title="', $category['is_collapsed'] ? $txt['show'] : $txt['hide'], '">', $category['collapse_image'], '</a>';
 
 		// The "category link" is only a link for logged in members. Guests just get the name.
 		echo '
-						<i class="fa fa-lg fa-folder"></i>&nbsp;', $category['link'], '
-					</h2>';
+					<i class="fa fa-lg fa-folder"></i>&nbsp;', $category['link'], '
+				</h2>
+				<section class="forum_category" id="category_', $category['id'], '">';
 
 		// Assuming the category hasn't been collapsed...
 		if (!$category['is_collapsed'])
 					template_list_boards($category['boards'], 'category_' . $category['id'] . '_boards');
 
 		echo '
-				</div>';
+				</section>';
 	}
 }
 
@@ -73,11 +71,16 @@ function template_boardindex_outer_above()
 
 	// Show some statistics if info centre stats is off.
 	if (!$settings['show_stats_index'])
+	{
 		echo '
 		<div id="index_common_stats">
 			', $txt['members'], ': ', $context['common_stats']['total_members'], ' &nbsp;&#8226;&nbsp; ', $txt['posts_made'], ': ', $context['common_stats']['total_posts'], ' &nbsp;&#8226;&nbsp; ', $txt['topics_made'], ': ', $context['common_stats']['total_topics'], '<br />
 			', $settings['show_latest_member'] ? ' ' . sprintf($txt['welcome_newest_member'], ' <strong>' . $context['common_stats']['latest_member']['link'] . '</strong>') : '', '
 		</div>';
+	}
+
+		echo '
+		<main>';
 }
 
 /**
@@ -89,7 +92,8 @@ function template_boardindex_outer_below()
 
 	// The key line, new posts, no new posts, etc
 	echo '
-		<div id="posting_icons">';
+		</main>
+		<aside id="posting_icons">';
 
 	// Show the mark all as read button?
 	if ($settings['show_mark_read'] && !$context['user']['is_guest'] && !empty($context['categories']))
@@ -103,7 +107,7 @@ function template_boardindex_outer_below()
 	echo '
 			<p class="board_key new_none_board" title="', $txt['old_posts'], '">', $txt['old_posts'], '</p>
 			<p class="board_key new_redirect_board" title="', $txt['redirect_board'], '">', $txt['redirect_board'], '</p>
-		</div>';
+		</aside>';
 
 	if (!empty($context['info_center_callbacks']))
 		template_info_center();
@@ -116,12 +120,16 @@ function template_info_center()
 {
 	global $context, $txt;
 
+	if (empty($context['info_center_callbacks']))
+	{
+		return;
+	}
 	// Here's where the "Info Center" starts...
 	echo '
-	<div id="info_center" class="forum_category">
+	<aside id="info_center" class="forum_category">
 		<h2 class="category_header">
 			<span id="category_toggle">&nbsp;
-				<span id="upshrink_ic" class="', empty($context['minmax_preferences']['info']) ? 'collapse' : 'expand', '" style="display: none;" title="', $txt['hide'], '"></span>
+				<span id="upshrink_ic" class="', empty($context['minmax_preferences']['info']) ? 'collapse' : 'expand', ' hide" title="', $txt['hide'], '"></span>
 			</span>
 			<a href="#" id="upshrink_link">', sprintf($txt['info_center_title'], $context['forum_name_html_safe']), '</a>
 		</h2>
@@ -131,7 +139,7 @@ function template_info_center()
 
 	echo '
 		</ul>
-	</div>';
+	</aside>';
 }
 
 /**
@@ -141,8 +149,8 @@ function template_ic_recent_posts()
 {
 	global $context, $txt, $scripturl, $settings, $user_profile;
 
-	// Show the Recent Posts title, and attach webslices feed to this section
-	// The format requires: hslice, entry-title and entry-content classes.
+	// Show the Recent Posts title
+	// hslice class is a left over from webslice support.
 	echo '
 			<li class="board_row hslice" id="recent_posts_content">
 				<h3 class="ic_section_header">

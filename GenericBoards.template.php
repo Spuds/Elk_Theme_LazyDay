@@ -5,13 +5,11 @@
  * @copyright ElkArte Forum contributors
  * @license   BSD http://opensource.org/licenses/BSD-3-Clause
  *
- * This software is a derived product, based on:
- *
- * Simple Machines Forum (SMF)
+ * This file contains code covered by:
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.0.7
+ * @version 1.1
  *
  */
 
@@ -85,7 +83,7 @@ function optimizeBoardsSubdivision($categories, $total_boards)
 /**
  * Main template for displaying the list of boards
  *
- * @param int $boards
+ * @param array $boards
  * @param string $id
  */
 function template_list_boards($boards, $id)
@@ -147,7 +145,7 @@ function template_list_boards($boards, $id)
 		echo '
 					</div>
 					<div class="board_latest">
-						<p class="board_lastpost">';
+						<aside class="board_lastpost">';
 
 		if (!empty($board['last_post']['id']))
 		{
@@ -219,7 +217,7 @@ function template_pick_boards($form_name, $input_names = 'brd', $select_all = tr
 	if ($select_all)
 		echo '
 						<h3 class="secondary_header">
-							<span id="category_toggle">&nbsp;
+							<span id="panel_toggle">&nbsp;
 								<span id="advanced_panel_toggle" class="', $context['boards_check_all'] ? 'expand' : 'collapse', '" style="display: none;" title="', $txt['hide'], '"></span>
 							</span>
 							<a href="#" id="advanced_panel_link">', $txt['choose_board'], '</a>

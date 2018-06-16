@@ -5,13 +5,11 @@
  * @copyright ElkArte Forum contributors
  * @license   BSD http://opensource.org/licenses/BSD-3-Clause
  *
- * This software is a derived product, based on:
- *
- * Simple Machines Forum (SMF)
+ * This file contains code covered by:
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.0.6
+ * @version 1.1
  *
  */
 
@@ -20,6 +18,7 @@
  *
  * @param mixed[] $message
  * @param boolean $ignoring
+ *
  * @return string
  */
 function template_build_poster_div($message, $ignoring = false)
@@ -59,7 +58,7 @@ function template_build_poster_div($message, $ignoring = false)
 	}
 
 
-	// The new member info dropdown starts here. Note that conditionals have not been fully checked yet.
+	// The member info dropdown starts here.
 	$poster_div .= '
 								<ul class="menulevel2" id="msg_' . $message['id'] . '_extra_info"' . ($ignoring ? ' style="display:none;"' : ' aria-haspopup="true"') . '>';
 
@@ -340,21 +339,21 @@ function template_simple_message($msg)
 {
 	// @todo find a better name for $msg['date']
 	echo '
-			<div class="', $msg['class'], ' core_posts">', !empty($msg['counter']) ? '
+			<article class="', $msg['class'], ' core_posts">', !empty($msg['counter']) ? '
 				<div class="counter">' . $msg['counter'] . '</div>' : '', '
-				<div class="topic_details">
+				<header class="topic_details">
 					<h5>
 						', $msg['title'], '
 					</h5>', !empty($msg['date']) ? '
 					<span class="smalltext">' . $msg['date'] . '</span>' : '', '
-				</div>
-				<div class="inner">
+				</header>
+				<section class="inner">
 					', $msg['body'], '
-				</div>';
+				</section>';
 
 	if (!empty($msg['buttons']))
 		template_quickbutton_strip($msg['buttons'], !empty($msg['tests']) ? $msg['tests'] : array());
 
 	echo '
-			</div>';
+			</article>';
 }

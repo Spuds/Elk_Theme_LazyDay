@@ -5,13 +5,11 @@
  * @copyright ElkArte Forum contributors
  * @license   BSD http://opensource.org/licenses/BSD-3-Clause
  *
- * This software is a derived product, based on:
- *
- * Simple Machines Forum (SMF)
+ * This file contains code covered by:
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.0.7
+ * @version 1.1
  *
  */
 
@@ -31,15 +29,15 @@ function template_display_child_boards_above()
 	global $context, $txt;
 
 	echo '
-	<div id="board_', $context['current_board'], '_childboards" class="forum_category">
-		<h2 class="category_header">
+		<header class="category_header">
 			', $txt['parent_boards'], '
-		</h2>';
+		</header>
+	<section id="board_', $context['current_board'], '_childboards" class="forum_category">';
 
 	template_list_boards($context['boards'], 'board_' . $context['current_board'] . '_children');
 
 	echo '
-	</div>';
+	</section>';
 }
 
 /**
@@ -58,7 +56,7 @@ function template_topic_listing_above()
 	template_pagesection('normal_buttons', 'right');
 
 	echo '
-		<div id="description_board">
+		<header id="description_board">
 			<h2 class="category_header">', $context['name'], '</h2>
 			<div class="generalinfo">';
 
@@ -117,7 +115,7 @@ function template_topic_listing_above()
 					</ul>
 				</div>
 			</div>
-		</div>';
+		</header>';
 }
 
 /**
@@ -143,6 +141,7 @@ function template_topic_listing()
 		<div class="warningbox">', $context['unapproved_posts_message'], '</div>';
 
 		echo '
+		<main>
 		<ul class="topic_listing" id="messageindex">';
 
 		// No topics.... just say, "sorry bub".
@@ -181,11 +180,16 @@ function template_topic_listing()
 				<div class="topic_info">';
 
 			// Showing avatars on the index
-			if (!empty($settings['avatars_on_indexes']))
+			if (!empty($topic['last_post']['member']['avatar']))
 				echo '
 					<div class="board_avatar', ($topic['is_posted_in'] ? ' fred' : ''), '">
-						<a href="', $topic['last_post']['member']['href'], '"><img class="avatar" src="', $topic['last_post']['member']['avatar']['href'], '" alt="" /></a>
+						<a href="', $topic['last_post']['member']['href'], '">
+							<img class="avatar" src="', $topic['last_post']['member']['avatar']['href'], '" alt="" />
+						</a>
 					</div>';
+			else
+				echo '
+					<span class="board_avatar"><a href="#"></a></span>';
 
 			// On to the topic details,
 			echo '
@@ -203,7 +207,7 @@ function template_topic_listing()
 
 			echo '
 							', $topic['is_sticky'] ? '<strong>' : '', '
-							<span class="preview" title="', $topic['default_preview'], '">';
+							<span class="preview"', (!empty($topic['default_preview']) ? ' title="' . $topic['default_preview'] . '"' : ''), '>';
 
 			// Show the topic icon, use the sprite if we can
 			if (isset($message_icon_sprite[$topic['first_post']['icon']]))
@@ -239,7 +243,7 @@ function template_topic_listing()
 
 			echo '
 						', $topic['last_post']['html_time'], '<br />
-						', $txt['by'], ' ', $topic['last_post']['member']['link'], '<br />', 
+						', $txt['by'], ' ', $topic['last_post']['member']['link'], '<br />',
 						(!empty($topic['pages']) ? '
 						<ul class="small_pagelinks" id="pages' . $topic['first_post']['id'] . '" role="menubar">' . $topic['pages'] . '</ul>' : ''), '
 						<a class="topicicon img_last_post', '" href="', $topic['last_post']['href'], '" title="', $txt['last_post'], '"></a>
@@ -283,7 +287,8 @@ function template_topic_listing()
 		}
 
 		echo '
-		</ul>';
+		</ul>
+		</main>';
 
 		if (!empty($context['can_quick_mod']) && $options['display_quick_mod'] == 1 && !empty($context['topics']))
 		{
@@ -295,7 +300,7 @@ function template_topic_listing()
 			foreach ($context['qmod_actions'] as $qmod_action)
 				if ($context['can_' . $qmod_action])
 					echo '
-					<option value="' . $qmod_action . '">' . (isBrowser('ie8') ? '&#187;' : '&#10148;') . '&nbsp;', $txt['quick_mod_' . $qmod_action] . '</option>';
+					<option value="' . $qmod_action . '">&#10148;&nbsp;', $txt['quick_mod_' . $qmod_action] . '</option>';
 
 			echo '
 				</select>';
@@ -334,14 +339,14 @@ function template_topic_listing_below()
 	theme_linktree();
 
 	echo '
-	<div id="topic_icons" class="description">
+	<footer id="topic_icons" class="description">
 		<div class="qaction_row" id="message_index_jump_to">&nbsp;</div>';
 
 	if (!$context['no_topic_listing'])
 		template_basicicons_legend();
 
 	echo '
-			<script><!-- // --><![CDATA[';
+			<script>';
 
 	if (!empty($context['using_relative_time']))
 		echo '
@@ -357,7 +362,7 @@ function template_topic_listing_below()
 					iCurBoardChildLevel: ', $context['jump_to']['child_level'], ',
 					sCurBoardName: "', $context['jump_to']['board_name'], '",
 					sBoardChildLevelIndicator: "&#8195;",
-					sBoardPrefix: "', isBrowser('ie8') ? '&#187; ' : '&#10148; ', '",
+					sBoardPrefix: "&#10148;",
 					sCatClass: "jump_to_header",
 					sCatPrefix: "",
 					bNoRedirect: true,
@@ -373,20 +378,20 @@ function template_topic_listing_below()
 					iCurBoardChildLevel: ', $context['jump_to']['child_level'], ',
 					sCurBoardName: "', $context['jump_to']['board_name'], '",
 					sBoardChildLevelIndicator: "&#8195;",
-					sBoardPrefix: "', isBrowser('ie8') ? '&#187; ' : '&#10148; ', '",
+					sBoardPrefix: "&#10148;",
 					sCatPrefix: "",
 					sCatClass: "jump_to_header",
 					sGoButtonLabel: "', $txt['quick_mod_go'], '"
 				});
-			// ]]></script>
-	</div>';
+			</script>
+	</footer>';
 
 	// Javascript for inline editing.
 	echo '
-	<script><!-- // --><![CDATA[
+	<script>
 		var oQuickModifyTopic = new QuickModifyTopic({
 			aHidePrefixes: Array("lockicon", "stickyicon", "pages", "newicon"),
-			bMouseOnDiv: false,
+			bMouseOnDiv: false
 		});
-	// ]]></script>';
+	</script>';
 }

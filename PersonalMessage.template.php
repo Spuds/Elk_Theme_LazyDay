@@ -5,13 +5,11 @@
  * @copyright ElkArte Forum contributors
  * @license   BSD http://opensource.org/licenses/BSD-3-Clause
  *
- * This software is a derived product, based on:
- *
- * Simple Machines Forum (SMF)
+ * This file contains code covered by:
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.0
+ * @version 1.1
  *
  */
 
@@ -33,24 +31,24 @@ function template_pm_above()
 
 	// The every helpful javascript!
 	echo '
-					<script><!-- // --><![CDATA[
+					<script>
 						var allLabels = {},
 							currentLabels = {},
 							txt_pm_msg_label_remove = "', $txt['pm_msg_label_remove'], '",
 							txt_pm_msg_label_apply = "', $txt['pm_msg_label_apply'], '";
-					// ]]></script>
+					</script>
 					<div id="personal_messages">';
 
 	// Show the capacity bar, if available. @todo - This needs work.
 	if (!empty($context['limit_bar']))
 		echo '
-						<h3 class="category_header">
+						<h2 class="category_header">
 							<span class="floatleft">', $txt['pm_capacity'], ':</span>
 							<span class="floatleft capacity_bar">
 								<span class="', $context['limit_bar']['percent'] > 85 ? 'full' : ($context['limit_bar']['percent'] > 40 ? 'filled' : 'empty'), '" style="width: ', $context['limit_bar']['percent'] / 10, 'em;"></span>
 							</span>
 							<span class="floatright', $context['limit_bar']['percent'] > 90 ? ' alert' : '', '">', $context['limit_bar']['text'], '</span>
-						</h3>';
+						</h2>';
 
 	// Message sent? Show a small indication.
 	if (isset($context['pm_sent']))
@@ -397,16 +395,24 @@ function template_subject_list()
 						<thead>
 							<tr class="table_head">
 								<th class="pm_icon">
-									<a href="', $scripturl, '?action=pm;view;f=', $context['folder'], ';start=', $context['start'], ';sort=', $context['sort_by'], ($context['sort_direction'] == 'up' ? '' : ';desc'), ($context['current_label_id'] != -1 ? ';l=' . $context['current_label_id'] : ''), '"><img src="', $settings['images_url'], '/im_switch.png" alt="', $txt['pm_change_view'], '" title="', $txt['pm_change_view'], '" width="16" height="16" /></a>
+									<a href="', $scripturl, '?action=pm;view;f=', $context['folder'], ';start=', $context['start'], ';sort=', $context['sort_by'], ($context['sort_direction'] == 'up' ? '' : ';desc'), ($context['current_label_id'] != -1 ? ';l=' . $context['current_label_id'] : ''), '">
+										<img src="', $settings['images_url'], '/im_switch.png" alt="', $txt['pm_change_view'], '" title="', $txt['pm_change_view'], '" width="16" height="16" />
+									</a>
 								</th>
 								<th class="pm_date">
-									<a href="', $scripturl, '?action=pm;f=', $context['folder'], ';start=', $context['start'], ';sort=date', $context['sort_by'] == 'date' && $context['sort_direction'] == 'up' ? ';desc' : '', $context['current_label_id'] != -1 ? ';l=' . $context['current_label_id'] : '', '">', $txt['date'], $context['sort_by'] == 'date' ? ' <img class="sort" src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.png" alt="" />' : '', '</a>
+									<a href="', $scripturl, '?action=pm;f=', $context['folder'], ';start=', $context['start'], ';sort=date', $context['sort_by'] == 'date' && $context['sort_direction'] == 'up' ? ';desc' : '', $context['current_label_id'] != -1 ? ';l=' . $context['current_label_id'] : '', '">
+									', $txt['date'], $context['sort_by'] == 'date' ? ' <img class="sort" src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.png" alt="" />' : '', '
+									</a>
 								</th>
 								<th class="pm_subject">
-									<a href="', $scripturl, '?action=pm;f=', $context['folder'], ';start=', $context['start'], ';sort=subject', $context['sort_by'] == 'subject' && $context['sort_direction'] == 'up' ? ';desc' : '', $context['current_label_id'] != -1 ? ';l=' . $context['current_label_id'] : '', '">', $txt['subject'], $context['sort_by'] == 'subject' ? ' <img class="sort" src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.png" alt="" />' : '', '</a>
+									<a href="', $scripturl, '?action=pm;f=', $context['folder'], ';start=', $context['start'], ';sort=subject', $context['sort_by'] == 'subject' && $context['sort_direction'] == 'up' ? ';desc' : '', $context['current_label_id'] != -1 ? ';l=' . $context['current_label_id'] : '', '">
+									', $txt['subject'], $context['sort_by'] == 'subject' ? ' <img class="sort" src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.png" alt="" />' : '', '
+									</a>
 								</th>
 								<th class="pm_from">
-									<a href="', $scripturl, '?action=pm;f=', $context['folder'], ';start=', $context['start'], ';sort=name', $context['sort_by'] == 'name' && $context['sort_direction'] == 'up' ? ';desc' : '', $context['current_label_id'] != -1 ? ';l=' . $context['current_label_id'] : '', '">', ($context['from_or_to'] == 'from' ? $txt['from'] : $txt['to']), $context['sort_by'] == 'name' ? ' <img class="sort" src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.png" alt="" />' : '', '</a>
+									<a href="', $scripturl, '?action=pm;f=', $context['folder'], ';start=', $context['start'], ';sort=name', $context['sort_by'] == 'name' && $context['sort_direction'] == 'up' ? ';desc' : '', $context['current_label_id'] != -1 ? ';l=' . $context['current_label_id'] : '', '">
+									', ($context['from_or_to'] == 'from' ? $txt['from'] : $txt['to']), $context['sort_by'] == 'name' ? ' <img class="sort" src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.png" alt="" />' : '', '
+									</a>
 								</th>
 								<th class="pm_quickmod">
 									<input type="checkbox" onclick="invertAll(this, this.form);" class="input_check" />
@@ -429,7 +435,7 @@ function template_subject_list()
 		echo '
 							<tr class="standard_row">
 								<td class="pm_icon">
-									<script><!-- // --><![CDATA[
+									<script>
 										currentLabels[', $message['id'], '] = {';
 
 		if (!empty($message['labels']))
@@ -445,7 +451,7 @@ function template_subject_list()
 
 		echo '
 										};
-									// ]]></script>
+									</script>
 									', $message['is_replied_to'] ? '<img src="' . $settings['images_url'] . '/icons/pm_replied.png" alt="' . $txt['pm_replied'] . '" />' : '<img src="' . $settings['images_url'] . '/icons/pm_read.png" alt="' . $txt['pm_read'] . '" />', '</td>
 								<td class="pm_date">', $message['time'], '</td>
 								<td class="pm_subject">',
@@ -488,7 +494,7 @@ function template_subject_list()
 			{
 				if ($label['id'] != $context['current_label_id'])
 					$extra .= '
-								<option value="add_' . $label['id'] . '">' . (isBrowser('ie8') ? '&#187;' : '&#10148;') . '&nbsp;' . $label['name'] . '</option>';
+								<option value="add_' . $label['id'] . '">&#10148;&nbsp;' . $label['name'] . '</option>';
 			}
 
 			$extra .= '
@@ -497,7 +503,7 @@ function template_subject_list()
 			foreach ($context['labels'] as $label)
 			{
 				$extra .= '
-								<option value="rem_' . $label['id'] . '">' . (isBrowser('ie8') ? '&#187;' : '&#10148;') . '&nbsp;' . $label['name'] . '</option>';
+								<option value="rem_' . $label['id'] . '">&#10148;&nbsp;' . $label['name'] . '</option>';
 			}
 
 			$extra .= '
@@ -526,13 +532,13 @@ function template_search()
 	global $context, $scripturl, $txt;
 
 	echo '
-	<form action="', $scripturl, '?action=pm;sa=search2" method="post" accept-charset="UTF-8" name="searchform" id="searchform">
+	<form id="searchform" action="', $scripturl, '?action=pm;sa=search2" method="post" accept-charset="UTF-8" name="searchform" >
 		<h2 class="category_header">', $txt['pm_search_title'], '</h2>';
 
 	// Any search errors we need to let them know about
 	if (!empty($context['search_errors']))
 		echo '
-		<div class="errorbox">', implode('<br />', $context['search_errors']['messages']), '</div>';
+		<p class="errorbox">', implode('<br />', $context['search_errors']['messages']), '</p>';
 
 	// Start with showing the basic search input box
 	echo '
@@ -549,8 +555,8 @@ function template_search()
 	echo '
 			<div id="advanced_search" class="content">
 				<dl id="search_options">
-					<dt class="righttext"><label for="searchtype">
-						', $txt['search_match'], ':</label>
+					<dt class="righttext">
+						<label for="searchtype">', $txt['search_match'], ':</label>
 					</dt>
 					<dd>
 						<select name="searchtype">
@@ -841,11 +847,13 @@ function template_send()
 
 		if (!empty($context['send_log']['sent']))
 			foreach ($context['send_log']['sent'] as $log_entry)
-				echo '<span class="error">', $log_entry, '</span><br />';
+				echo '
+					<span class="error">', $log_entry, '</span><br />';
 
 		if (!empty($context['send_log']['failed']))
 			foreach ($context['send_log']['failed'] as $log_entry)
-				echo '<span class="error">', $log_entry, '</span><br />';
+				echo '
+					<span class="error">', $log_entry, '</span><br />';
 
 		echo '
 					</div>
@@ -856,9 +864,9 @@ function template_send()
 	// Show the preview of the personal message.
 	echo '
 		<div id="preview_section" class="forumposts"', isset($context['preview_message']) ? '' : ' style="display: none;"', '>
-			<h3 class="category_header">
+			<h2 class="category_header">
 				<span id="preview_subject">', empty($context['preview_subject']) ? '' : $context['preview_subject'], '</span>
-			</h3>
+			</h2>
 			<div class="post" id="preview_body">
 				', empty($context['preview_message']) ? '<br />' : $context['preview_message'], '
 			</div>
@@ -868,9 +876,9 @@ function template_send()
 	echo '
 	<form action="', $scripturl, '?action=pm;sa=send2" method="post" accept-charset="UTF-8" name="pmFolder" id="pmFolder" class="flow_hidden" onsubmit="submitonce(this);smc_saveEntities(\'pmFolder\', [\'subject\', \'message\']);">
 		<div class="forumposts">
-			<h3 class="category_header hdicon cat_img_write">
+			<h2 class="category_header hdicon cat_img_write">
 				', $txt['new_message'], '
-			</h3>';
+			</h2>';
 
 	echo '
 			<div class="windowbg">
@@ -935,7 +943,7 @@ function template_send()
 					', template_control_richedit($context['post_box_name'], 'smileyBox_message', 'bbcBox_message');
 
 	// Require an image to be typed to save spamming?
-	if ($context['require_verification'])
+	if (!empty($context['require_verification']))
 		template_verification_controls($context['visual_verification_id'], '
 					<div class="post_verification">
 						<strong>' . $txt['pm_visual_verification_label'] . ':</strong>
@@ -955,7 +963,7 @@ function template_send()
 					<input type="hidden" name="l" value="', isset($context['current_label_id']) ? $context['current_label_id'] : -1, '" />';
 
 	// If the admin enabled the pm drafts feature, show a draft selection box
-	if (!empty($modSettings['drafts_enabled']) && !empty($context['drafts_pm_save']) && !empty($context['drafts']))
+	if (!empty($context['drafts_pm_save']) && !empty($context['drafts']))
 	{
 		echo '
 			<h3 id="postDraftOptionsHeader" class="category_header">
@@ -987,18 +995,19 @@ function template_send()
 
 	// The vars used to preview a personal message without loading a new page.
 	echo '
-		<script><!-- // --><![CDATA[
+	<script>
 			var form_name = "pmFolder",
 				preview_area = "pm",
 				txt_preview_title = "', $txt['preview_title'], '",
-				txt_preview_fetch = "', $txt['preview_fetch'], '";';
+			txt_preview_fetch = "', $txt['preview_fetch'], '";
+	</script>';
 
 	// Code for showing and hiding drafts
 	if (!empty($context['drafts']))
-		echo '
+		addInlineJavascript('
 			var oSwapDraftOptions = new elk_Toggle({
 				bToggleEnabled: true,
-				bCurrentlyCollapsed: ', empty($context['minmax_preferences']['pmdraft']) ? 'false' : 'true', ',
+			bCurrentlyCollapsed: ' . (empty($context['minmax_preferences']['pmdraft']) ? 'false' : 'true') . ',
 				aSwappableContainers: [
 					\'postDraftOptions\',
 				],
@@ -1006,36 +1015,33 @@ function template_send()
 					{
 						sId: \'postDraftExpand\',
 						classExpanded: \'collapse\',
-						titleExpanded: ', JavaScriptEscape($txt['hide']), ',
+					titleExpanded: ' . JavaScriptEscape($txt['hide']) . ',
 						classCollapsed: \'expand\',
-						titleCollapsed: ', JavaScriptEscape($txt['show']), '
+					titleCollapsed: ' . JavaScriptEscape($txt['show']) . '
 					}
 				],
 				aSwapLinks: [
 					{
 						sId: \'postDraftExpandLink\',
-						msgExpanded: ', JavaScriptEscape($txt['draft_hide']), ',
-						msgCollapsed: ', JavaScriptEscape($txt['draft_load']), '
+					msgExpanded: ' . JavaScriptEscape($txt['draft_hide']) . ',
+					msgCollapsed: ' . JavaScriptEscape($txt['draft_load']) . '
 					}
 				],
 				oThemeOptions: {
-					bUseThemeSettings: ', $context['user']['is_guest'] ? 'false' : 'true', ',
+				bUseThemeSettings: ' . ($context['user']['is_guest'] ? 'false' : 'true') . ',
 					sOptionName: \'minmax_preferences\',
 					sSessionId: elk_session_id,
 					sSessionVar: elk_session_var,
 					sAdditionalVars: \';minmax_key=pmdraft\'
 				},
-			});';
-
-	echo '
-		// ]]></script>';
+			});', true);
 
 	// Show the message you're replying to.
 	if ($context['reply'])
 		echo '
 
 	<div class="forumposts">
-		<h3 class="category_header">', $txt['subject'], ': ', $context['quoted_message']['subject'], '</h3>
+		<h2 class="category_header">', $txt['subject'], ': ', $context['quoted_message']['subject'], '</h2>
 		<div class="windowbg2">
 			<div class="content">
 				<div class="clear">
@@ -1049,7 +1055,7 @@ function template_send()
 	</div>';
 
 	echo '
-		<script><!-- // --><![CDATA[
+		<script>
 			var oPersonalMessageSend = new elk_PersonalMessageSend({
 				sSelf: \'oPersonalMessageSend\',
 				sSessionId: elk_session_id,
@@ -1088,7 +1094,7 @@ function template_send()
 					<a href="#" id="bcc_link">' . $txt['make_bcc'] . '</a> <a href="' . $scripturl . '?action=quickhelp;help=pm_bcc" onclick="return reqOverlayDiv(this.href);"><img class="icon" src="' . $settings['images_url'] . '/helptopics.png" alt="(?)" /></a>'
 				), '
 			});
-		// ]]></script>';
+		</script>';
 }
 
 /**
@@ -1120,11 +1126,15 @@ function template_prune()
 		<h2 class="category_header">', $txt['pm_prune'], '</h2>
 		<div class="windowbg">
 			<div class="content">
-				<p><label for="age">', sprintf($txt['pm_prune_desc'], '<input type="text" id="age" name="age" size="3" value="14" class="input_text" />'), '</label></p>
-				<input type="submit" value="', $txt['delete'], '" class="right_submit" />
+				<p>
+					<label for="age">', sprintf($txt['pm_prune_desc'], '<input type="text" id="age" name="age" size="3" value="14" class="input_text" />'), '</label>
+				</p>
+				<div class="submitbutton">	
+					<input type="submit" value="', $txt['delete'], '" class="right_submit" />
+					<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '" />
+				</div>
 			</div>
 		</div>
-		<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '" />
 	</form>';
 }
 
@@ -1202,7 +1212,7 @@ function template_labels()
 	</form>
 	<br />
 	<form class="flow_auto" action="', $scripturl, '?action=pm;sa=manlabels" method="post" accept-charset="UTF-8" style="margin-top: 1ex;">
-		<h3 class="category_header">', $txt['pm_label_add_new'], '</h3>
+		<h2 class="category_header">', $txt['pm_label_add_new'], '</h2>
 		<div class="windowbg">
 			<div class="content">
 				<dl class="settings">
@@ -1237,43 +1247,21 @@ function template_report_message()
 		</div>
 		<div class="windowbg">
 			<div class="content">
-				<dl class="settings">';
-
-	// If there is more than one admin on the forum (like language based), allow the user to choose the one they want to direct to.
-	if ($context['admin_count'] > 1)
-	{
-		echo '
-					<dt>
-						', $txt['pm_report_admins'], ':
-					</dt>
-					<dd>
-						<select name="id_admin">
-							<option value="0">', $txt['pm_report_all_admins'], '</option>';
-
-		foreach ($context['admins'] as $id => $details)
-			echo '
-							<option value="', $id, '">', $details[0], !empty($details[1]) ? ' (' . $details[1] . ')' : '', '</option>';
-
-		echo '
-						</select>
-					</dd>';
-	}
-
-	echo '
+				<dl class="settings">
 					<dt>
 						', $txt['pm_report_reason'], ':
 					</dt>
 					<dd>
-						<textarea id="reason" name="reason" rows="4" cols="70" style="' . (isBrowser('is_ie8') ? 'width: 635px; max-width: 95%; min-width: 95%' : 'width: 95%') . ';"></textarea>
+					<textarea id="reason" name="reason" rows="4" cols="70" style="width: 95%;"></textarea>
 					</dd>
 				</dl>
 				<div class="submitbutton">
 					<input type="submit" name="report" value="', $txt['pm_report_message'], '" class="button_submit" />
+					<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '" />
+					<input type="hidden" name="pmsg" value="', $context['pm_id'], '" />
 				</div>
 			</div>
 		</div>
-		<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '" />
-		<input type="hidden" name="pmsg" value="', $context['pm_id'], '" />
 	</form>';
 }
 
@@ -1397,9 +1385,11 @@ function template_add_rule()
 	foreach ($context['rule']['criteria'] as $k => $criteria)
 	{
 		if (!$isFirst && $criteria['t'] == '')
-			echo '<div id="removeonjs1">';
+			echo '
+				<div id="removeonjs1">';
 		elseif (!$isFirst)
-			echo '<br />';
+			echo '
+				<br />';
 
 		echo '
 					<select name="ruletype[', $k, ']" id="ruletype', $k, '" data-optnum="', $k, '">
@@ -1430,15 +1420,17 @@ function template_add_rule()
 		if ($isFirst)
 			$isFirst = false;
 		elseif ($criteria['t'] == '')
-			echo '</div>';
+			echo '
+				</div>';
 	}
 
 	echo '
-					<span id="criteriaAddHere"></span><br />
+					<span id="criteriaAddHere"></span>
+					<br />
 					<a id="addonjs1" class="linkbutton" href="#" onclick="addCriteriaOption(); return false;" style="display: none;">', $txt['pm_rule_criteria_add'], '</a>
 					<br /><br />
 					', $txt['pm_rule_logic'], ':
-					<select name="rule_logic" id="logic"">
+				<select name="rule_logic" id="logic">
 						<option value="and" ', $context['rule']['logic'] == 'and' ? 'selected="selected"' : '', '>', $txt['pm_rule_logic_and'], '</option>
 						<option value="or" ', $context['rule']['logic'] == 'or' ? 'selected="selected"' : '', '>', $txt['pm_rule_logic_or'], '</option>
 					</select>
@@ -1454,9 +1446,11 @@ function template_add_rule()
 	foreach ($context['rule']['actions'] as $k => $action)
 	{
 		if (!$isFirst && $action['t'] == '')
-			echo '<div id="removeonjs2">';
+			echo '
+				<div id="removeonjs2">';
 		elseif (!$isFirst)
-			echo '<br />';
+			echo '
+				<br />';
 
 		echo '
 					<select name="acttype[', $k, ']" id="acttype', $k, '" data-actnum="', $k, '">
@@ -1489,7 +1483,7 @@ function template_add_rule()
 					<a href="#" id="addonjs2" class="linkbutton" onclick="addActionOption(); return false;" style="display: none;">', $txt['pm_rule_add_action'], '</a>
 				</fieldset>
 			</div>
-			<h3 class="category_header">', $txt['pm_rule_description'], '</h3>
+		<h2 class="category_header">', $txt['pm_rule_description'], '</h2>
 			<div class="information">
 				<div id="ruletext">', $txt['pm_rule_js_disabled'], '</div>
 			</div>
@@ -1502,7 +1496,7 @@ function template_add_rule()
 
 	// Now setup all the bits!
 	echo '
-	<script><!-- // --><![CDATA[
+	<script>
 		initUpdateRulesActions();';
 
 	// If this isn't a new rule and we have JS enabled remove the JS compatibility stuff.
@@ -1516,7 +1510,7 @@ function template_add_rule()
 			document.getElementById("addonjs2").style.display = "";';
 
 	echo '
-		// ]]></script>';
+		</script>';
 }
 
 /**

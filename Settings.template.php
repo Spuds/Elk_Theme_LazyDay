@@ -5,13 +5,11 @@
  * @copyright ElkArte Forum contributors
  * @license   BSD http://opensource.org/licenses/BSD-3-Clause
  *
- * This software is a derived product, based on:
- *
- * Simple Machines Forum (SMF)
+ * This file contains code covered by:
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.0
+ * @version 1.1
  *
  */
 
@@ -236,23 +234,11 @@ function template_settings()
 			'label' => $txt['user_avatars'],
 		),
 		array(
-			'id' => 'show_blurb',
-			'label' => $txt['user_text'],
-		),
-		array(
-			'id' => 'show_gender',
-			'label' => $txt['gender_images'],
-		),
-		array(
 			'id' => 'hide_post_group',
 			'label' => $txt['hide_post_group'],
 			'description' => $txt['hide_post_group_desc'],
 		),
 	'',
-		array(
-			'id' => 'show_bbc',
-			'label' => $txt['admin_bbc'],
-		),
 		array(
 			'id' => 'additional_options_collapsible',
 			'label' => $txt['additional_options_collapsible'],
