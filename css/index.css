@@ -294,12 +294,12 @@ input[type="file"] {
 	height: auto;
 }
 
-input[type="number"] {
+input[type=number] {
 	padding: 0 0 0 6px;
 }
 
 /* No borders around checkboxes or radio buttons, and middle aligned. */
-input[type="checkbox"], input[type="radio"],
+input[type=checkbox], input[type=radio],
 .input_check, .input_radio {
 	border: none;
 	background: none;
@@ -308,7 +308,7 @@ input[type="checkbox"], input[type="radio"],
 }
 
 /* Common submit button styling. */
-input[type="submit"], button[type="submit"], input[type="button"],
+input[type=submit], button[type=submit], input[type=button],
 .button_submit, .right_submit, .left_submit, .button_reset,
 /* Anchors styled to look like buttons. */
 /* These have standard body text size. Can be chained with smalltext class. */
@@ -318,7 +318,7 @@ input[type="submit"], button[type="submit"], input[type="button"],
 	display: inline-block;
 }
 
-input[type="submit"], .drop_area_fileselect_text, .drop_area .mobile, button[type="submit"], input[type="button"],
+input[type=submit], .drop_area_fileselect_text, .drop_area .mobile, button[type=submit], input[type=button],
 /* Anchors styled to look like buttons. */
 /* These have standard body text size. Can be chained with smalltext class. */
 .linkbutton:link, .linkbutton_right:link, .linkbutton_left:link,
@@ -336,7 +336,7 @@ input[type="submit"], .drop_area_fileselect_text, .drop_area .mobile, button[typ
 }
 
 /* Hover effects. */
-input[type="submit"]:hover, button[type="submit"]:hover, input[type="button"]:hover,
+input[type=submit]:hover, button[type=submit]:hover, input[type=button]:hover,
 .button_submit:hover, .right_submit:hover, .left_submit:hover,
 .button_reset:hover,
 .linkbutton:hover, .linkbutton_right:hover, .linkbutton_left:hover {
@@ -371,8 +371,8 @@ input[type=submit][disabled]:hover, button[disabled], button[disabled]:hover {
 }
 
 
-.submitbutton input[type="submit"],
-.submitbutton input[type="button"],
+.submitbutton input[type=submit],
+.submitbutton input[type=button],
 .submitbutton .button_submit,
 .submitbutton .linkbutton,
 .submitbutton .right_submit {
@@ -2183,7 +2183,7 @@ a.bbc_link {
 	min-height: 2.2em;
 }
 
-#sort_by input[type="checkbox"], #sort_by .input_check {
+#sort_by input[type=checkbox], #sort_by .input_check {
 	margin-bottom: 0;
 }
 
@@ -3381,7 +3381,7 @@ ul.post_options li {
 }
 
 #event_main select, .event_options li select,
-#event_main ul.event_options li input[type="checkbox"],
+#event_main ul.event_options li input[type=checkbox],
 #event_main ul.event_options li .input_check {
 	margin: 0 12px 0 0;
 }
@@ -4938,7 +4938,7 @@ a.help .icon {
 	width: 20em;
 }
 
-#memberlist_search input[type="checkbox"],
+#memberlist_search input[type=checkbox],
 #memberlist_search .input_check {
 	margin: 4px 0 0 0;
 }
@@ -4973,7 +4973,7 @@ a.help .icon {
 	float: right;
 }
 
-#mlsearch_options .mlsearch_option input[type="checkbox"],
+#mlsearch_options .mlsearch_option input[type=checkbox],
 #mlsearch_options .mlsearch_option .input_check {
 	margin: 0 0 0 0.5em;
 	float: right;
@@ -5446,7 +5446,8 @@ a > i {
 		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
 	}
-	100% {
+
+	to {
 		-webkit-transform: rotate(359deg);
 		transform: rotate(359deg);
 	}
@@ -5635,7 +5636,7 @@ a > i {
 		max-width: 30% !important;
 	}
 
-	dd input[type="checkbox"], dd input[type="radio"],
+	dd input[type=checkbox], dd input[type=radio],
 	dd .input_check, dd .input_radio {
 		display: inline !important;
 		width: 1.5em !important;
@@ -5742,7 +5743,7 @@ a > i {
 
 	#menu_sidebar {
 		position: absolute;
-		left: -0.8em;
+		left: -.8em;
 		width: 6px;
 		min-height: 500px;
 		z-index: 90;
@@ -5754,7 +5755,7 @@ a > i {
 
 	#menu_sidebar:hover {
 		width: 200px;
-		padding: 0.8em 1em 1em 0.6em;
+		padding: .8em 1em 1em .6em;
 	}
 
 	#menu_sidebar:hover ul, #menu_sidebar:hover .category_header {
@@ -6030,7 +6031,7 @@ a > i {
 	}
 
 	#gobottom, #gotop {
-		padding-right: 0.25em;
+		padding-right: .25em;
 		display: none;
 	}
 
