@@ -62,7 +62,7 @@ a:hover, a.new_win:hover {
 /* Stop white band under footer on short pages. */
 /* This color should match $FOOTER background. */
 html {
-	background: #222222;
+	background: #F6F8F9;;
 }
 
 body {
