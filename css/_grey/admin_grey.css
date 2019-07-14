@@ -2,7 +2,7 @@
 ------------------------------------------------------- */
 
 .action_admin .generic_list_wrapper .information {
-	border: 1px solid #ccc;
+	border: 1px solid #CCCCCC;
 	border-radius: 0;
 	box-shadow: 0 2px 2px rgba(0,0,0,0.1);
 }
@@ -11,135 +11,136 @@
 #support_credits, #admin_newsletters,
 #core_features, #generate_reports_type,
 #groupForm, #mailqueue_stats, #manage_maintenance,
-#new_group, #view_group, #admin_form_wrapper, .action_admin .generic_list_wrapper{
-	background: #efefef;
-	border: 1px solid #ccc;
+#new_group, #view_group, #admin_form_wrapper, .action_admin .generic_list_wrapper {
+	border: 1px solid #CCCCCC;
 	border-radius: 0;
+	background: #EFEFEF;
 	box-shadow: 0 -2px 2px rgba(0,0,0,0.1);
 }
 
 .disabled {
-	color: #777;
+	color: #777777;
 }
 /* News and newsletters screen.
 ---------------------------------------------*/
 #admin_newsletters .information {
-	border: 1px solid #ccc;
+	border: 1px solid #CCCCCC;
 	border-radius: 0;
 	box-shadow: 0 2px 2px rgba(0,0,0,0.1);
 }
 #advanced_panel_header {
-	background: #fff;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-	border: 1px solid #ccc;
+	border: 1px solid #CCCCCC;
 	border-radius: 0;
+	background: #FFFFFF;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 #welcome {
-	border: 1px solid #ddd;
+	border: 1px solid #DDDDDD;
 	border-top: none;
 	border-radius: 0;
 }
 .search_results li {
-	border-bottom: double #ccc;
+	border-bottom: double #CCCCCC;
 }
 .search_results li a strong {
-	color: #346;
+	color: #334466;
 }
 #admin_main_section .windowbg {
-	border: 1px solid #ccc;
-	border-top: 1px solid #bbb;
-	border-bottom: 1px solid #ddd;
+	border: 1px solid #CCCCCC;
+	border-top: 1px solid #BBBBBB;
+	border-bottom: 1px solid #DDDDDD;
 	border-radius: 0;
-	background: #fff;
+	background: #FFFFFF;
 	box-shadow: 0 2px 2px rgba(255,255,255,0.5), 0 -1px 2px rgba(0,0,0,0.1);
 }
 
 #live_news div.content dl {
-	color: #111;
+	color: #111111;
 }
 #ourAnnouncements dt {
-	border-top: 1px solid #e04f40;
+	border-top: 1px solid #E04F40;
 }
 #ourAnnouncements dt a {
-	color: #e04f40;
+	color: #E04F40;
 }
 #ourAnnouncements dd {
-	border-top: double #ddd;
+	border-top: double #DDDDDD;
 }
 
 #quick_tasks li {
-	border-top: 1px solid #fff;
-	border-bottom: 1px solid #bbb;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #BBBBBB;
 }
 #quick_tasks li:first-child, #quick_tasks li:nth-child(2) {
 	border-top: none;
 }
-#quick_tasks li:last-child, #quick_tasks li:nth-child(7){
+#quick_tasks li:last-child, #quick_tasks li:nth-child(7) {
 	border-bottom: none;
 }
 
 /* Styles for the package manager.
 ------------------------------------------------- */
 #package_list li {
-	border: 1px solid #cacdd3;
+	border: 1px solid #CACDD3;
 }
 .package_section {
-	border: 1px solid #cacdd3;
+	border: 1px solid #CACDD3;
 }
 #find_code, #replace_code {
-	background: #eef;
-	border-top: 2px solid #999;
-	border-bottom: 2px solid #999;
+	border-top: 2px solid #999999;
+	border-bottom: 2px solid #999999;
+	background: #EEEEFF;
 }
 
 /* Styles for the manage boards section.
 ------------------------------------------------- */
 
 #manage_boards .category_header {
-	border-bottom: 1px solid #bbb;
+	border-bottom: 1px solid #BBBBBB;
 }
 #manage_boards .content, #manage_attachments .content {
-	background: #efefef;
-	border: 1px solid #ccc;
+	border: 1px solid #CCCCCC;
 	border-top: 0 solid;
 	border-radius: 0;
+	background: #EFEFEF;
 }
 .ui-state-highlight {
-	background-color: #efe;
 	border: 1px dashed green;
+	background-color: #EEFFEE;
 }
 #manage_boards .recycle_board {
-	background-color: #dee;
+	background-color: #DDEEEE;
 }
 #manage_boards span.modify_boards a {
-	background: #fff;
-	border: 1px solid #aaa;
+	color: #222222;
+	border: 1px solid #AAAAAA;
 	border-radius: 0;
+	background: #FFFFFF;
 	box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-	color: #222;
 }
 #manage_boards span.modify_boards a:hover {
-	background: #fff;
-	color: #444;
+	color: #444444;
+	background: #FFFFFF;
 	box-shadow: -1px -1px 1px rgba(0,0,0,0.1);
 }
 #manage_boards .post_group, #manage_boards .regular_members {
-	border-bottom: 1px dotted #000;
+	border-bottom: 1px dotted #000000;
 }
 
 /* Styles for the manage maintenance section.
 ------------------------------------------------- */
 #manage_maintenance div.windowbg, #manage_maintenance div.windowbg2 {
+	border-bottom: 1px solid #CCCCCC;
 	background: none;
-	border-bottom: 1px solid #ccc;
-	box-shadow: 0 1px 0 #fff;
+	box-shadow: 0 1px 0 #FFFFFF;
 }
 
 /* Styles for the manage membergroups.
 ------------------------------------------------- */
 .select_category, .select_all_box {
 	font-style: italic;
+
 	border-top: 1px dashed #CCCCCC;
 	border-bottom: 1px dashed #CCCCCC;
 }
@@ -147,72 +148,72 @@
 /* Styles for the manage permissions section.
 ------------------------------------------------- */
 .perm_boards li {
-	border: 1px solid #cacdd3;
+	border: 1px solid #CACDD3;
 }
 .perm_groups {
-	background-color: #fff;
+	background-color: #FFFFFF;
 }
 
 /* Styles for the moderation center.
 ------------------------------------------------- */
 #modcenter {
-	background: none repeat scroll 0 0 #deedda;
 	border-radius: 0;
-	box-shadow: 1px 2px 3px #eee;
+	background: none repeat scroll 0 0 #DEEDDA;
+	box-shadow: 1px 2px 3px #EEEEEE;
 }
 #modcenter .windowbg, #modcenter .windowbg2, #modcenter .generic_list_wrapper {
-	border: 1px solid #ddd;
-	border-bottom: 1px solid #ccc;
-	background: #fff;
+	border: 1px solid #DDDDDD;
+	border-bottom: 1px solid #CCCCCC;
+	background: #FFFFFF;
 }
 #mod_main_section .windowbg {
-	border: 1px solid #ccc;
-	border-top: 1px solid #bbb;
-	border-bottom: 1px solid #ddd;
+	border: 1px solid #CCCCCC;
+	border-top: 1px solid #BBBBBB;
+	border-bottom: 1px solid #DDDDDD;
 	border-radius: 0;
-	background: #fff;
+	background: #FFFFFF;
 	box-shadow: 0 2px 2px rgba(255,255,255,0.5), 0 -1px 2px rgba(0,0,0,0.1);
 }
 .moderation_notes li {
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #CCCCCC;
 }
 
 /* Styles for the error log.
 ------------------------------------------------- */
 
 #error_log {
-	border-top: 1px solid #ddd;
+	border-top: 1px solid #DDDDDD;
 }
 #error_log .error_where {
-	border-top: 1px solid #e3e3e3;
+	border-top: 1px solid #E3E3E3;
 }
 
 #errorfile_table {
-	background-color: #fff;
+	background-color: #FFFFFF;
 }
 
 /* Styles for the Report generation
 ------------------------------------------------- */
 .report_results th {
-	border-left: 1px solid #ddd;
-	border-right: 1px solid #ddd;
+	border-right: 1px solid #DDDDDD;
+	border-left: 1px solid #DDDDDD;
 }
 
 /* jQuery Dialog
 ------------------------------------------------- */
 .ui-dialog {
-	border: 1px solid #999;
-	box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
-	background-color: #f5f5f5;
+	border: 1px solid #999999;
 	border-radius: 0;
+	background-color: #F5F5F5;
+	box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
 }
 .ui-dialog .ui-dialog-titlebar {
-	background-color: #fafafa;
 	border-radius: 0;
+	background-color: #FAFAFA;
 }
 .ui-widget-overlay {
-	background-color: #000;
 	opacity: 0.3;
+	background-color: #000000;
 }
 
 /* Styles for the admin quick search bar */
@@ -225,12 +226,12 @@
 
 /* alternate row colors on Modify Themes,Copy a template */
 .theme_options .windowbg2 {
-	background: #fcfcfc;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	background: #FCFCFC;
 }
 .theme_options .windowbg {
-	background: #efefef;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	background: #EFEFEF;
 }
