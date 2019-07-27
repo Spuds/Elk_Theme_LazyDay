@@ -6383,7 +6383,7 @@ a > i {
 	.icon-menu.i-account {
 		width: 2em;
 		height: 2em;
-		margin-top: 0.4em;
+		margin-top: 0;
 	}
 
 	.i-account:before {
@@ -6566,7 +6566,7 @@ a > i {
 	}
 
 	.poster, .poster_container {
-		width: 10em;
+		width: 11em !important;
 
 		background-color: inherit;
 	}
@@ -7038,7 +7038,8 @@ a > i {
 		display: block;
 		float: left;
 
-		width: 48%;
+		width: 32%;
+		font-size: 0.8em;
 	}
 
 	#main_menu {
@@ -7143,7 +7144,7 @@ a > i {
 	}
 
 	#display_jump_to {
-		float: none;
+		float: right;
 	}
 
 	#button_profile .avatar {
@@ -7274,6 +7275,14 @@ a > i {
 	#post_confirm_buttons {
 		font-size: 0.8em;
 	}
+
+	.pm_date {
+		width: 30%;
+	}
+
+	dd label {
+		display: inline;
+	}
 }
 
 /* This one does 480px screens at default font size. */
@@ -7283,11 +7292,11 @@ a > i {
 	}
 
 	.listlevel2, .listlevel3 {
-		max-width: 12em !important;
+		max-width: 13em !important;
 	}
 
 	.menulevel2 {
-		max-width: 12em;
+		max-width: 14em;
 	}
 
 	#main_menu .listlevel1 {
@@ -7297,7 +7306,7 @@ a > i {
 	}
 
 	#menu_nav {
-		height: 38px !important;
+		height: 3.1em !important;
 	}
 
 	.navigate_section {
@@ -7342,7 +7351,7 @@ a > i {
 	}
 
 	dd input, dd select, dd textarea {
-		max-width: 95% !important;
+		max-width: 85% !important;
 	}
 
 	ul.post_options li {
