@@ -2263,6 +2263,10 @@ a.bbc_link {
 .board_row {
 	position: relative;
 
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+
 	padding: 14px 0 11px 0;
 }
 
@@ -2289,7 +2293,7 @@ a.bbc_link {
 }
 
 .board_latest {
-	width: 25%;
+	width: 315px;
 	padding: 0 14px;
 }
 
@@ -2324,6 +2328,7 @@ a.bbc_link {
 
 	float: right;
 
+	width: 170px;
 	margin-top: -2em;
 }
 
@@ -6336,7 +6341,7 @@ a > i {
 
 	.board_latest {
 		width: 40%;
-		min-width: 22em;
+		min-width: 23em;
 	}
 
 	.board_stats {
