@@ -775,6 +775,13 @@ class Theme extends \Theme
 			max-height:' . $modSettings['avatar_max_height'] . 'px;' : '') . '
 		}');
 		}
+
+		// Save some database hits, if a width for multiple wrappers is set in admin.
+		if (!empty($settings['forum_width']))
+		{
+			$this->addCSSRules('
+		.wrapper {width: 100%;}');
+		}
 	}
 
 	/**

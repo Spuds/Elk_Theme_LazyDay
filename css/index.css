@@ -2808,13 +2808,16 @@ ul.small_pagelinks + .img_last_post {
 
 	content: "";
 	vertical-align: middle;
-
+/*
 	background-image: url(../images/topic/topicicons.png);
 	background-repeat: no-repeat;
+
+ */
 }
 
 .topicicon:before {
 	height: 18px;
+	vertical-align: top;
 }
 
 /* Sprite icons for quick moderation, last post, sort etc */

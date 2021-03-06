@@ -9,7 +9,7 @@
  * copyright:    2011 Simple Machines (http://www.simplemachines.org)
  * license:    BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.1
+ * @version 1.1.7
  *
  */
 
@@ -1064,7 +1064,8 @@ function template_member_email($member, $text = false)
 			{
 				return '<a class="linkbutton" href="' . $scripturl . '?action=emailuser;sa=email;uid=' . $member['id'] . '">' . $txt['email'] . '</a>';
 			}
-			elseif ($member['show_email'] === 'yes_permission_override' || $member['show_email'] === 'yes')
+
+			if ($member['show_email'] === 'yes_permission_override' || $member['show_email'] === 'yes')
 			{
 				return '<a class="linkbutton" href="' . $scripturl . '?action=emailuser;sa=email;uid=' . $member['id'] . '">' . $member['email'] . '</a>';
 			}
@@ -1079,10 +1080,8 @@ function template_member_email($member, $text = false)
 			{
 				return '<a href="' . $scripturl . '?action=emailuser;sa=email;uid=' . $member['id'] . '" class="icon i-envelope-o' . ($member['online']['is_online'] ? '' : '-blank') . '" title="' . $txt['email'] . ' ' . $member['name'] . '"><s>' . $txt['email'] . ' ' . $member['name'] . '</s></a>';
 			}
-			else
-			{
-				return '<i class="icon i-envelope-o" title="' . $txt['email'] . ' ' . $txt['hidden'] . '"><s>' . $txt['email'] . ' ' . $txt['hidden'] . '</s></i>';
-			}
+
+			return '<i class="icon i-envelope-o" title="' . $txt['email'] . ' ' . $txt['hidden'] . '"><s>' . $txt['email'] . ' ' . $txt['hidden'] . '</s></i>';
 		}
 	}
 

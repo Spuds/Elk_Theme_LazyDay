@@ -9,7 +9,7 @@
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.1.4
+ * @version 1.1.7
  *
  */
 
@@ -73,13 +73,13 @@ function template_build_poster_div($message, $ignoring = false)
 		// Is karma display enabled?  Total or +/-?
 		if ($modSettings['karmaMode'] == '1')
 			$poster_div .= '
-									<li class="listlevel2 karma">' . $modSettings['karmaLabel'] . ' ' . $message['member']['karma']['good'] - $message['member']['karma']['bad'] . '</li>';
+									<li class="listlevel2 karma">' . $modSettings['karmaLabel'] . ' ' . ($message['member']['karma']['good'] - $message['member']['karma']['bad']) . '</li>';
 		elseif ($modSettings['karmaMode'] == '2')
 			$poster_div .= '
 									<li class="listlevel2 karma">' . $modSettings['karmaLabel'] . ' +' . $message['member']['karma']['good'] . '/-' . $message['member']['karma']['bad'] . '</li>';
 
 		// Is this user allowed to modify this member's karma?
-		if ($message['member']['karma']['allow'])
+		if (!empty($message['member']['karma']['allow']))
 			$poster_div .= '
 									<li class="listlevel2 karma_allow">
 										<a class="linklevel2" href="' . $message['member']['karma']['applaud_url'] . '">' . $modSettings['karmaApplaudLabel'] . '</a>' .
@@ -134,7 +134,7 @@ function template_build_poster_div($message, $ignoring = false)
 			if ($message['member']['website']['url'] != '' && !isset($context['disabled_fields']['website']))
 				$poster_div .= '
 											<li>
-												<a href="' . $message['member']['website']['url'] . '" title="' . $message['member']['website']['title'] . '" target="_blank" class="new_win">' . ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/profile/www_sm.png" alt="' . $message['member']['website']['title'] . '" />' : $txt['www']) . '</a>
+												<a href="' . $message['member']['website']['url'] . '" title="' . $message['member']['website']['title'] . '" target="_blank" rel="noopener noreferrer" class="new_win">' . ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/profile/www_sm.png" alt="' . $message['member']['website']['title'] . '" />' : $txt['www']) . '</a>
 											</li>';
 
 			// Don't show the email address if they want it hidden.
