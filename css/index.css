@@ -6721,6 +6721,10 @@ a > i {
 		text-overflow: ellipsis;
 	}
 
+	.basic_row .topic_name h4 {
+		padding-right: 0;
+	}
+
 	#wrapper {
 		padding-right: 2px;
 		padding-left: 2px;
@@ -7007,6 +7011,14 @@ a > i {
 	}
 
 	.linktree .board_moderators {
+		display: none;
+	}
+
+	.linktree:last-child {
+		max-width: 10em;
+	}
+
+	.qaction_row {
 		display: none;
 	}
 
