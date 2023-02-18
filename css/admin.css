@@ -1,14 +1,14 @@
 /* Common admin center classes.
 ------------------------------------------------------- */
-
 /* @todo - Start stripping a pile of crud from this file.
 /* Once I can see how it looks without the crud, I can decide what it really needs.
 /* Can be simplified quite a lot before production builds. */
-
 /* @todo - Special styling for admin descriptions. */
 .action_admin .generic_list_wrapper .information {
 	margin: 8px 0;
 	padding: 4px 12px 2px 12px;
+	border: 1px solid;
+	border-radius: 0;
 }
 
 .action_admin .generic_list_wrapper .information div {
@@ -23,9 +23,9 @@
 	overflow: auto;
 }
 
-#admin_content .content,
-#admin_content .windowbg, #admin_content .windowbg2 {
+#admin_content .content{
 	margin-bottom: 5px;
+	border: none;
 }
 
 .admincenter {
@@ -37,7 +37,7 @@
 }
 
 .admincenter .content .settings {
-	padding: 0 0 0 8px;
+	padding: 5px 0 0 8px;
 }
 
 .admincenter .content hr.clear {
@@ -51,7 +51,6 @@
 #groupForm, #mailqueue_stats, #manage_maintenance,
 #new_group, #view_group, #admin_form_wrapper, .action_admin .generic_list_wrapper {
 	overflow: auto;
-
 	margin: 12px 0 0 0;
 	padding: 8px 8px 16px 8px;
 }
@@ -70,7 +69,6 @@
 #admin_newsletters .content {
 	margin: 0 4px;
 	padding: 0;
-
 	background: none;
 }
 
@@ -78,15 +76,12 @@
 	padding: 8px 8px 0 8px;
 }
 
-#mailqueue_stats .content,
-#mailqueue_stats .windowbg {
+#mailqueue_stats .content{
 	padding: 0;
-
 	background: none;
 }
 
-#mailqueue_stats .content,
-#mailqueue_stats .windowbg .content {
+#mailqueue_stats .content {
 	padding: 12px 9px 0 9px;
 }
 
@@ -108,21 +103,16 @@
 
 /* Admin_menu indicators */
 /*--------------------------------------------- */
-
 .admin_menu .subsections:hover .linklevel1:after {
 	font-size: 1em;
-
 	top: 72%;
-
 	color: #555555;
 }
 
 .admin_menu .listlevel1.subsections .linklevel1:after {
 	font-family: "FontAwesome";
-
 	position: relative;
 	left: 0.25em;
-
 	content: "\f0d7";
 }
 
@@ -135,10 +125,14 @@
 #admin_newsletters .information {
 	margin: 8px 0;
 	padding: 8px 12px 6px 12px;
+	border: 1px solid;
+	border-radius: 0;
 }
 
 #advanced_panel_header {
 	margin-bottom: 8px;
+	border: 1px solid;
+	border-radius: 0;
 }
 
 #news_lists .newsarea {
@@ -160,10 +154,8 @@ td.newspreview {
 
 #news_lists .newspreview div {
 	overflow: auto;
-
 	width: 100%;
 	height: 6em;
-
 	resize: vertical;
 }
 
@@ -173,7 +165,7 @@ td.newspreview {
 }
 
 h3.category_header form {
-	font-size: 0.786em;
+	font-size: .786em;
 }
 
 /* Chrome trick to avoid multiple lines of feature names */
@@ -181,14 +173,12 @@ h3.category_header form {
 	white-space: nowrap;
 }
 
-.content.nopadding,
-.windowbg.nopadding {
+.content.nopadding {
 	margin: 4px 0 0 0;
 	padding: 0;
 }
 
-.content ol,
-.windowbg ol {
+.content ol {
 	margin-top: 0;
 	margin-bottom: 0;
 }
@@ -204,7 +194,6 @@ h3 a.help .icon {
 
 .settings .help .icon {
 	position: absolute;
-
 	margin: 0 0 0 -20px;
 }
 
@@ -235,19 +224,16 @@ fieldset dl {
 #quick_search .icon, #quick_search .input_text,
 #quick_search select, #quick_search .button_submit {
 	float: left;
-
 	margin: 3px 0 0 4px;
 }
 
 #quick_search .icon {
-	margin: 8px 0 0 0;
+	margin: 6px 0 0 0;
 }
 
 #admin_content .category_header h3 {
 	font-weight: 600;
-
 	padding-top: 4px;
-
 	text-transform: uppercase;
 }
 
@@ -257,16 +243,14 @@ fieldset dl {
 
 #search_go {
 	margin-top: 2px;
+	box-shadow: none;
 }
 
 /* @todo - The welcome thingy. */
-.admincenter .well, #modcenter .well,
-#admincenter .roundframe, #modcenter .roundframe {
+.admincenter .well, #modcenter .well {
 	overflow: visible;
-
 	margin: 0;
 	padding: 0;
-
 	border: none;
 	background: none;
 	box-shadow: none;
@@ -274,8 +258,10 @@ fieldset dl {
 
 #welcome {
 	font-size: 0.929em;
-
 	padding: 12px 9px 8px 9px;
+	border: 1px solid;
+	border-top: none;
+	border-radius: 0;
 }
 
 #welcome a {
@@ -292,18 +278,14 @@ fieldset dl {
 
 .search_results li {
 	line-height: 1.7em;
-
 	overflow: auto;
-
 	margin: 0;
 	padding: 5px 0;
-
 	border-bottom: double;
 }
 
 .search_results li p {
 	line-height: 1.7em;
-
 	padding: 0 20px;
 }
 
@@ -346,12 +328,12 @@ fieldset dl {
 	padding-left: 6px;
 }
 
-#admin_main_section .content,
-#admin_main_section .windowbg {
+#admin_main_section .content {
 	overflow: auto;
-
 	height: 12em;
 	padding: 6px 0;
+	border: 1px solid;
+	border-radius: 0;
 }
 
 #admin_search_box {
@@ -360,7 +342,6 @@ fieldset dl {
 
 #live_news div.content, #supportVersionsTable div.content {
 	font-size: 0.929em;
-
 	padding: 0 4px;
 }
 
@@ -378,17 +359,18 @@ fieldset dl {
 
 #ourAnnouncements dt {
 	padding: 4px 6px 2px 6px;
+	border-top: 1px solid;
 }
 
 #ourAnnouncements dt a {
 	font-weight: bold;
-
 	display: block;
 }
 
 #ourAnnouncements dd {
 	margin: 0;
 	padding: 6px 12px;
+	border-top: double;
 }
 
 /* The update warning. */
@@ -407,7 +389,6 @@ fieldset dl {
 .quick_tasks {
 	margin: -8px 0 0 0;
 	padding: 0 0 16px 0;
-
 	border-radius: 0;
 	box-shadow: none;
 }
@@ -415,12 +396,12 @@ fieldset dl {
 #quick_tasks li {
 	float: left;
 	overflow: auto;
-
 	width: 50%;
 	height: 8em;
 	padding: 10px 6px 10px 6px;
-
 	list-style: none;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
 }
 
 #quick_tasks li a {
@@ -429,13 +410,11 @@ fieldset dl {
 
 .home_image {
 	float: left;
-
 	margin: 2px 10px;
 }
 
 #quick_tasks li span {
 	display: block;
-
 	margin: 0 0 0 70px;
 }
 
@@ -455,25 +434,21 @@ fieldset dl {
 -----------------------------------------------------------------*/
 #support_credits {
 	position: relative;
-
 	padding: 6px 12px 12px 12px;
 }
 
 #support_resources, #credits_sections {
-	margin: 16px 0 -24px 0;
 }
 
 #credits_logo {
 	position: absolute;
 	top: 10px;
 	right: 16px;
-
 	width: 75px;
 }
 
 #support_credits .content {
 	line-height: 1.6em;
-
 	padding: 5px 18px;
 }
 
@@ -488,9 +463,7 @@ fieldset dl {
 
 #support_credits dt {
 	float: left;
-
 	padding: 6px 0.8em 0 0;
-
 	text-indent: -4px;
 }
 
@@ -513,7 +486,6 @@ fieldset dl {
 #core_features .features {
 	float: left;
 	overflow: auto;
-
 	box-sizing: border-box;
 	width: 50%;
 	padding: 0 12px;
@@ -521,7 +493,6 @@ fieldset dl {
 
 .core_features_status_box {
 	margin-left: 5px;
-
 	vertical-align: middle;
 }
 
@@ -530,7 +501,6 @@ fieldset dl {
 /* Still works without it if you reload the page, but rather odd that it's hiding. */
 .features_image {
 	float: left;
-
 	margin: 0 6px;
 }
 
@@ -540,22 +510,18 @@ fieldset dl {
 
 .features h3 {
 	font-size: 1.071em;
-
 	overflow: hidden;
-
 	min-height: 1.6em;
 	max-height: 1.6em;
-	margin: 0 0.5em 0 6em;
+	margin: 0 .5em 0 6em;
 	padding: 0;
-
 	white-space: pre;
 	text-overflow: ellipsis;
 }
 
 .features p {
 	overflow: auto;
-
-	height: 8.5em;
+	height: 9em;
 	margin: 0 4.5em 0 6.426em;
 	padding: 0;
 }
@@ -568,18 +534,14 @@ fieldset dl {
 /* Haven't got here yet. :P
 ------------------------------------------------- */
 #package_list ol {
-	margin-left: 50px;
-
+	margin-left: 20px;
 	list-style: decimal;
-
 	border: none;
 }
 
 #package_list, .package_section {
 	margin-left: 0;
-
 	list-style: none;
-
 	border-radius: 3px;
 }
 
@@ -589,42 +551,42 @@ fieldset dl {
 
 #package_list li {
 	font-weight: 600;
-
 	margin: 1px;
 	padding: 0.2em;
+	border: 1px solid;
+}
+
+#package_list .highlight {
+	color: #FEFEFE;
 }
 
 .package_id {
 	font-weight: bold;
-
 	display: inline-block;
-
 	width: 35%;
 	min-width: 20em;
 }
 
 .description, .information {
 	overflow: auto;
-
 	max-height: 16em;
-	padding-bottom: 0.5em;
+	padding-bottom: .5em;
 }
 
 #find_code, #replace_code {
 	font-family: "dejavu sans mono", "monaco", "lucida console", "courier new", monospace;
 	font-size: 0.929em;
-
 	display: block;
 	overflow: auto;
-	/* Show a scrollbar after about 6 lines. */
-	/* This is much better than the old max-height css. */
-
 	height: 10em;
 	margin: 1px 0 6px 0;
 	padding: 3px 12px;
-
+	/* Show a scrollbar after about 6 lines. */
+	/* This is much better than the old max-height css. */
 	resize: vertical;
 	white-space: nowrap;
+	border-top: 2px solid;
+	border-bottom: 2px solid;
 }
 
 .package_server {
@@ -648,7 +610,6 @@ ul.package_servers li {
 
 .file_content {
 	overflow: auto;
-
 	width: 100%;
 	padding-bottom: 1em;
 }
@@ -661,15 +622,12 @@ ul.package_servers li {
 ------------------------------------------------- */
 .strings_edit li {
 	display: inline-block;
-
 	width: 49%;
-
 	vertical-align: top;
 }
 
 .strings_edit textarea {
 	display: block;
-
 	width: 96%;
 }
 
@@ -677,36 +635,28 @@ ul.package_servers li {
 ------------------------------------------------- */
 .filepermissions {
 	font-size: 0.786em;
-
 	white-space: nowrap;
 }
 
 .fperm {
 	display: block;
-
 	width: 35%;
-
 	text-align: center;
 }
 
 .perm_read {
-	background-color: #D1F7BF;
 }
 
 .perm_write {
-	background-color: #FFBBBB;
 }
 
 .perm_execute {
-	background-color: #FDD7AF;
 }
 
 .perm_custom {
-	background-color: #C2C6C0;
 }
 
 .perm_nochange {
-	background-color: #EEEEEE;
 }
 
 /* Styles for anti-spam questions.
@@ -731,13 +681,17 @@ ul.package_servers li {
 /* Styles for the BBC permissions
 ------------------------------------------------- */
 .list_bbc {
+	-moz-column-count: 3;
 	-webkit-column-count: 3;
-	   -moz-column-count: 3;
-	        column-count: 3;
+	column-count: 3;
 }
 
 /* Styles for the manage boards section.
 ------------------------------------------------- */
+#manage_boards {
+	margin-top: 4px;
+}
+
 #manage_boards .content {
 	margin: 0;
 	padding: 0;
@@ -745,7 +699,6 @@ ul.package_servers li {
 
 #manage_boards .content, #manage_attachments .content {
 	overflow: auto;
-
 	margin: -6px 0 12px 0;
 	padding: 6px 8px 16px 8px;
 }
@@ -765,7 +718,6 @@ ul.package_servers li {
 
 #manage_boards ul:nth-child(n+2) li {
 	padding-left: 30px;
-
 	border: none;
 }
 
@@ -778,24 +730,24 @@ ul.package_servers li {
 
 #manage_boards li, #manage_boards li.content {
 	line-height: 3em;
-
 	list-style: none;
 }
 
 #manage_boards li img {
 	padding: 0 6px 3px 6px;
-
 	vertical-align: middle;
 }
 
 #manage_boards li .floatleft {
 	font-size: 1.071em;
 	font-weight: bold;
-
 	width: 60%;
 	padding: 0 6px;
-
 	cursor: move;
+}
+
+#manage_boards .category_header {
+	margin-bottom: 5px;
 }
 
 .move_links {
@@ -808,11 +760,9 @@ ul.package_servers li {
 
 #manage_boards span.modify_boards a {
 	font-size: 1em;
-
 	padding: 3px 6px;
-
 	text-transform: capitalize;
-
+	border: 1px solid;
 	border-radius: 0;
 }
 
@@ -830,7 +780,6 @@ ul.package_servers li {
 
 #manage_boards .post_group, #manage_boards .regular_members {
 	cursor: help;
-
 	border-bottom: 1px dotted;
 }
 
@@ -843,13 +792,11 @@ ul.package_servers li {
 .select_all_box label,
 .select_category label {
 	display: inline-block;
-
 	width: 32%;
 }
 
 .select_category, .select_all_box {
 	font-style: italic;
-
 	border-top: 1px dashed;
 	border-bottom: 1px dashed;
 }
@@ -863,7 +810,6 @@ ul.package_servers li {
 .visible_boards .category:after, .visible_boards .board:after {
 	display: block;
 	clear: both;
-
 	content: "";
 }
 
@@ -881,7 +827,6 @@ ul.package_servers li {
 ------------------------------------------------- */
 .msearch_details {
 	display: block;
-
 	width: 49%;
 }
 
@@ -899,16 +844,13 @@ ul.package_servers li {
 ------------------------------------------------- */
 .bbfilter {
 	display: table-cell;
-
 	width: 20px;
 	padding: 4px 0;
-
 	vertical-align: top;
 }
 
 .bbrequest_uri {
 	display: table-cell;
-
 	word-break: break-all;
 }
 
@@ -948,7 +890,6 @@ dl.settings dd.small_caption {
 
 #permissionForm .table_grid img.icon {
 	width: 16px;
-
 	vertical-align: top;
 }
 
@@ -964,12 +905,11 @@ dl.admin_permissions dd {
 ------------------------------------------------- */
 .file_permissions .table_grid {
 	table-layout: fixed;
-
 	word-wrap: break-word;
 	-webkit-hyphens: auto;
-	   -moz-hyphens: auto;
-
-	    -ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
 }
 
 /* Styles for the manage search section.
@@ -984,21 +924,18 @@ dl.admin_permissions dd {
 
 .large_caption > dt a img {
 	margin-top: -1px;
-
 	vertical-align: middle;
 }
 
 .search_weight {
 	width: 40px;
 	padding: 0 0.5em;
-
 	text-align: right;
 }
 
 .search_settings {
 	float: left;
 	overflow: auto;
-
 	width: 49%;
 	margin: 0 0.5% 1em 0.5%;
 }
@@ -1036,7 +973,6 @@ dl.admin_permissions dd {
 
 .pending_payments {
 	line-height: 2em;
-
 	margin: 0;
 	padding: 0;
 }
@@ -1045,7 +981,6 @@ dl.admin_permissions dd {
 ------------------------------------------------- */
 .perm_name, .perm_profile, .perm_board {
 	display: block;
-
 	width: 40%;
 }
 
@@ -1057,6 +992,7 @@ dl.admin_permissions dd {
 .perm_boards li {
 	margin: 1px;
 	padding: 0.3em 0.5em;
+	border: 1px solid;
 }
 
 .perm_classic {
@@ -1071,7 +1007,6 @@ dl.admin_permissions dd {
 
 #manage_boards .permission_groups li {
 	padding-top: 1px;
-
 	list-style-type: none;
 }
 
@@ -1081,18 +1016,14 @@ dl.admin_permissions dd {
 
 .perms {
 	display: inline-block;
-
 	width: 20px;
-
 	text-align: center;
 }
 
 .edit_board {
 	margin-left: 3px;
 	padding: 0 8px 8px;
-
-	background-image: url(../images/icons/modify_small.png);
-	background-repeat: no-repeat;
+	background: url(../images/icons/modify_small.png) no-repeat;
 }
 
 .edit_board.nochanges {
@@ -1116,22 +1047,18 @@ ul.theme_options, ul.basic_options {
 
 ul.theme_options li, ul.basic_options li {
 	padding: 0.4em;
-
 	list-style: none;
 }
 
 .is_directory {
 	padding-left: 18px;
-
 	background: url(../images/admin/boards.png) no-repeat;
 }
 
 .edit_file {
 	font-family: monospace;
-
 	width: 100%;
 	margin-top: 1ex;
-
 	white-space: pre;
 }
 
@@ -1146,9 +1073,7 @@ dl.themes_list dt {
 
 dl.themes_list dd {
 	font-style: italic;
-
 	margin-top: 5px;
-
 	white-space: nowrap;
 }
 
@@ -1166,7 +1091,6 @@ Adjusts display of wording and selections to one line.
 #admin_form_wrapper .theme_options dt {
 	float: left;
 	clear: both;
-
 	width: 55%;
 	margin: 0 0 10px 0;
 	padding: 0;
@@ -1175,7 +1099,6 @@ Adjusts display of wording and selections to one line.
 #admin_form_wrapper .theme_options dd {
 	float: right;
 	overflow: auto;
-
 	width: 45%;
 	min-height: 2em;
 	margin: 0 0 3px 0;
@@ -1184,9 +1107,7 @@ Adjusts display of wording and selections to one line.
 
 #admin_form_wrapper .input_check, .input_radio {
 	margin: 0 2px 4px 4px;
-
 	vertical-align: top;
-
 	border: none;
 	background: none;
 }
@@ -1204,11 +1125,9 @@ Adjusts display of wording and selections to one line.
 
 #css_preview_box {
 	display: none;
-
 	width: 99%;
 	height: 300px;
 	margin-bottom: 2ex;
-
 	border: 1px solid;
 }
 
@@ -1220,78 +1139,77 @@ Adjusts display of wording and selections to one line.
 
 #agreement, #reserved {
 	width: 99%;
-	padding: 0 0.25em;
+	padding: 0 .25em;
+}
+
+#admin_register_form dt span {
+	display: block;
+	padding: 0;
 }
 
 /* Styles for the moderation center.
 ------------------------------------------------- */
 #modcenter {
 	display: block;
-
 	width: 100%;
+	border-radius: 0;
 }
 
-#modcenter .content, #modcenter .generic_list_wrapper,
-#modcenter .windowbg, #modcenter .windowbg2 {
+#modcenter .content, #modcenter .generic_list_wrapper {
 	overflow: visible;
-
 	margin: 4px 0 0 0;
+	border: 1px solid;
 }
 
 #modcenter .content {
 	padding: 12px;
 }
 
-#mod_main_section .content,
-#mod_main_section .windowbg {
+#mod_main_section .content{
 	overflow: auto;
-
 	height: 14em;
-	padding: 6px 0;
+	padding: 6px;
+	border: 1px solid;
+	border-radius: 0;
 }
 
 .modblock_left {
 	float: left;
 	clear: right;
-
-	width: 49%;
-	margin: 0 0 1em 0;
+	box-sizing: border-box;
+	width: 50%;
+	padding: 0 5px 0 0;
 }
 
 .modblock_right {
 	float: right;
-
-	width: 49%;
-	margin: 0 0 1em 0;
+	box-sizing: border-box;
+	width: 50%;
+	margin: 0 0 5px 0;
 }
 
 .modblock_left #ourAnnouncements {
 	overflow: visible;
-
 	height: 15em;
 }
 
 .modbox img.icon {
 	margin: 3px 5px 0 0;
-
 	vertical-align: text-top;
 }
 
 /* Moderation Notes */
 .moderation_notes {
 	overflow: auto;
-
 	height: auto;
 	margin: 0;
 	padding: 0;
-
 	list-style: none;
 }
 
 .moderation_notes li {
 	padding: 0.2em;
-
-	border-bottom: 1px solid #CCCCCC;
+	border-bottom: 1px solid;
 }
 
 .notes {
@@ -1304,50 +1222,41 @@ Adjusts display of wording and selections to one line.
 
 /* Styles for the error log.
 ------------------------------------------------- */
-
 .grid_header {
 	height: 25px;
 }
 
 #error_log {
 	width: 100%;
+	border-top: 1px solid;
 }
 
-#error_log tr.content td,
-#error_log tr.windowbg td, #error_log tr.windowbg2 td {
+#error_log tr.content td {
 	line-height: 160%;
-
 	padding: 8px;
 }
 
 #error_log td div {
 	box-sizing: border-box;
-
 	word-wrap: break-word;
 	word-break: break-all;
 	-webkit-hyphens: auto;
-	   -moz-hyphens: auto;
-	        hyphens: auto;
-
-	    -ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
 }
 
 #error_log .error_who, #error_log .error_type, #error_log .error_where {
 	line-height: 1.8em;
-
 	float: left;
-
 	width: 50%;
 	padding: 0 4px 4px 4px;
-
 	vertical-align: bottom;
 }
 
 #error_log .error_where {
 	line-height: 1.6em;
-
 	float: left;
-
 	width: 100%;
 	padding: 4px 0;
 }
@@ -1355,32 +1264,30 @@ Adjusts display of wording and selections to one line.
 #error_log .error_who li > a, #error_log .error_type li > a, #error_log .error_where li > a,
 #error_log .error_who span, #error_log .error_type span, #error_log .error_where span {
 	display: table-cell;
-
 	width: 20px;
 	padding: 4px;
-
 	vertical-align: top;
 }
 
 #error_log .checkbox_column {
 	width: 15px;
-
 	text-align: center;
 	vertical-align: top;
 }
 
 #error_log a img {
 	margin: 0 8px 0 0;
-
 	vertical-align: middle;
 }
 
 #errorfile_table .current .linenumber:before {
-	content: "==>";
+	content: '==>';
 }
+
 #errorfile_table .linetext {
 	white-space: nowrap;
 }
+
 #errorfile_table .current .linetext {
 	border: 1px solid;
 	border-left-width: 0;
@@ -1410,106 +1317,249 @@ Adjusts display of wording and selections to one line.
 .admin_img_administration {
 	background-position: 0 0;
 }
+
 .admin_img_attachment {
 	background-position: -16px 0;
 }
+
 .admin_img_ban {
 	background-position: -32px 0;
 }
+
 .admin_img_boards {
 	background-position: -48px 0;
 }
+
 .admin_img_calendar {
 	background-position: -64px 0;
 }
+
 .admin_img_corefeatures {
 	background-position: -80px 0;
 }
+
 .admin_img_current_theme {
 	background-position: -96px 0;
 }
+
 .admin_img_engines {
 	background-position: -112px 0;
 }
+
 .admin_img_exit {
 	background-position: -128px 0;
 }
+
 .admin_img_features {
 	background-position: -144px 0;
 }
+
 .admin_img_languages {
 	background-position: -160px 0;
 }
+
 .admin_img_logs {
 	background-position: -176px 0;
 }
+
 .admin_img_mail {
 	background-position: -192px 0;
 }
+
 .admin_img_maintain {
 	background-position: -208px 0;
 }
+
 .admin_img_membergroups {
 	background-position: -224px 0;
 }
+
 .admin_img_members {
 	background-position: -240px 0;
 }
+
 .admin_img_modifications {
 	background-position: -256px 0;
 }
+
 .admin_img_news {
 	background-position: -272px 0;
 }
+
 .admin_img_packages {
 	background-position: -288px 0;
 }
+
 .admin_img_paid {
 	background-position: -304px 0;
 }
+
 .admin_img_permissions {
 	background-position: -320px 0;
 }
+
 .admin_img_posts {
 	background-position: -336px 0;
 }
+
 .admin_img_regcenter {
 	background-position: -352px 0;
 }
+
 .admin_img_reports {
 	background-position: -368px 0;
 }
+
 .admin_img_scheduled {
 	background-position: -384px 0;
 }
+
 .admin_img_search {
 	background-position: -400px 0;
 }
+
 .admin_img_security {
 	background-position: -416px 0;
 }
+
 .admin_img_server {
 	background-position: -432px 0;
 }
+
 .admin_img_smiley {
 	background-position: -448px 0;
 }
+
 .admin_img_support {
 	background-position: -464px 0;
 }
+
 .admin_img_themes {
 	background-position: -480px 0;
 }
 
 .sortable_smiley li {
 	display: inline;
-
 	padding: 0 6px;
+}
+
+.sortable_smiley {
+	margin-top: 3px;
+	border-bottom: 1px solid;
 }
 
 .pagelink, .current_page, .expand_pages {
 	border: 0;
 	background-color: transparent;
+}
+
+/* Drag sort lists show the move cursor and up/down arrow content */
+#sort_email_fp td, #custom_profile_fields td:nth-child(2), #message_icon_list td:nth-child(-n+3) {
+	cursor: move;
+}
+
+#message_icon_list img {
+	vertical-align: middle;
+}
+
+/* Styles for the D&D indicators
+------------------------------------------------- */
+#sort_email_fp td:nth-child(2):before,
+#custom_profile_fields td:nth-child(2):before,
+#message_icon_list td:nth-child(1):before,
+#manage_boards li .floatleft:before {
+	font-size: 1.786em;
+	padding-right: 5px;
+	content: "\21f3";
+}
+
+#custom_profile_fields td:nth-child(2):before {
+	float: left;
+	margin-top: 0.3em;
+}
+
+/* jQuery Dialog Box */
+.ui-helper-clearfix:before, .ui-helper-clearfix:after {
+	display: table;
+	border-collapse: collapse;
+	content: "";
+}
+
+.ui-helper-clearfix:after {
+	clear: both;
+}
+
+.ui-helper-clearfix:before, .ui-helper-clearfix:after {
+	display: table;
+	border-collapse: collapse;
+	content: "";
+}
+
+.ui-sortable li > a {
+	cursor: move;
+}
+
+.ui-state-highlight {
+	height: 2em;
+	cursor: move;
+	border: 1px dashed;
+}
+
+/* jQuery Dialog */
+.ui-dialog {
+	z-index: 100;
+	padding: 0;
+	border: 1px solid;
+	border-radius: 0;
+}
+
+.ui-dialog .ui-dialog-title {
+	float: left;
+	overflow: hidden;
+	width: 90%;
+	margin: 0.5em 0;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+	font-size: 1.071em;
+	font-weight: bold;
+	padding: 0 1em;
+	border-radius: 0;
+}
+
+.ui-dialog .ui-dialog-content {
+	padding: 4px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+	float: right;
+	width: 16px;
+	height: 16px;
+	margin: 0.7em 0;
+	cursor: pointer;
+	border: none;
+	background: url(../images/buttons/delete.png) no-repeat scroll left center transparent;
+}
+
+.ui-button-icon-only {
+	box-sizing: border-box;
+	width: 2em;
+	white-space: nowrap;
+	text-indent: -9999px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close .ui-button-text {
+	display: none;
+}
+
+.ui-widget-overlay {
+	z-index: 100;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
 @media screen and (max-width: 33.750em) {
@@ -1523,7 +1573,6 @@ Adjusts display of wording and selections to one line.
 
 	.visible_boards label {
 		display: inline;
-
 		width: auto !important;
 	}
 
@@ -1562,7 +1611,6 @@ Adjusts display of wording and selections to one line.
 
 	#quick_tasks ul li span {
 		display: block;
-
 		margin: 0 0 0 50px;
 	}
 
@@ -1588,15 +1636,13 @@ Adjusts display of wording and selections to one line.
 
 	#core_features .features p {
 		overflow: auto;
-
 		min-height: 0;
 		max-height: 5em;
 		margin: 0;
 		padding: 0;
 	}
 
-	#manage_boards .content,
-	#manage_boards .windowbg {
+	#manage_boards .content {
 		line-height: 3.2em;
 	}
 
@@ -1616,127 +1662,4 @@ Adjusts display of wording and selections to one line.
 	.perm_classic {
 		width: 100%;
 	}
-}
-
-/* Drag sort lists show the move cursor and up/down arrow content */
-#sort_email_fp td, #custom_profile_fields td:nth-child(2), #message_icon_list td:nth-child(-n+3) {
-	cursor: move;
-}
-#message_icon_list img {
-	vertical-align: middle;
-}
-
-/* Styles for the D&D indicators
-------------------------------------------------- */
-#sort_email_fp td:nth-child(2):before,
-#custom_profile_fields td:nth-child(2):before,
-#message_icon_list td:nth-child(1):before,
-#manage_boards li .floatleft:before {
-	font-size: 1.786em;
-
-	padding-right: 5px;
-
-	content: "\21f3";
-}
-
-#custom_profile_fields td:nth-child(2):before {
-	float: left;
-
-	margin-top: 0.3em;
-}
-
-/* jQuery Dialog Box */
-.ui-helper-clearfix:before, .ui-helper-clearfix:after {
-	display: table;
-
-	border-collapse: collapse;
-
-	content: "";
-}
-
-.ui-helper-clearfix:after {
-	clear: both;
-}
-
-.ui-helper-clearfix:before, .ui-helper-clearfix:after {
-	display: table;
-
-	border-collapse: collapse;
-
-	content: "";
-}
-.ui-sortable li > a {
-	cursor: move;
-}
-
-.ui-state-highlight {
-	height: 2em;
-
-	cursor: move;
-
-	border: 1px dashed;
-}
-
-
-/* jQuery Dialog */
-.ui-dialog {
-	z-index: 100;
-
-	padding: 0;
-}
-
-.ui-dialog .ui-dialog-title {
-	float: left;
-	overflow: hidden;
-
-	width: 90%;
-	margin: 0.5em 0;
-
-	white-space: nowrap;
-	text-overflow: ellipsis;
-}
-
-.ui-dialog .ui-dialog-titlebar {
-	font-size: 1.071em;
-	font-weight: bold;
-
-	padding: 0 1em;
-}
-
-.ui-dialog .ui-dialog-content {
-	padding: 4px;
-}
-
-.ui-dialog .ui-dialog-titlebar-close {
-	float: right;
-
-	width: 16px;
-	height: 16px;
-	margin: 0.7em 0;
-
-	cursor: pointer;
-
-	border: 0;
-	background: url(../images/buttons/delete.png) no-repeat scroll left center transparent;
-}
-
-.ui-button-icon-only {
-	box-sizing: border-box;
-	width: 2em;
-
-	white-space: nowrap;
-	text-indent: -9999px;
-}
-
-.ui-dialog .ui-dialog-titlebar-close .ui-button-text {
-	display: none;
-}
-
-.ui-widget-overlay {
-	z-index: 100;
-	top: 0;
-	left: 0;
-
-	width: 100%;
-	height: 100%;
 }

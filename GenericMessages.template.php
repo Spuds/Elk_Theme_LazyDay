@@ -47,7 +47,7 @@ function template_build_poster_div($message, $ignoring = false)
 	{
 		if (!empty($message['member']['id']))
 			$poster_div .= '
-									<a class="linklevel1 name" href="' . $scripturl . '?action=profile;u=' . $message['member']['id'] . '">
+								<a class="linklevel1 name" href="' . $message['member']['href'] . '">
 									' . $message['member']['name'] . '
 								</a>';
 		else
@@ -71,6 +71,8 @@ function template_build_poster_div($message, $ignoring = false)
 									<li class="listlevel2 postgroup">' . $message['member']['post_group'] . '</li>';
 
 		// Is karma display enabled?  Total or +/-?
+		if (!empty($modSettings['karmaMode']))
+		{
 		if ($modSettings['karmaMode'] == '1')
 			$poster_div .= '
 									<li class="listlevel2 karma">' . $modSettings['karmaLabel'] . ' ' . ($message['member']['karma']['good'] - $message['member']['karma']['bad']) . '</li>';
@@ -85,6 +87,7 @@ function template_build_poster_div($message, $ignoring = false)
 										<a class="linklevel2" href="' . $message['member']['karma']['applaud_url'] . '">' . $modSettings['karmaApplaudLabel'] . '</a>' .
 										(empty($modSettings['karmaDisableSmite']) ? '<a class="linklevel2" href="' . $message['member']['karma']['smite_url'] . '">' . $modSettings['karmaSmiteLabel'] . '</a>' : '') . '
 									</li>';
+		}
 
 		// Show the member's gender icon?
 		if (!empty($settings['show_gender']) && $message['member']['gender']['image'] != '' && !isset($context['disabled_fields']['gender']))
@@ -114,7 +117,7 @@ function template_build_poster_div($message, $ignoring = false)
 				}
 
 				$poster_div .= '
-											<li>' . $custom['value'] . '</li>';
+											<li class="cf_icon">' . $custom['value'] . '</li>';
 			}
 
 			if ($shown)
@@ -133,14 +136,14 @@ function template_build_poster_div($message, $ignoring = false)
 			// Don't show an icon if they haven't specified a website.
 			if ($message['member']['website']['url'] != '' && !isset($context['disabled_fields']['website']))
 				$poster_div .= '
-											<li>
+											<li class="cf_icon">
 												<a href="' . $message['member']['website']['url'] . '" title="' . $message['member']['website']['title'] . '" target="_blank" rel="noopener noreferrer" class="new_win">' . ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/profile/www_sm.png" alt="' . $message['member']['website']['title'] . '" />' : $txt['www']) . '</a>
 											</li>';
 
 			// Don't show the email address if they want it hidden.
 			if (in_array($message['member']['show_email'], array('yes', 'yes_permission_override', 'no_through_forum')) && $context['can_send_email'])
 				$poster_div .= '
-											<li>
+											<li class="cf_icon">
 												<a href="' . $scripturl . '?action=emailuser;sa=email;msg=' . $message['id'] . '" rel="nofollow">' . ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/profile/email_sm.png" alt="' . $txt['email'] . '" title="' . $txt['email'] . '" />' : $txt['email']) . '</a>
 											</li>';
 

@@ -11,7 +11,7 @@
  * copyright:    2011 Simple Machines (http://www.simplemachines.org)
  * license:      BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.1.6
+ * @version 1.1.9
  *
  */
 
@@ -166,8 +166,8 @@ class Theme extends \Theme
 	{
 		global $modSettings, $settings;
 
-		// Using a specified version of jquery or what was shipped 3.1.1  / 1.12.1
-		$jquery_version = (!empty($modSettings['jquery_default']) && !empty($modSettings['jquery_version'])) ? $modSettings['jquery_version'] : '3.1.1';
+		// Using a specified version of jquery or what was shipped 3.6.0  / 1.12.1
+		$jquery_version = (!empty($modSettings['jquery_default']) && !empty($modSettings['jquery_version'])) ? $modSettings['jquery_version'] : '3.6.0';
 		$jqueryui_version = (!empty($modSettings['jqueryui_default']) && !empty($modSettings['jqueryui_version'])) ? $modSettings['jqueryui_version'] : '1.12.1';
 
 		switch ($modSettings['jquery_source'])
@@ -512,6 +512,7 @@ class Theme extends \Theme
 				hide_video : ' . JavaScriptEscape($txt['hide_video']) . ',
 				youtube : ' . JavaScriptEscape($txt['youtube']) . ',
 				vimeo : ' . JavaScriptEscape($txt['vimeo']) . ',
+				tiktok : ' . JavaScriptEscape($txt['tiktok'] ?? 'TikTok') . ',
 				dailymotion : ' . JavaScriptEscape($txt['dailymotion']) . '
 			});', true);
 
@@ -780,8 +781,15 @@ class Theme extends \Theme
 		if (!empty($settings['forum_width']))
 		{
 			$this->addCSSRules('
-		.wrapper {width: 100%;}');
+		.wrapper {width: 95%;}');
 		}
+
+		// Localization for the show more quote and its container height
+		$quote_height = !empty($modSettings['heightBeforeShowMore']) ? $modSettings['heightBeforeShowMore'] . 'px' : 'none';
+		$this->addCSSRules('
+		input[type=checkbox].quote-show-more:after {content: "' . $txt['post_options'] . '";}
+		.quote-read-more > .bbc_quote {--quote_height: ' . $quote_height . ';}'
+		);
 	}
 
 	/**
@@ -855,7 +863,7 @@ class Theme extends \Theme
 			$this->addCSSRules('
 	.i-account:before {
 		content: "";
-		background-image: url("' . $user_info['avatar']['href'] . '");
+		background-image: url("' . htmlspecialchars_decode($user_info['avatar']['href']) . '");
 	}');
 		}
 

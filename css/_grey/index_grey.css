@@ -1,11 +1,11 @@
 /* INTRODUCTION
- * This variant is the standard, light, Elkarte default theme.
+ * This variant is the standard, grey, LazyDaze Theme.
  * This is eye candy only. All the layout code is in index.css.
  *
  * All theme variants depend on the layout code for stability.
  * It is better to copy code to a variant CSS file for testing.
  * -------------------------------------------------------
- * $CONTENTS - still a bit WIP. @todo
+ * $CONTENTS
  *
  *		$GENERAL.............Global resets, clearfixes, etc.
  *		$COMMON..............Common classes to drive you bonkers.
@@ -40,24 +40,41 @@
  *		$PROGRESS............Nifty progress bars.
  *		$MEDIA...............Experimental media queries.
  */
+:root {
+	--shadow-color: 0deg 0% 80%;
+	--shadow-elevation-low:
+			0.3px 0.5px 0.8px hsl(var(--shadow-color) / 0.17),
+			0.4px 0.9px 1.3px -0.6px hsl(var(--shadow-color) / 0.29),
+			1px 2px 2.9px -1.2px hsl(var(--shadow-color) / 0.4);
+	--shadow-elevation-medium:
+			0.3px 0.5px 0.8px hsl(var(--shadow-color) / 0.18),
+			1px 2px 2.9px -0.4px hsl(var(--shadow-color) / 0.27),
+			2.3px 4.5px 6.6px -0.8px hsl(var(--shadow-color) / 0.36),
+			5px 10px 14.7px -1.2px hsl(var(--shadow-color) / 0.45);
+	--shadow-elevation-high:
+			0.3px 0.5px 0.8px hsl(var(--shadow-color) / 0.17),
+			2px 4.1px 6px -0.2px hsl(var(--shadow-color) / 0.21),
+			3.7px 7.3px 10.7px -0.4px hsl(var(--shadow-color) / 0.25),
+			5.6px 11.2px 16.4px -0.5px hsl(var(--shadow-color) / 0.29),
+			8.3px 16.6px 24.4px -0.7px hsl(var(--shadow-color) / 0.34),
+			12.1px 24.2px 35.5px -0.9px hsl(var(--shadow-color) / 0.38),
+			17.5px 35.1px 51.5px -1.1px hsl(var(--shadow-color) / 0.42),
+			25px 50px 73.4px -1.2px hsl(var(--shadow-color) / 0.46);
+}
 
 /* -------------------------------------------------------
  *	$GENERAL
  * -------------------------------------------------------
  */
-
 /* Normal, standard links. */
 a, a:link, a:visited,
 	/* Links that open in a new window. */
 a.new_win:link, a.new_win:visited {
-	text-decoration: none;
-
 	color: #333333;
 }
 
 /* Cursor declared here.Should not be required anywhere else. */
 a:hover, a.new_win:hover {
-	text-decoration: underline;
 }
 
 /* Stop white band under footer on short pages. */
@@ -73,30 +90,21 @@ body {
 
 .wf-loading {
 	overflow: hidden;
-
 	height: 100%;
-
 	background: #F6F8F9;
 }
 
 fieldset {
-	margin: 5px 0;
-	padding: 6px;
-
-	border: 1px solid #CCCCCC;
-	border-radius: 0;
+	border-color: #CCCCCC;
 	background: transparent;
-	box-shadow: inset -1px -1px 3px #FFFFFF;
+	box-shadow: inset -1px -1px 3px #FEFEFE;
 }
 
 legend {
 	font-size: 1.071em;
-
 	margin-left: 15px;
 	padding: 0 0 2px 20px;
-
 	cursor: pointer;
-
 	color: #333333;
 	background: url(../../images/selected_open.png) no-repeat scroll left center transparent;
 }
@@ -107,13 +115,12 @@ legend {
 
 input, button, select, textarea, .editor {
 	color: #333333;
-	border: 1px solid #CCCCCC;
-	border-radius: 0;
-	background: #FFFFFF;
+	border-color: #CCCCCC;
+	background: #FEFEFE;
 }
 
 input:hover, textarea:hover, button:hover, select:hover {
-	border: 1px solid #999999;
+	border-color: #999999;
 }
 
 textarea:hover, .editor:hover {
@@ -122,7 +129,7 @@ textarea:hover, .editor:hover {
 }
 
 input:focus, textarea:focus, button:focus, select:focus, .editor:focus {
-	border: 1px solid #999999;
+	border-color: #999999;
 }
 
 /* Give disabled text input elements a different background color. */
@@ -133,7 +140,6 @@ input[disabled].input_text, input[disabled].input_password {
 /* The OpenID login form */
 .openid_login {
 	padding-left: 20px;
-
 	background: white url(../../images/openid.png) no-repeat 2% 50%;
 }
 
@@ -143,131 +149,106 @@ input[type="submit"], .drop_area_fileselect_text, button[type="submit"], input[t
 /* Anchors styled to look like buttons. */
 /* These have standard body text size. Can be chained with smalltext class. */
 .linkbutton:link, .linkbutton_right:link, .linkbutton_left:link,
-.linkbutton:visited, .linkbutton_right:visited, .linkbutton_left:visited {
+.linkbutton:visited, .linkbutton_right:visited, .linkbutton_left:visited, .ila {
 	color: #555555;
-	border: 1px solid #AFAFAF;
-	border-top: 1px solid #CFCFCF;
-	border-left: 1px solid #BFBFBF;
-	border-radius: 0;
-	background: #F4F4F4 linear-gradient(to bottom, #FFFFFF, #E4E4E4);
+	border-color: #AFAFAF;
+	border-top-color: #CFCFCF;
+	border-left-color: #BFBFBF;
+	background: #F4F4F4 linear-gradient(to bottom, #FEFEFE, #E4E4E4);
 	box-shadow: 1px 1px 2px #E5E5E5, 0 -1px 0 #E4E4E4 inset;
 }
 
 /* Hover effects. */
 input[type="submit"]:hover, button[type="submit"]:hover, input[type="button"]:hover,
-.button_submit:hover, .right_submit:hover, .left_submit:hover,
+.button_submit:hover, .right_submit:hover, .left_submit:hover, .ila:hover,
 .button_reset:hover,
 .linkbutton:hover, .linkbutton_right:hover, .linkbutton_left:hover {
 	text-decoration: none;
-
 	color: #555555;
-	border: 1px solid #CCCCCC;
-	border-top: 1px solid #AFAFAF;
-	border-left: 1px solid #AFAFAF;
+	border-color: #CCCCCC;
+	border-top-color: #AFAFAF;
+	border-left-color: #AFAFAF;
 	background: #F0F0F0;
 	box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.07) inset;
+}
+
+/* Don't show disabled buttons as active on hover */
+input[type=submit][disabled]:hover, button[disabled], button[disabled]:hover {
+	border-color: #AFAFAF;
+	border-top-color: #CFCFCF;
+	border-left-color: #BFBFBF;
+	box-shadow: 1px 1px 2px #E5E5E5;
 }
 
 /* the new "button" */
 .new_posts, .new_posts:visited, .new_posts:link {
 	padding: 2px 6px;
-
-	color: #FFFFFF;
-	border-radius: 2px;
-	background: rgb(107, 166, 94);
+	color: #FEFEFE;
+	background: #6BA65E;
 }
 
 /* approval indicator */
 .require_approval {
-	color: #FFFFFF;
-	border-radius: 0;
+	color: #FEFEFE;
 	background: #F3B200;
 }
 
 /* Standard horizontal rule.. ([hr], etc.) */
 hr {
-	border-top: 1px solid #BBBBBB;
-	border-left: 0;
+	border-top-color: #BBBBBB;
+	border-bottom-color: #E4E4E4;
 	background: #EEEEEE;
 }
 
 strong {
-	font-weight: bold;
-}
-
-/* Use demi bold font weight for some key areas */
-.codeheader, .quoteheader,
-.expand_pages,
-.table_head > th,
-.topic_sorting_row > h3, .topic_name h4 a,
-.poster .name,
-.keyinfo h5 a, .keyinfo h5 a strong,
-.ui-tabs .ui-tabs-nav .ui-state-active a, .ui-tabs .ui-tabs-nav .ui-state-active,
-.ui-dialog .ui-dialog-titlebar,
-.popup_heading {
-	font-weight: 600;
-
-	-webkit-font-smoothing: antialiased;
+	color: #686868;
 }
 
 /* @todo - Test this everywhere. */
 .standard_category {
-	border-radius: 0;
 	background: #E4E4E4;
-	box-shadow: 1px 2px 4px #EEEEEE;
+	box-shadow: var(--shadow-elevation-low);
 }
 
 /* @todo - Test this everywhere. */
 .standard_category > .content {
-	border: 1px solid #DDDDDD;
-	background: #FFFFFF;
+	border-color: #DDDDDD;
+	background: #FEFEFE;
 }
 
 /* Styles for main headers. */
 .category_header, .forum_category .category_header, .forumposts .category_header, .content_category .category_header {
-	color: #FFFFFF;
-	border: 1px solid #DDE5EA;
-	border-top: none;
-	border-bottom: none;
-	border-radius: 4px;
+	color: #FEFEFE;
+	border-color: #DDE5EA;
 	background: #4A4E51;
-}
-
-/* Single ones with a touch of radius. */
-.forumposts .category_header, .content_category .category_header {
-	border-radius: 5px;
 }
 
 /* Styles for subsection headers. @todo */
 .secondary_header {
 	color: #F0F0F0;
-	border: 1px solid #CCCCCC;
-	border-top: 0 solid #DFDFDF;
+	border-color: #CCCCCC;
+	border-top-color: transparent;
 	background: #313131;
 }
 
 #advanced_panel_link {
-	color: #FFFFFF;
+	color: #FEFEFE;
 }
 
 .category_header a:link, .category_header a:visited,
 .category_header a.new_win:link, .category_header a.new_win:visited,
 h3.category_header, h2.category_header {
 	font-weight: 600;
-
 	text-transform: uppercase;
-
-	color: #FFFFFF;;
+	color: #FEFEFE;;
 }
 
 /* Upshrink image in the general category headers */
 #category_toggle, #category_toggle_more, #upshrink_header {
-	border-radius: 0;
 }
 
 /* Upshrink image in the page top for the header collapse */
 #collapse_button .linklevel1 {
-	border-radius: 0;
 }
 
 /* Custom highlighted text style for modern browsers.
@@ -288,43 +269,68 @@ h3.category_header, h2.category_header {
 	color: #FF7200;
 }
 
+/* Sometimes there will be an error when you post */
+.error {
+	color: red !important;
+}
+
+.border_error {
+	border-color: red !important;
+}
+
+/* Messages that somehow need to attract the attention. */
+.alert {
+	color: red;
+}
+
+/* Colors for warnings. */
+.warn_mute {
+	color: red;
+}
+
+.warn_moderate, .softalert {
+	color: #FFA500;
+}
+
+.warn_watch, .success {
+	color: green;
+}
+
+.moderation_link, .moderation_link:visited {
+	color: red;
+}
 /* Used for sections that need somewhat larger corners */
 .roundframe, .well {
-	border: 1px solid #C5C5C5;
-	border-radius: 0;
+	border-color: #C5C5C5;
 	background: #F5F5F5;
 }
 
 /* The generic wrapper thingy. */
 .generic_list_wrapper {
-	border: 1px solid #CCCCCC;
-	border-radius: 0;
+	border-color: #CCCCCC;
 	box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
 }
 
 .generic_list_wrapper .additional_row {
-	border-radius: 0;
 }
 
 .generic_list_wrapper .title_bar {
-	border-bottom: 1px solid #FFFFFF;
-	border-radius: 0;
+	border-bottom-color: #FEFEFE;
 	background: none;
 }
 
 .generic_list_wrapper .information {
-	border-bottom: 1px solid #FFFFFF;
+	border-bottom-color: #FEFEFE;
 	background: none;
 }
 
 /* Styles used by the auto suggest control. */
 .auto_suggest_div {
-	border: 1px solid #BBBBBB;
-	border-radius: 0;
+	border-color: #BBBBBB;
 }
 
 .auto_suggest_div:focus {
-	border: 1px solid #BBBBBB;
+	border-color: #BBBBBB;
 }
 
 .auto_suggest_item {
@@ -340,43 +346,43 @@ h3.category_header, h2.category_header {
  * $BBC
  * -------------------------------------------------------
  */
-
 /* The "Quote:" and "Code:" header parts... */
 .codeheader, .quoteheader {
 	color: #555555;
-	border: 1px solid #CCCCCC;
-	border-bottom: none;
-	background: #FFFFFF;
+	border-color: #CCCCCC;
+	background: #FEFEFE;
 }
 
 .codeheader {
-	border-top: 3px solid #AAAAAA;
+	border-top-color: #AAAAAA;
 }
 
 /* [Select] link to copy code. */
 .codeoperation {
-	font-weight: normal;
 }
 
 /* A quote, perhaps from another post. */
 .bbc_quote,
-.bbc_standard_quote, .bbc_alternate_quote,
 /* A code block - maybe PHP ;) - shared styles. */
 .bbc_code {
-	border: 1px solid #CCCCCC;
-	border-top: none;
-	background: #FFFFFF;
+	border-color: #CCCCCC;
+	background: #FEFEFE;
+}
+
+input[type=checkbox].quote-show-more {
+	background: linear-gradient(to bottom, transparent 0%, transparent 25%, #FEFEFE 100%);
+	box-shadow: 0 1px 0 1px #E4E4E4;
 }
 
 /* Extra quote styling */
-.bbc_quote, .bbc_standard_quote, .bbc_alternate_quote, .quoteheader {
+.bbc_quote, .quoteheader {
 	box-shadow: 2px 2px 2px #DDDDDD;
 }
 
 /* Extra code block styling. */
 .bbc_code {
-	border-top: 3px solid #AAAAAA;
-	border-bottom: 3px solid #AAAAAA;
+	border-top-color: #AAAAAA;
+	border-bottom-color: #AAAAAA;
 	background: #F8F8F8;
 }
 
@@ -387,8 +393,6 @@ h3.category_header, h2.category_header {
 }
 
 .bbc_link:hover {
-	text-decoration: none;
-
 	color: #377828;
 	box-shadow: 0 -1px 0 #66AA55 inset;
 }
@@ -397,13 +401,15 @@ h3.category_header, h2.category_header {
 .inner > .bbc_table_container > .bbc_table td,
 .messageContent > .bbc_table_container > .bbc_table td {
 	border-right: 1px solid #CCCCCC;
-	border-bottom: 1px solid #CCCCCC;
+	border-bottom-color: #CCCCCC;
 }
+
 .inner > .bbc_table_container > .bbc_table th,
 .messageContent > .bbc_table_container > .bbc_table th {
 	border-right: 1px solid #CCCCCC;
-	border-bottom: 1px solid #BBBBBB;
+	border-bottom-color: #BBBBBB;
 }
+
 .inner > .bbc_table_container > .bbc_table td:last-child,
 .inner > .bbc_table_container > .bbc_table th:last-child,
 .messageContent > .bbc_table_container > .bbc_table td:last-child,
@@ -417,29 +423,18 @@ h3.category_header, h2.category_header {
 }
 
 .meaction:before {
-	font-family: Arial, sans-serif;
-	font-size: 1.714em;
-	line-height: 1em;
-
-	content: "\270c";
 }
 
 .spoilerheader {
-	font-size: 0.857em;
-	font-weight: bold;
-
-	cursor: pointer;
 }
 
 .spoiler {
-	padding: 0.3em;
-
-	border: 1px solid #CCCCCC;
+	border-color: #CCCCCC;
 	background-color: #EEEEEE;
 }
 
 div.bbc_footnotes {
-	border-top: 1px solid #BFBFBF;
+	border-top-color: #BFBFBF;
 }
 
 .bbc_footnotes .target:target {
@@ -447,114 +442,69 @@ div.bbc_footnotes {
 }
 
 sup.bbc_footnotes, sup.bbc_footnotes a {
-	font-weight: 700;
-
 	color: #222222;
 }
 
 div.bbc_footnotes .meaction {
-	display: inline-block;
 }
 
 /* -------------------------------------------------------
  *	$AJAX
  * -------------------------------------------------------
  */
-
 /* The "Loading" bar for quick edit, etc. */
 #ajax_in_progress, .ajax_infobar {
 	color: #306430;
-	border-bottom: 4px solid #EBECEF;
-	background: #FFFFFF;
+	border-bottom-color: #EBECEF;
+	background: #FEFEFE;
 }
 
 #ajax_in_progress a {
-	text-decoration: underline;
+	color: orange;
 }
 
 /* -------------------------------------------------------
  *	$MAIN.
  * -------------------------------------------------------
  */
-
 /* The top bar. */
-
 #top_section {
-	padding: 5px;
 }
 
 #header {
-	height: 60px;
 }
 
 #menu_nav {
-	height: 3em;
-	padding: 4px;
-
-	border-radius: 3px 3px 0 0;
 	background: #4A4E51;
 }
 
-#main_menu {
-	height: 3em;
-}
-
 #siteslogan {
-	color: #CCCCCC;
+	color: #999999;
 }
 
 /* Maintenance mode warning. */
 #top_section_notice, .notice {
-	font-weight: 700;
-
 	color: #A80000;
 }
 
 #search_form {
-	border-radius: 0;
 }
 
 #search_form .controls {
-	margin: 5px 0;
-	padding: 5px;
-
 	border-radius: 0;
 	background: #FAFAFA;
 }
 
 #search_form.active {
-	z-index: 100;
-
-	padding: 5px;
-
-	background-color: rgb(255, 255, 255);
+	background-color: #FEFEFE;
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
 }
 
 #search_form .input_text {
-	width: 100%;
-
-	border-radius: 0;
 }
 
 #search_form .input_text.search_nd {
-	font-size: 16px;
-
-	width: 70%;
-	min-height: 2em;
-
-	border-radius: 4px;
-	background: #FFFFFF;
-}
-
-#search_form button {
-	font-size: 16px;
-
-	min-height: 2em;
-
-	color: #FFFFFF;
-	border-radius: 4px;
-	background-color: #4993C5;
+	background: #FEFEFE;
 }
 
 #search_form .button_submit.with_select {
@@ -562,17 +512,18 @@ div.bbc_footnotes .meaction {
 }
 
 #search_form select {
-	width: 130px;
-
 	opacity: 0.8;
-	border: 1px solid #AFAFAF;
-	border-right: none;
+	border-color: #AFAFAF;
 }
 
 #search_form select:focus {
 	opacity: 1;
-	border: 1px solid #999999;
-	border-right: none;
+	border-color: #999999;
+}
+
+#search_form button {
+	color: #777777;
+	background-color: #4993C5;
 }
 
 #forumtitle > a {
@@ -582,67 +533,33 @@ div.bbc_footnotes .meaction {
 
 /* News section. */
 #news {
-	font-size: 0.929em;
-
-	clear: both;
-
-	border-radius: 4px;
 }
 
 #news > h2 {
-	float: left;
-
-	margin: 0.5em 1em 0 0;
 }
 
 #news > h2:before {
-	font-family: "FontAwesome";
-	font-size: 3em;
-
-	content: "\f05a";
-
-	color: #BBBBBB;
+	color: #4993C5;
 }
 
 #news_line, #news {
-	overflow: auto;
-
-	height: 65px;
-	min-height: 65px;
-	padding: 6px 12px;
-
-	resize: vertical;
-
-	color: #666666;
-	/* Longhand style due to JS bug in IE! */
-	border: 1px solid #CCCCCC;
+	color: #686868;
+	border-color: #CCCCCC;
 	background: #FAFAFA;
 	box-shadow: 1px 2px 3px #EEEEEE;
-}
-
-#elkFadeScroller {
-	margin-left: 4em;
 }
 
 /* Main forum area. */
 /* Box-shadow only on this one. */
 #wrapper {
-	margin-top: 10px;
-	padding: 0;
-
-	border: 1px solid #E5E5E5;
-	border-radius: 4px;
-	background: #FFFFFF;
-}
-
-#menu_wrapper {
-	padding: 0 0 4px;
+	border-color: #E5E5E5;
+	background: #FEFEFE;
 }
 
 /* The footer with copyright links etc. */
 #footer_section {
 	color: #BBBBBB;
-	border-top: 6px solid #EBECEF;
+	border-top-color: #EBECEF;
 	background: #222222;
 	box-shadow: 0 -1px 0 #777777, 0 1px 0 #0E0E0E inset;
 }
@@ -653,7 +570,6 @@ div.bbc_footnotes .meaction {
 
 #footer_section .rssfeeds {
 	color: orange;
-	border-radius: 0;
 	background-color: white;
 	text-shadow: 1px 1px 0 #000000;
 }
@@ -664,10 +580,6 @@ div.bbc_footnotes .meaction {
 }
 
 #debug_logging {
-	width: 90%;
-	max-width: 90em;
-	margin: 0 auto;
-
 	color: #BBBBBB;
 	background: #222222;
 }
@@ -683,7 +595,7 @@ div.bbc_footnotes .meaction {
 /* Top Menu */
 /* Level 1 Menu bar: link or button. General styling. */
 #main_menu .linklevel1, #main_menu .linklevel1:link, #main_menu .linklevel1:visited {
-	color: #FFFFFF;
+	color: #FEFEFE;
 	border: none;
 	box-shadow: none;
 }
@@ -698,8 +610,7 @@ div.bbc_footnotes .meaction {
 #menu_sidebar .linklevel1:hover, #menu_sidebar .listlevel1:hover .linklevel1,
 #menu_current_area > strong > .linklevel1 {
 	text-decoration: none;
-
-	color: #FFFFFF;
+	color: #FEFEFE;
 	background: #9FBFDF;
 	background: none repeat scroll 0 0 rgba(255, 255, 255, 0.1);
 }
@@ -708,7 +619,6 @@ div.bbc_footnotes .meaction {
 #main_menu .linklevel2:hover, #main_menu .listlevel2:hover .linklevel2,
 #main_menu .linklevel3:hover, #main_menu .listlevel3:hover .linklevel3 {
 	text-decoration: none;
-
 	color: #000000;
 	border-radius: 3px;
 	background: #7E8A99 linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0) 100%);
@@ -719,17 +629,17 @@ div.bbc_footnotes .meaction {
 #main_menu .linklevel1:hover .pm_indicator {
 	color: #7E8A99;
 	border-radius: 3px;
-	background: #FFFFFF;
+	background: #FEFEFE;
 }
 
 #main_menu .linklevel1.active {
-	color: #FFFFFF;
+	color: #FEFEFE;
 	background: #4993C5;
 }
 
 /* Hover effects for those buttons. */
 #main_menu .linklevel1.active:hover, #main_menu .listlevel1:hover .linklevel1.active {
-	background: #FFFFFF;
+	background: #FEFEFE;
 }
 
 #main_menu .linklevel1:hover .pm_indicator, #main_menu .linklevel2:hover .pm_indicator {
@@ -741,38 +651,33 @@ div.bbc_footnotes .meaction {
 
 #menu_button_avatar > span {
 	padding: 4px;
-
 	vertical-align: middle;
 }
 
 /* Top level subsection indicators. */
 #main_menu .listlevel1.subsections .linklevel1:after {
 	font-family: "FontAwesome", Arial, sans-serif;
-
 	position: relative;
 	left: 0.25em;
-
 	margin: 0;
 	padding: 0;
-
 	content: "\f0d7";
 }
 
 /* Level 2 and 3: drop menu wrapper. */
-#main_menu .menulevel2 {
+#main_menu .menulevel2, #main_menu .menulevel3 {
 	font-size: 0.85em;
 	line-height: 2em;
-
-	background: #EBECEF linear-gradient(to bottom, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 100%);
+	border-color: #AFAFAF;
+	border-top-color: #CFCFCF;
+	border-left-color: #BFBFBF;
+	border-radius: 3px;
+	background: #EBECEF linear-gradient(to bottom, rgba(255, 255, 255, 0.35) 0%, #FEFEFE 100%);
+	box-shadow: none;
 }
 
 #main_menu .menulevel3 {
-	border: 1px solid #AFAFAF;
-	border-top: 1px solid #CFCFCF;
-	border-left: 1px solid #BFBFBF;
-	border-radius: 0;
-	background: #FFFFFF;
-	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+	font-size: 1em;
 }
 
 /* Tricky count indicators. Define them carefully */
@@ -787,14 +692,11 @@ div.bbc_footnotes .meaction {
 #main_menu .pm_indicator {
 	font-weight: 600;
 	line-height: 1em;
-
 	position: absolute;
 	z-index: 100;
 	bottom: 2em;
-
-	padding: 5px;
-
-	border-radius: 25%;
+	padding: 4px 5px 6px 5px;
+	border-radius: 3px;
 	background: #4993C5;
 }
 
@@ -802,23 +704,19 @@ div.bbc_footnotes .meaction {
 	font-size: 0.929em;
 	font-weight: 700;
 	line-height: 1.4em;
-
 	position: relative;
 	z-index: 2;
 	top: -0.5em;
 	right: -2.5em;
-
 	float: left;
-
 	padding: 0 0.4em;
-
-	color: #FFFFFF;
+	color: #FEFEFE;
 	border-radius: 8px;
 	background: #EBECEF;
 }
 
 .poster_online .infotext {
-	color: #555555;
+	color: #4993C5;
 }
 
 #dropdown_menu_1 .pm_indicator {
@@ -830,18 +728,16 @@ div.bbc_footnotes .meaction {
 	font-size: 0.857em;
 	font-weight: bold;
 	line-height: 1.5em;
-
 	position: absolute;
 	z-index: 2;
 	top: -1em;
 	right: -0.4em;
-
 	float: left;
-
-	padding: 0 0.6em;
-
-	color: #FFFFFF;
-	border: 1px solid #555555;
+	min-width: 12px;
+	padding: 0 3px;
+	text-align: center;
+	color: #FEFEFE;
+	border-color: #555555;
 	border-radius: 50%;
 	background: #4A4E51;
 	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
@@ -849,14 +745,13 @@ div.bbc_footnotes .meaction {
 
 /* Levels 2 and 3 drop menus: link or button. */
 #main_menu .linklevel2:link, #main_menu .linklevel2:visited, #main_menu .linklevel3:link, #main_menu .linklevel3:visited {
-	color: #666666;
-	border: 1px solid transparent;
+	color: #686868;
+	border-color: transparent;
 }
 
 /* Admin menu icons. */
 .linklevel2 > img {
 	margin: 0 0 0 -4px;
-
 	vertical-align: middle;
 }
 
@@ -864,13 +759,10 @@ div.bbc_footnotes .meaction {
 #main_menu .listlevel2.subsections .linklevel2:after {
 	font-family: "FontAwesome";
 	font-size: 1.286em;
-
 	position: relative;
 	top: 2px;
 	left: 0.25em;
-
 	float: right;
-
 	content: "\f0a9";
 }
 
@@ -878,13 +770,10 @@ div.bbc_footnotes .meaction {
 .admin_menu .listlevel2.subsections .linklevel2:after {
 	font-family: "FontAwesome";
 	font-size: 1.286em;
-
 	position: relative;
 	top: 2px;
 	left: 0.25em;
-
 	float: right;
-
 	content: "\f0a9";
 }
 
@@ -893,19 +782,16 @@ div.bbc_footnotes .meaction {
 #main_menu .listlevel2.subsections:hover .linklevel2 strong,
 #main_menu .listlevel3:hover .linklevel3 strong,
 #main_menu .listlevel3.subsections:hover .linklevel3 strong {
-	color: #FFFFFF;
+	color: #FEFEFE;
 }
 
 #menu_sidebar .subsections .linklevel1:after,
 #menu_sidebar .subsections:hover .linklevel1:after {
 	font-size: 1.286em;
-
 	position: absolute;
 	top: 0;
 	right: 16px;
-
 	content: "\2192";
-
 	color: #777777;
 }
 
@@ -920,19 +806,18 @@ div.bbc_footnotes .meaction {
 /* Cancel default backgrounds for sidebar. */
 #menu_sidebar .linklevel1 {
 	color: #555555;
-	border: 1px solid transparent;
+	border-color: transparent;
 	background: none;
 	box-shadow: none;
 }
 
 /* End sidebar flyout coding. */
-
 /*	$MENUS		*/
 /* ------------------------------------------------------- */
 /* General styling, basically any menu thats not the top menu. */
 .linklevel1, .linklevel1:link, .linklevel1:visited {
 	color: #555555;
-	border: 1px solid transparent;
+	border-color: transparent;
 }
 
 /* Level 1 button hover and focus effects. */
@@ -940,11 +825,10 @@ div.bbc_footnotes .meaction {
 .linklevel2:hover, .listlevel2:hover .linklevel2,
 .linklevel3:hover, .listlevel3:hover .linklevel3 {
 	text-decoration: none;
-
 	color: #555555;
-	border: 1px solid transparent;
-	border-top: 1px solid #AFAFAF;
-	border-left: 1px solid #AFAFAF;
+	border-color: transparent;
+	border-top-color: #AFAFAF;
+	border-left-color: #AFAFAF;
 	background: #F0F0F0;
 	box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.07) inset;
 }
@@ -957,27 +841,23 @@ div.bbc_footnotes .meaction {
 
 .poster li.poster_online:hover .linklevel1 {
 	color: #555555;
-	border: 1px solid #CCCCCC;
-	border-top: 1px solid #AFAFAF;
-	border-left: 1px solid #AFAFAF;
+	border-color: #CCCCCC;
+	border-top-color: #AFAFAF;
+	border-left-color: #AFAFAF;
 	background: #F0F0F0;
 	box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.07) inset;
 }
 
 .poster li.poster_online .nolink {
 	line-height: 2em;
-
 	position: relative;
-
 	display: block;
-
 	margin: 3px 1.5em;
-
 	color: #566E4B;
-	border: 1px solid #AFAFAF;
-	border-top: 1px solid #CFCFCF;
-	border-left: 1px solid #BFBFBF;
-	background: #F4F4F4 linear-gradient(to bottom, #FFFFFF, #E4E4E4);
+	border-color: #AFAFAF;
+	border-top-color: #CFCFCF;
+	border-left-color: #BFBFBF;
+	background: #F4F4F4 linear-gradient(to bottom, #FEFEFE, #E4E4E4);
 	box-shadow: 1px 1px 2px #E5E5E5;
 }
 
@@ -993,7 +873,7 @@ div.bbc_footnotes .meaction {
 
 /* Level 1 active buttons. */
 .linklevel1.active, .listlevel1:hover .active {
-	color: #FFFFFF;
+	color: #FEFEFE;
 	background: #808C9B;
 	box-shadow: 1px 1px 2px #BBBBBB;
 }
@@ -1003,21 +883,18 @@ div.bbc_footnotes .meaction {
 .linklevel1:hover .pm_indicator {
 	color: #555555;
 	background: #DDE0E3 linear-gradient(to bottom, #DDE0E3, #EFF0F3);
-	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3) inset;
+	box-shadow: 1px 1px 1px -1px rgba(0, 0, 0, 0.3) inset;
 }
 
 /* Corrections for other menus. */
 .quickbuttons .subsections:hover .linklevel1:after {
 	font-size: 1em;
-
 	top: 1.9em;
 }
 
 .subsections:hover .name.linklevel1:after {
 	font-size: 1em;
-
 	top: 1.6em;
-
 	color: #111111;
 }
 
@@ -1037,20 +914,15 @@ div.bbc_footnotes .meaction {
 
 .poster {
 	position: relative;
-
-	width: 100%;
 }
 
 .poster_noavatar {
 	font-size: 1em;
-
 	display: block;
 	float: left;
-
 	min-width: 0;
 	margin: 0;
-
-	border-bottom: 1px solid #CCCCCC;
+	border-bottom-color: #CCCCCC;
 }
 
 .poster_noavatar > a {
@@ -1065,29 +937,18 @@ div.bbc_footnotes .meaction {
 .poster_avatar img,
 .poster_area_avatar > .avatar.avatarresize {
 	display: inline-block;
-
 	width: 120px;
 	max-width: 120px;
 	height: 120px;
 	max-height: 120px;
-
 	border-radius: 50%;
-
 	object-fit: cover;
 }
 
-.poster .membergroup {
-	margin: 0 -12px;
-	padding: 3px 0;
-}
-
-.poster .name,
-.poster .membergroup,
 .poster .icons {
-	font-size: 1em;
-
 	margin: 0;
 }
+
 .postcount {
 	cursor: pointer;
 }
@@ -1095,28 +956,24 @@ div.bbc_footnotes .meaction {
 .billboard {
 	float: left;
 	overflow: auto;
-
 	box-sizing: border-box;
 	width: 33%;
 	padding-top: 2px;
-
 	text-align: center;
 }
 
 .name.linklevel1:hover {
 	text-decoration: underline;
-
 	background-color: #F0F0F0;
 }
 
 /* Levels 2 and 3: drop menu wrapper. */
 .menulevel2, .menulevel3 {
-	border: 1px solid #AFAFAF;
-	border-top: 1px solid #CFCFCF;
-	border-left: 1px solid #BFBFBF;
-	border-radius: 0;
-	background: #FFFFFF;
-	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+	border-color: #AFAFAF;
+	border-top-color: #CFCFCF;
+	border-left-color: #BFBFBF;
+	background: #FEFEFE;
+	box-shadow: var(--shadow-elevation-medium);
 }
 
 .poster .pm_indicator {
@@ -1130,14 +987,13 @@ div.bbc_footnotes .meaction {
 
 /* Levels 2 and 3 drop menus: link or button. */
 .linklevel2:link, .linklevel2:visited, .linklevel3:link, .linklevel3:visited {
-	color: #666666;
-	border: 1px solid transparent;
+	color: #686868;
+	border-color: transparent;
 }
 
 /* Admin menu icons. */
 .linklevel2 > img {
 	margin: 0 0 0 -4px;
-
 	vertical-align: middle;
 }
 
@@ -1149,83 +1005,49 @@ div.bbc_footnotes .meaction {
 /*	$BOARDICONS	*/
 /* ------------------------------------------------------- */
 .board_icon {
-	font-family: "FontAwesome";
-
-	display: block;
-	float: left;
-
-	width: 48px;
-	height: 48px;
 }
 
 .board_icon:before {
-	font-size: 2.7em;
-
-	position: relative;
-	top: 5px;
 }
 
 .on_board:before {
-	content: "\f086";
-
 	color: #4993C5;
 }
 
 .off_board:before {
-	content: "\f0e6";
-
 	color: #AAAAAA;
 }
 
 .redirect_board:before {
-	content: "\f0c1";
-
 	color: #6BA65E;
 }
 
 .on2_board:before {
-	content: "\f27b";
-
 	color: #4993C5;
 }
 
 .board_key:before {
-	font-family: "FontAwesome";
-
-	display: block;
-	float: left;
-
-	width: 24px;
-	height: 24px;
-
-	content: "";
 }
 
 .new_some_board:before {
-	content: "\f086";
-
 	color: #4993C5;
 }
 
 .new_none_board:before {
-	content: "\f0e6";
-
 	color: #AAAAAA;
 }
 
 .new_redirect_board:before {
-	content: "\f0c1";
-
 	color: #6BA65E;
 }
 
-/*	$LINKTREE	*/
-/* ------------------------------------------------------- */
-/* The navigation list (i.e. linktree) */
+/* -------------------------------------------------------
+ *	$LINKTREE
+ * -------------------------------------------------------
+ */
 /* Wrapper/background. */
 .navigate_section {
-	border: 1px solid #CCCCCC;
-	border-radius: 4px;
+	border-color: #CCCCCC;
 	background: #FCFCFC;
 	box-shadow: 1px 2px 3px #EEEEEE;
 }
@@ -1235,18 +1057,8 @@ div.bbc_footnotes .meaction {
 	color: #555555;
 }
 
-.linktree:hover a, .linktree > a:hover,
-.linktree:last-child, .linktree:last-child > a,
-.linktree:last-child > a:hover, .linktree:last-child strong {
-	text-decoration: none;
-}
-
 .linktree:hover, .linktree:last-child {
 	background: #DDE0E3;
-}
-
-.linktree:last-child {
-	font-weight: bold;
 }
 
 .linktree:hover,
@@ -1254,6 +1066,10 @@ div.bbc_footnotes .meaction {
 .linktree:hover span a {
 	color: #F0F0F0;
 	background: #838E9D;
+}
+
+.linktree {
+	border-bottom-color: transparent;
 }
 
 .linktree:hover:after, .linktree:nth-last-of-type(2):hover:after {
@@ -1268,147 +1084,144 @@ div.bbc_footnotes .meaction {
 	border-color: transparent transparent transparent #FCFCFC;
 }
 
-/* $BUTTONS	*/
-/* This section contains code for the quick buttons (quote, quick edit, etc)
-/* and for the button list class (reply, add poll, notify, etc).
-/* These classes share some styling.
-/* Declarations are amalgamated where styling is shared.
-/* ------------------------------------------------------- */
+/* -------------------------------------------------------
+ * $BUTTONS
+ * This section contains code for the quickbuttons (quote, quick edit, etc)
+ * and for the buttonlist class (reply, add poll, notify, etc).
+ * These classes share some styling.
+ * Declarations are amalgamated where styling is shared.
+ * -------------------------------------------------------
+ */
 /* Styles for the standard button lists.
-/* ------------------------------------------------------- */
 /* @todo - Save code by amalgamating common button background declarations. */
 .buttonlist li {
-	text-transform: uppercase;
-
 	color: #555555;
-	border: 1px solid #AFAFAF;
-	border-top: 1px solid #CFCFCF;
-	border-left: 1px solid #BFBFBF;
-	border-radius: 0;
-	background: #F4F4F4 linear-gradient(to bottom, #FFFFFF, #E4E4E4);
+	border-color: #AFAFAF;
+	border-top-color: #CF#CFCF;
+	border-left-color: #BFBFBF;
+	background: #F4F4F4 linear-gradient(to bottom, #FEFEFE, #E4E4E4);
 	box-shadow: 1px 1px 2px #E5E5E5, 0 -1px 0 #E4E4E4 inset;
 }
 
 /* The active one */
 .buttonlist li a.active {
-	color: #FFFFFF;
+	color: #FEFEFE;
 	background: #838E9D;
 	box-shadow: 1px 1px 2px #DDE0E3, 0 -1px 0 #838E9D inset;
 }
 
 /* The quick buttons. */
-/* ------------------------------------------------------- */
 .quickbuttons .modified {
-	color: #666666;
+	color: #686868;
 }
 
 /* Cancel generic border-radius. */
-.quickbuttons .linklevel1 {
-	margin: 0;
-
+.quickbuttons .linklevel1, .quickbuttons .inline_mod_check, .quickbuttons .quickmod_check {
 	color: #555555;
-	border: 1px solid #AFAFAF;
-	border-top: 1px solid #CFCFCF;
-	border-left: 1px solid #BFBFBF;
-	border-radius: 0;
-	background: #F4F4F4 linear-gradient(to bottom, #FFFFFF, #E4E4E4);
+	border-color: #AFAFAF;
+	border-top-color: #CFCFCF;
+	border-left-color: #BFBFBF;
+	background: #F4F4F4 linear-gradient(to bottom, #FEFEFE, #E4E4E4);
 	box-shadow: 1px 1px 2px #E5E5E5, 0 -1px 0 #E4E4E4 inset;
 }
 
 .quickbuttons .linklevel1:hover {
-	border: 1px solid #AFAFAF;
+	border-color: #AFAFAF;
 	box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.07) inset;
 }
 
 /* Radius left end of the first (Quote) button. */
 .linklevel1.quote_button {
-	border-radius: 0;
 }
 
 /* Radius right end of the last button. */
 .linklevel1.post_options, .linklevel1.remove_button {
-	border-radius: 0;
 }
 
 /* Single buttons get all corners rounded. */
 .follow_ups .linklevel1, #topic_summary .linklevel1 {
-	border-radius: 0;
 }
 
-/*	$PAGELINKS	*/
-/* ------------------------------------------------------- */
-.selectbox, .pagelinks {
+/* -------------------------------------------------------
+ *	$PAGELINKS
+ * -------------------------------------------------------
+ */
+ .selectbox, .pagelinks {
 	color: #555555;
 }
 
 .pagelinks .navPages {
 	color: #555555;
-	border: 1px solid #AFAFAF;
-	border-top: 1px solid #BBBBBB;
+	border-color: #AFAFAF;
+	border-top-color: #BBBBBB;
 	background-image: linear-gradient(to bottom, #FCFCFC 0%, #E5E5E5 100%);
 }
 
 .pagelinks .navPages:hover, .pagelinks .current_page {
-	text-decoration: none;
 	/* @todo - Simplify. */
-
 	color: #555555;
-	border: 1px solid #CCCCCC;
-	border-top: 1px solid #AFAFAF;
-	border-left: 1px solid #AFAFAF;
+	border-color: #CCCCCC;
+	border-top-color: #AFAFAF;
+	border-left-color: #AFAFAF;
 	background: #F0F0F0;
 	box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.07) inset;
 }
 
 .pagelinks :first-child {
-	border-radius: 0;
 }
 
 .pagelinks :last-child {
-	border-radius: 0;
 }
 
 /* our buddies &laquo; &raquo; */
 .small_pagelinks {
-	margin-left: 1em;
 }
 
 .small_pagelinks li a.navPages {
-	line-height: 1.5em;
+	border-color: #CCCCCC;
+}
 
-	margin: 2px 2px 0;
-	padding: 0 4px;
+/* Globally accessible top/bottom links. */
+#gotop, #gobottom {
+	opacity: 0.2;
+	color: #EEEEEE;
+	border-color: #222222;
+	background: #EEEEEE;
+}
 
-	border: 1px solid rgb(204, 204, 204);
+#gobottom {
+}
+
+#gotop:hover, #gobottom:hover {
+	opacity: 1;
+	color: #444444;
 }
 
 /* Skip navigation link. */
 #top {
-	border: 4px solid #313131;
-	border-radius: 0;
-	background: #FFFFFF;
+	border-color: #313131;
+	background: #FEFEFE;
 }
 
-/*	$TABLES		*/
-/* ------------------------------------------------------- */
-
-/* @todo */
+/* -------------------------------------------------------
+ *	$TABLES
+ * -------------------------------------------------------
+ */
 /* A general table class. */
 .table_grid {
-	border: 1px solid #DDDDDD;
-	border-top: none;
+	border-color: #DDDDDD;
 }
 
 .table_head > th {
 	color: #555555;
 	border-top: 2px solid #DDDDDD;
 	border-bottom: 2px solid #DDDDDD;
-	background: #FFFFFF;
+	background: #FEFEFE;
 }
 
 /* Basic cells. */
 .table_grid td, .letterspacing {
-	border-bottom: 1px solid #CCCCCC;
+	border-bottom-color: #CCCCCC;
 }
 
 /* Subtle zebra striping for rows. */
@@ -1417,67 +1230,62 @@ div.bbc_footnotes .meaction {
 }
 
 .table_grid .standard_row {
-	background: #FFFFFF;
+	background: #FEFEFE;
 }
 
-/* Legacy highlight color, for selected membergroups etc. */
-/* Used by JS to show a selected item. Still used in manage languages */
+/* Legacy highlight color, for selected membergroups etc.
+ * Used by JS to show a selected item. Still used in manage languages
+ */
 .table_grid .standard_row.highlight2 {
 	color: #555555;
 	background: #D1E1EF;
 }
 
 /* For Errors.template.php. */
-/* ------------------------------------------------------- */
 #errorfile_table .current {
-	border: 1px solid #444444;
+	border-color: #444444;
 	background: #FFF5CD;
 }
 
-/*	$BOARDS		*/
-/* ------------------------------------------------------- */
-/* Set up some general framing classes. @todo */
-/*    .forum_category for board index/sub-boards. */
-/*    .forumposts for thread pages and recent posts, etc. */
-/*    .content_category for general divisions around the place. */
-/* All styled the same in default variant, but available for fun and games. */
+/* -------------------------------------------------------
+ * $SETTINGS
+ * -------------------------------------------------------
+ */
+/* Lists - settings use these a lot. */
+.settings label {
+	color: #585858;
+}
 
+/* -------------------------------------------------------
+ * $BOARDS
+ * -------------------------------------------------------
+ * Set up some general framing classes. @todo
+ *    .forum_category for board index/sub-boards.
+ *    .forumposts for thread pages and recent posts, etc.
+ *    .content_category for general divisions around the place.
+ * All styled the same in default variant, but available for fun and games.
+ */
 /* The board categories and newsfader - some shared styling. */
 .forum_category, .forumposts, .content_category {
-	border-radius: 0;
 	background: #DEEDDA;
 	box-shadow: 1px 2px 3px #EEEEEE;
 }
 
-.topic_icons .fred {
-	position: relative;
-	top: -8px;
-	left: -4px;
 
-	padding: 0;
-}
-
-/* @todo - Clean this up, once new classes are assigned to old windowbg stuffz. */
 .board_row, .childboard_row, .forumposts > div, .forumposts > li,
 .content_category > div, .content_category > li {
-	border: 1px solid #CFCFCF;
-	background: #FFFFFF;
+	border-color: #CFCFCF;
+	background: #FEFEFE;
 }
 
-.forumposts .content, .forumposts .windowbg, .forumposts .windowbg2 {
-	margin-top: 2px;
-}
-
-.board_row.parent_board {
-	border-bottom: none;
+.board_row .parent_board {
 }
 
 .childboard_row {
-	border-top: none;
 }
 
 .board_latest {
-	border-left: 1px solid #CCCCCC;
+	border-left-color: #CCCCCC;
 }
 
 .board_name > a {
@@ -1497,49 +1305,29 @@ div.bbc_footnotes .meaction {
 }
 
 .childboards {
-	border-top: 1px solid #CCCCCC;
+	border-top-color: #CCCCCC;
 }
 
 .childboard_row h4, .board_new_posts {
-	font-weight: 700;
-
 	color: #555555;
 }
 
 /* Styles for the info center on the board index. */
 .ic_section_header {
-	border-bottom: 1px solid #DDDDDD;
+	border-bottom-color: #DDDDDD;
 }
 
 .ic_section_header > a {
 	color: #333333;
 }
 
-#ic_recentposts li, #ps_recentposts li, #ps_recenttopics li {
-	border-top: 1px solid #DDDDDD;
+#ic_recentposts li {
+	border-top-color: #DDDDDD;
 }
 
-#ic_recentposts li:first-child {
-	border-top: none;
-}
-
-.ic_recent .ic_recent_avatar {
-	margin: 4px 0;
-}
-
-.ic_recent_avatar, .ic_recent_avatar > img {
-	float: left;
-
-	width: 30px;
-	height: 30px;
-
-	border-radius: 50%;
-
-	object-fit: cover;
-}
-
-.ic_recent > div {
-	margin: auto 0 auto 34px;
+#ps_recentposts li, #ps_recenttopics li,
+#ps_recentposts td, #ps_recenttopics td {
+	border-top-color: transparent;
 }
 
 .recentpost > strong > a, .inline > strong > a {
@@ -1547,44 +1335,29 @@ div.bbc_footnotes .meaction {
 }
 
 #expanded_pages_container a {
-	background: #FFFFFF;
+	background: #FEFEFE;
 }
 
 /* The board description and who-is-viewing stuff. */
 #description_board {
-	border: none;
 	background: #E4E4E4;
 	box-shadow: none;
 }
 
-#description_board h2:before {
-	font-family: "FontAwesome";
-	font-size: 1.1em;
-
-	padding-right: 0.5em;
-
-	content: "\f07b";
-}
-
-
 #description_board .generalinfo, #forumposts .generalinfo {
-	border: 1px solid #DDDDDD;
-	border-bottom: 1px solid #CCCCCC;
-	background: #FFFFFF;
-}
-
-#description_board .generalinfo {
-	border: none;
+	border-color: #DDDDDD;
+	border-bottom-color: #CCCCCC;
+	background: #FEFEFE;
 }
 
 .topic_listing {
 	background: #E4E4E4;
-	box-shadow: 1px 2px 4px #EEEEEE;
+	box-shadow: var(--shadow-elevation-low);
 }
 
 .topic_listing > li {
-	border: 1px solid #DDDDDD;
-	border-bottom: 1px solid #CCCCCC;
+	border-color: #DDDDDD;
+	border-bottom-color: #CCCCCC;
 }
 
 .basic_row:nth-child(odd) {
@@ -1592,7 +1365,7 @@ div.bbc_footnotes .meaction {
 }
 
 .basic_row:nth-child(even) {
-	background: #FFFFFF;
+	background: #FEFEFE;
 }
 
 .topic_sorting_row {
@@ -1600,19 +1373,15 @@ div.bbc_footnotes .meaction {
 }
 
 #sort_by {
-	border: 2px solid #D1D1D1;
-	border-bottom: none;
-	border-radius: 8px 8px 0 0;
+	border-color: #D1D1D1;
 }
 
 #sort_by.topic_sorting_recent {
-	border: 1px solid #D1D1D1;
-	border-bottom: none;
+	border-color: #D1D1D1;
 }
 
 .sort_by_container {
-	border: 1px solid #CCCCCC;
-	border-radius: 0;
+	border-color: #CCCCCC;
 }
 
 .topic_name h4 a {
@@ -1628,15 +1397,15 @@ div.bbc_footnotes .meaction {
 }
 
 .sticky_row .topic_name h4 a.new_posts, .locked_row.sticky_row .topic_name h4 a.new_posts, .locked_row .topic_name h4 a.new_posts {
-	color: #FFFFFF;
+	color: #FEFEFE;
 }
 
 .topic_stats {
-	color: #666666;
+	color: #686868;
 }
 
 .qaction_row {
-	background: #FFFFFF;
+	background: #FEFEFE;
 }
 
 .approvetopic_row, .approve_row {
@@ -1652,8 +1421,7 @@ div.bbc_footnotes .meaction {
 }
 
 #topic_icons {
-	border: 1px solid #DDDDDD;
-	border-radius: 0;
+	border-color: #DDDDDD;
 }
 
 .jump_to_header {
@@ -1669,38 +1437,39 @@ div.bbc_footnotes .meaction {
 
 /*	$TOPICS		*/
 /* ------------------------------------------------------- */
-
 /* The display template (topic view).
 /* Poll vote options */
 #poll_options .options {
-	border-top: 1px solid #9999AA;
+	border-top-color: #9999AA;
 }
 
 /* Poll results */
 #poll_options .options .percentage {
-	background: #FFFFFF;
+	background: #FEFEFE;
+}
+
+.poll_gradient {
+	border-color: #111111;
+	background: #5BA048;
+	background-image: linear-gradient(to bottom, #60BC78 0%, #27A348 100%);
 }
 
 /* On to the posts */
 .forumposts {
-	border-radius: 0;
 	background: #E2E2E2;
-	box-shadow: 1px 2px 4px #EEEEEE;
+	box-shadow: var(--shadow-elevation-low);
 }
 
 /* Poster and postarea + moderation area underneath */
-.forumposts, .forumposts .windowbg, .forumposts .windowbg2,
-.forumposts .approvebg, .forumposts .approvebg2, .core_posts {
-	border: 1px solid #DDDDDD;
-	border-bottom: 1px solid #CCCCCC;
-	background: #FFFFFF;
+.forumposts, .forumposts .post_wrapper, .forumposts .approvebg, .forumposts .approvebg2, .core_posts {
+	border-color: #DDDDDD;
+	border-bottom-color: #CCCCCC;
+	background: #FEFEFE;
 }
 
 .poster_container {
-	padding: 0.25em;
-
-	border: 1px solid #F0F0F0;
-	box-shadow: 0 1px 4px #EEEEEE;
+	border-color: #F0F0F0 !important;
+	box-shadow: var(--shadow-elevation-low);
 }
 
 /* Stripping for the posts */
@@ -1709,7 +1478,7 @@ div.bbc_footnotes .meaction {
 }
 
 .post_wrapper:nth-of-type(even) {
-	background: #FFFFFF;
+	background: #FEFEFE;
 }
 
 /* Colors for background of posts requiring approval */
@@ -1718,147 +1487,214 @@ div.bbc_footnotes .meaction {
 }
 
 .poster .name {
-	font-size: 1.143em;
-
 	color: #46823C;
-	border-bottom: 1px solid #CCCCCC;
+	border-bottom-color: #CCCCCC;
 }
 
 /* Drop menu for the poster info. */
 .poster .listlevel1.sfhover .menulevel2, .poster .listlevel1:hover .menulevel2 {
-	width: 100%;
-
-	background: #FFFFFF;
+	background: #FEFEFE;
 }
-
-
 
 .poster .listlevel2 {
-	width: 100%;
-
-	background: #FFFFFF;
-}
-
-.poster.billboard {
-	margin-top: 5px;
+	background: #FEFEFE;
 }
 
 .report_seperator {
-	max-width: 14em;
-
-	border-bottom: 1px solid #EEEEEE;
+	border-bottom-color: #EEEEEE;
 	background: #BBBBBB;
 }
 
 /* @todo - Save code by amalgamating common button background declarations. */
 .poster_online .linklevel1 {
-	border: 1px solid #AFAFAF;
-	border-top: 1px solid #CFCFCF;
-	border-left: 1px solid #BFBFBF;
-	border-radius: 0;
+	border-color: #AFAFAF;
+	border-top-color: #CFCFCF;
+	border-left-color: #BFBFBF;
 	background: #F4F4F4 linear-gradient(to bottom, #FCFCFC 0%, #E5E5E5 100%);
-	box-shadow: 1px 1px 2px #EEEEEE;
+	box-shadow: var(--shadow-elevation-low);
 }
 
 .poster_online .linklevel1:hover {
-	text-decoration: none;
-
-	border: 1px solid #CCCCCC;
-	border-top: 1px solid #AAAAAA;
-	border-left: 1px solid #BBBBBB;
+	border-color: #CCCCCC;
+	border-top-color: #AAAAAA;
+	border-left-color: #BBBBBB;
 	background: #F0F0F0;
-	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.07) inset;
+	box-shadow: var(--shadow-elevation-low);
 }
 
 .post_subject {
 	color: #555555;
 }
 
-/* @todo - Move strong tag outside anchor. Will save css. */
 .keyinfo h5 a, .keyinfo h5 a strong {
 	color: #46823C;
 }
 
-.inner {
-	border-top: 1px solid #BFBFBF;
+.inner, .messageContent {
+	border-top-color: #BFBFBF;
+}
+
+.keyinfo {
+	border-bottom-color: #BFBFBF;
 }
 
 /* All the signatures used in the forum. */
 .signature, .attachments, .custom_fields_above_signature {
-	border-top: 1px solid #BFBFBF;
+	border-top-color: #BFBFBF;
+}
+
+/* attachment details below thumbnails */
+.attachment_name, .attachment_details {
+	color: #444444 !important;
+	border: solid 1px transparent;
+	background: transparent !important;
+}
+
+.attachment_name {
+	border-bottom: none;
+}
+
+.attachment_details {
+	border-top: none;
+	border-radius: 0 0 .5em .5em;
+}
+
+.generic_border .attachment_name {
+	border: 1px solid transparent;
+}
+
+/* Poor Mans lightbox support */
+#elk_lightbox {
+	background: rgba(0, 0, 0, .5);
+}
+
+#elk_lb_content.expand {
+	border-color: #FEFEFE;
+}
+
+#elk_lb_expand,
+#elk_lb_next,
+#elk_lb_prev {
+	border-color: #444444;
+}
+
+#elk_lb_expand:before,
+#elk_lb_next:before,
+#elk_lb_prev:before {
+	color: #2A2825;
+}
+
+.new_post_separator:after {
+	border-color: #E4E4E4 transparent;
+}
+
+.new_post_separator:before {
+	border-color: #BBBBBB transparent;
+}
+
+.new_post_separator {
+	display: block;
+	overflow: visible;
+}
+
+#elk_lb_expand {
+	background: #FEFEFE;
+}
+
+#elk_lb_next, #elk_lb_prev {
+	background: #FEFEFE;
 }
 
 /* Used by video embed JS when autolinking video links */
 .elk_video {
-	border: #27A348 1px solid;
-	border-top: 0;
+	border-color: #27A348;
 }
 
 .elk_videoheader {
-	border: #27A348 1px solid;
+	border-color: #27A348;
 }
 
 .requiredfield:before {
-	content: " ";
-
-	border: 10px solid transparent;
+	border-color: transparent;
 	border-bottom-color: #437837;
 }
 
 .requiredfield {
-	color: #FFFFFF;
-	border: 1px solid #2D5024;
+	color: #FEFEFE;
+	border-color: #2D5024;
 	border-right-color: #5AA049;
 	border-bottom-color: #5AA049;
 	background: #437837;
 }
 
-/*	$EDITOR		*/
-/* ------------------------------------------------------- */
-
+/* -------------------------------------------------------
+ *	$EDITOR
+ * -------------------------------------------------------
+ */
 /* The main post editor section. */
 #preview_body {
-	border: 1px solid #DDDDDD;
-	border-bottom: 1px solid #CCCCCC;
-	background: #FFFFFF;
+	border-color: #DDDDDD;
+	border-bottom-color: #CCCCCC;
+	background: #FEFEFE;
 }
 
 #postAdditionalOptionsHeader, #postDraftOptionsHeader {
-	border-radius: 5px 5px 0 0;
 }
 
 #postAdditionalOptions, #postDraftOptions {
-	border: 1px solid #CCCCCC;
-	border-top: none;
-	border-radius: 0;
+	border-color: #CCCCCC;
 	background: #FDFDFD;
 }
 
 #postAdditionalOptionsNC {
-	border: 1px solid #CCCCCC;
-	border-radius: 0;
+	border-color: #CCCCCC;
 	background: #FDFDFD;
 }
 
 .drop_area {
 	color: #444444;
 	border: solid 1px #CCCCCC;
-	background-color: rgb(230, 230, 230);
+	background-color: #E6E6E6;
 }
 
 .statusbar {
-	border-top: 1px solid #A9CCD1;
-	border-bottom: 1px solid #A9CCD1;
-	background: rgb(241, 241, 241);
+	border-top-color: #A9CCD1;
+	border-bottom-color: #A9CCD1;
+	background: #F1F1F1;
+}
+
+.statusbar .insertoverlay {
+	border-color: #CCCCCC;
+}
+
+.insertoverlay .tabs li {
+	border-bottom-color: #CCCCCC;
+}
+
+.insertoverlay .tabs li.active {
+	background-color: #E4E4E4;
+}
+
+.statusbar .insertoverlay .button {
+	color: #FAFAFA;
+	background: #008000;
 }
 
 .progressBar {
-	border: 1px solid #DDDDDD;
+	border-color: #DDDDDD;
 }
 
 .progressBar div {
-	color: #FFFFFF;
+	color: #FEFEFE;
 	background-color: green;
+}
+
+.abort {
+	border-color: #FF1310;
+}
+
+.share {
+	background-color: #008000;
 }
 
 .drop_attachments_error {
@@ -1866,33 +1702,32 @@ div.bbc_footnotes .meaction {
 }
 
 #postMoreOptions, #postAttachment, #postAttachment2 {
-	border-top: 1px solid #CCCCCC;
+	border-top-color: #CCCCCC;
 }
 
 #postDraftOptions .settings dd, #postDraftOptions .settings dt {
-	border-top: 1px solid #E4E4E4;
+	border-top-color: #E4E4E4;
 }
 
+/* ------------------------------------------------------- */
 /*	$MODERATE	*/
 /* ------------------------------------------------------- */
-
 .split_messages .post {
-	border-top: 1px solid #FFFFFF;
+	border-top-color: #FEFEFE;
 }
 
 /* -------------------------------------------------------
  * $TABS
  * -------------------------------------------------------
  */
-
 .ui-tabs .ui-tabs-panel {
 	border-color: #DDDDDD;
 	border-top-color: #CCCCCC;
-	background: #FFFFFF none repeat scroll 0 0;
+	background: #FEFEFE none repeat scroll 0 0;
 }
 
 .ui-tabs .ui-tabs-nav li {
-	color: #FFFFFF;
+	color: #FEFEFE;
 	border: 1px #CCCCCC solid;
 	border-radius: 0;
 }
@@ -1905,21 +1740,20 @@ div.bbc_footnotes .meaction {
 }
 
 .ui-tabs .ui-tabs-nav .ui-state-default .ui-tabs-anchor {
-	background: linear-gradient(to bottom, #FFFFFF, #E4E4E4) repeat scroll 0 0 #F4F4F4;
+	background: linear-gradient(to bottom, #FEFEFE, #E4E4E4) repeat scroll 0 0 #F4F4F4;
 }
 
 .ui-tabs .ui-tabs-nav .ui-state-active .ui-tabs-anchor,
 .ui-tabs .ui-tabs-nav .ui-state-active {
 	font-weight: bold;
-
-	color: #FFFFFF;
+	color: #FEFEFE;
 	border-radius: 0;
 	background: #808C9B;
 	box-shadow: 1px 1px 2px #BBBBBB;
 }
 
 .ui-tabs .ui-tabs-nav li.ui-state-hover .ui-tabs-anchor {
-	background: linear-gradient(to bottom, #E4E4E4, #FFFFFF) repeat scroll 0 0 #F4F4F4;
+	background: linear-gradient(to bottom, #E4E4E4, #FEFEFE) repeat scroll 0 0 #F4F4F4;
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0.3) inset;
 }
 
@@ -1934,79 +1768,80 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  * $PROFILE
  * -------------------------------------------------------
  */
-
-/* Profile colors */
-
-.ui-tabs .ui-tabs-panel {
-	border: 1px solid #DDDDDD;
-	border-top: 1px #CCCCCC solid;
-	background: none repeat scroll 0 0 #FFFFFF;
-}
-
-#profilecenter, #profile_attachments, #unwatched_topics {
-	border: 1px solid #CCCCCC;
-	border-radius: 0;
+#profile_attachments, #profilecenter, #unwatched_topics {
+	border-color: #CCCCCC;
 	background: #EFEFEF;
 	box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
 }
 
-#profilecenter .content, #profilecenter .windowbg, #profilecenter .windowbg2,
-#profile_attachments .windowbg, #profile_attachments .windowbg2,
-#unwatched_topics .windowbg, #unwatched_topics .windowbg2 {
-	border: none;
-	background: #FFFFFF;
+.attachment.generic_border {
+	border-color: #CCCCCC;
+	box-shadow: var(--shadow-elevation-low);
 }
 
+#profilecenter .content {
+	border: none;
+	background: #FEFEFE;
+}
+
+.content_noframe {
+	box-shadow: none;
+}
 .profileblock {
-	background: none repeat scroll 0 0 #FFFFFF;
+	background: none repeat scroll 0 0 #FEFEFE;
 }
 
 .profileblock ul li:not(:first-child):before {
 	content: "\20\7C\20";
 }
 
+/* Profile colors */
+.ui-tabs .ui-tabs-panel {
+	border-color: #DDDDDD;
+	border-top: 1px #CCCCCC solid;
+	background: none repeat scroll 0 0 #FEFEFE;
+}
 #detailedinfo dt, #tracking dt, .profileblock dt {
 	color: #555555;
 }
 
+
 .activity_stats li span {
-	border: 1px solid #555555;
-	border-right-style: none;
-	border-left-style: none;
+	border-color: #555555;
 	background: #EEEEEE;
 }
 
 .activity_stats li .bar {
-	border: 1px solid #CCCCCC;
-	border-bottom: none;
-	background: #FFFFFF;
+	border-color: #CCCCCC;
+	background: #FEFEFE;
 }
 
 .activity_stats li .bar div {
 	background: #808C9B linear-gradient(to bottom, #363D47 0%, #808C9B 100%);
 }
 
+.profile_pie {
+	background: url(../../images/stats_pie.png);
+}
+
 .topic_details {
-	border-bottom: 1px solid #999999;
+	border-bottom-color: #999999;
 }
 
 .ignoreboards a {
-	border-bottom: 1px solid #C4C4C4;
+	border-bottom-color: #C4C4C4;
 }
 
 .ignoreboards a:hover {
-	text-decoration: none;
-
-	border-bottom: 1px solid #555555;
-}
-
-.vcard, .profile_attachment {
-	border: 1px solid #CCCCCC;
-	border-radius: 0;
+	border-bottom-color: #555555;
 }
 
 .attachment_title {
-	border-bottom: 1px solid #CCCCCC;
+	border-bottom-color: #CCCCCC;
+}
+
+.attachment_block {
+	box-shadow: var(--shadow-elevation-medium);
 }
 
 #warndiv .ui-widget-header {
@@ -2033,13 +1868,12 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  * $PERSONAL
  * -------------------------------------------------------
  */
-
 #personal_messages .capacity_bar {
-	border: 1px solid #ADADAD;
+	border-color: #ADADAD;
 }
 
 #personal_messages .capacity_bar span {
-	border-right: 1px solid #ADADAD;
+	border-right-color: #ADADAD;
 }
 
 #personal_messages .capacity_bar .empty {
@@ -2062,8 +1896,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  * $CALENDAR
  * -------------------------------------------------------
  */
-
-/* Calendar colors for birthdays, events and holidays */
 .birthday {
 	color: #920AC4;
 }
@@ -2077,31 +1909,27 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 }
 
 .calendar_table {
-	border-top: 1px solid #DDDDDD;
+	border-top-color: #DDDDDD;
 	background: #DDDDDD;
 }
 
 .calendar_table th, .calendar_table td {
-	background: #FFFFFF;
+	background: #FEFEFE;
 }
 
 /* Used to indicate the current day. */
 #main_grid .calendar_today, #month_grid .calendar_today {
-	border: 1px solid #AAAAAA;
+	border-color: #AAAAAA;
 	background: #EBFFD8;
 }
 
 #main_grid .weeks {
-	font-size: 1em;
-	font-weight: normal;
 }
 
 #main_grid .weeks a:hover {
-	text-decoration: none;
 }
 
 #main_grid .days {
-	vertical-align: top;
 }
 
 .weeklist {
@@ -2109,16 +1937,15 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 }
 
 .weeklist > li {
-	border: 1px solid #DDDDDD;
-	background: #FFFFFF;
+	border-color: #DDDDDD;
+	background: #FEFEFE;
 }
 
 .weekdays {
-	border-left: 2px solid #DDDDDD;
+	border-left-color: #DDDDDD;
 }
 
 .weeklist h4 a:hover {
-	text-decoration: none;
 }
 
 .modify_event {
@@ -2126,54 +1953,46 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 }
 
 .hidelink {
-	font-style: italic;
 }
 
 /* Add a background that fits with the calendar. */
 #calendar_navigation {
-	border: 1px solid #DDDDDD;
-	border-top: none;
+	border-color: #DDDDDD;
 }
 
 /* -------------------------------------------------------
  *	$HELP
  * -------------------------------------------------------
  */
-
 #helpmain {
-	border: 1px solid #CCCCCC;
-	border-radius: 0;
+	border-color: #CCCCCC;
 	box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Styles for the tooltips. */
 .tooltip {
-	border: 1px solid #AAAAAA;
-	border-radius: 0;
-	background: #FFFFFF;
+	border-color: #AAAAAA;
+	background: #FEFEFE;
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* The darkened background for help pop-ups. */
 .popup_container {
-	/* Flat colour fallback will be bad (visually), ie8 only though. */
-	background: rgb(0, 0, 0);
 	background: rgba(0, 0, 0, 0.4);
 }
 
 /* The actual pop-up wrapper. */
 .popup_window {
-	border: 1px solid #777777;
-	border-radius: 0;
+	border-color: #777777;
 	background-color: #FAFAFA;
+	background-clip: padding-box;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
 }
 
 /* The text content, hopefully helpful. */
 .popup_content {
-	border: 1px solid #BBBBBB;
-	border-bottom: 1px solid #CCCCCC;
-	border-radius: 0;
+	border-color: #BBBBBB;
+	border-bottom-color: #CCCCCC;
 	background: #F5F5F5;
 	box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.15);
 }
@@ -2182,77 +2001,63 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  *	$SEARCH
  * -------------------------------------------------------
  */
-
 #mlsearch_options {
-	border: 1px solid #DDDDDD;
-	border-radius: 0;
+	border-color: #DDDDDD;
 	background: #FAFAFA;
 }
 
 .search_results_posts {
-	background: #FFFFFF;
+	background: #FEFEFE;
 }
 
 .search_results_posts .topic_body {
-	border-top: 1px solid #CCCCCC;
-	box-shadow: 0 1px 0 #FFFFFF inset;
+	border-top-color: #CCCCCC;
+	box-shadow: 0 1px 0 #FEFEFE inset;
 }
 
 .search_results_posts > li {
-	border-bottom: 4px solid #DDDDDD;
+	border-bottom-color: #DDDDDD;
 }
 
 /* -------------------------------------------------------
  *	$MEMBERLIST
  * -------------------------------------------------------
  */
-
 .mlist .mlist_header div {
-	border-top: none;
 }
 
 .mlist li div, .whos_online dt div, .whos_online dd:nth-child(odd) div {
-	border-top: 1px solid #CCCCCC;
-	border-bottom: 1px solid #CCCCCC;
-	background-color: #FFFFFF;
+	border-top-color: #CCCCCC;
+	border-bottom-color: #CCCCCC;
+	background-color: #FEFEFE;
 }
 
 .mlist li.alternate_row div, .whos_online dd:nth-child(even) div {
-	border-top: 1px solid #CCCCCC;
-	border-bottom: 1px solid #CCCCCC;
+	border-top-color: #CCCCCC;
+	border-bottom-color: #CCCCCC;
 	background-color: #FAFAFA;
 }
 
 .mlist li div:first-child {
-	border-left: 1px solid #CCCCCC;
-}
-
-/* this is the avatar */
-.mlist li div:first-child > a {
-	display: inline-block;
-
-	width: 3.4em;
-	height: 3.4em;
+	border-left-color: #CCCCCC;
 }
 
 .mlist li div:last-child {
-	border-right: 1px solid #CCCCCC;
+	border-right-color: #CCCCCC;
 }
 
 .letter_row > h3 {
-	border: 1px solid #CCCCCC;
-	border-radius: 0;
+	border-color: #CCCCCC;
 }
 
 /* -------------------------------------------------------
  *	$LOGIN
  * -------------------------------------------------------
  */
-
 .coppa_contact {
 	color: #555555;
-	border: 1px solid #555555;
-	background: #FFFFFF;
+	border-color: #555555;
+	background: #FEFEFE;
 }
 
 .valid_input {
@@ -2267,11 +2072,10 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  *	$BOXES
  * -------------------------------------------------------
  */
-
 /* Lotsa boxes. */
 .description, .information, .warningbox, .successbox, .infobox, .errorbox {
-	border: 1px solid #CCCCCC;
-	background: #FFFFFF;
+	border-color: #CCCCCC;
+	background: #FEFEFE;
 }
 
 /* Information boxes. */
@@ -2280,27 +2084,31 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 }
 
 .warningbox {
-	border-top: 1px solid #FFD324;
-	border-bottom: 1px solid #FFD324;
+	border-top-color: #FFD324;
+	border-bottom-color: #FFD324;
 	background: #FFF6CA url(../../images/profile/warning_moderate.png) 10px 50% no-repeat;
 }
 
 .successbox {
-	border-top: 1px solid green;
-	border-bottom: 1px solid green;
+	border-top-color: green;
+	border-bottom-color: green;
 	background: #EEFFEE url(../../images/icons/field_valid.png) 10px 50% no-repeat;
 }
 
 .infobox {
-	border-top: 1px solid #3A87AD;
-	border-bottom: 1px solid #3A87AD;
+	border-top-color: #3A87AD;
+	border-bottom-color: #3A87AD;
 	background: #D9EDF7 url(../../images/icons/quick_sticky.png) 10px 50% no-repeat;
 }
 
 .errorbox {
-	border-top: 2px solid #CC3344;
-	border-bottom: 2px solid #CC3344;
+	border-top-color: #CC3344;
+	border-bottom-color: #CC3344;
 	background: #FFEEEE url(../../images/profile/warning_mute.png) 10px 50% no-repeat;
+}
+
+.border_error {
+	border-color: #FF0000 !important;
 }
 
 .warningtext {
@@ -2327,17 +2135,14 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  *	$PROGRESS
  * -------------------------------------------------------
  */
-/* Styles for the progress bar */
 .progress_bar {
-	border: 1px solid black;
-	border-radius: 0;
+	border-color: black;
 	background: white;
 	box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .progress_bar .full_bar {
 	color: black;
-	border-radius: 0;
 }
 
 .progress_bar .green_percent {
@@ -2353,64 +2158,56 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  * -------------------------------------------------------
  */
 .statistics .category_header {
-	border: none;
-	border-bottom: 2px solid #CCCCCC;
+	border-bottom-color: #CCCCCC;
 	background: none;
 	text-shadow: none;
 }
 
 .statistics .flow_hidden, #forum_history .flow_hidden {
-	border: 1px solid #DDDDDD;
+	border-color: #DDDDDD;
 	background: #FEFEFE;
 }
 
 .stats.floatleft {
-	border-right: 1px solid #CCCCCC;
+	border-right-color: #CCCCCC;
 }
 
 #top_row .stats dd, .statsbar {
-	border: 1px solid #AAAAAA;
-	background: #FFFFFF;
+	border-color: #AAAAAA;
+	background: #FEFEFE;
 }
 
 /* Methinks topic links, etc need a little more oomph next to the orange bars. */
 #top_row .stats dd {
-	border: 1px solid transparent;
+	border-color: transparent;
 	background: none;
 }
 
+/* Status Bar Green */
 .statsbar .bar {
 	background: #47B263 linear-gradient(to bottom, #6F8CA5 0%, #9FBFDF 100%);
 }
 
 /* Absolute positioning stops these breaking the bars on narrow screens. */
 .statsbar .righttext {
-	background: #FFFFFF;
+	background: #FEFEFE;
 }
 
 #stats {
-	border: none;
 }
 
-#recentposts .inner blockquote {
-	overflow: hidden;
-
-	height: 5em;
+#like_post_stats_overlay {
+	background: rgba(0, 0, 0, .5);
 }
 
 /* floating error box currently used by like functionality */
 .floating_error {
-	font-size: 15px;
-
 	color: #404040;
-	border: solid 1px #E4E4E4;
-	border-radius: 0;
-	background: #FFFFFF;
-	background: rgba(255, 255, 255, 1);
+	border-color: #E4E4E4;
+	background: #FEFEFE;
 }
 
 .floating_error .error_heading {
-	font-weight: bold;
 }
 
 .floating_error .error_msg {
@@ -2418,31 +2215,16 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 }
 
 .floating_error .error_btn {
-	font-size: 16px;
-	font-weight: bold;
-
 	color: #157DFB;
-	border-top: solid 1px #D6D6D6;
+	border-top-color: #D6D6D6;
 }
 
 .floating_error .error_btn:hover {
-	cursor: pointer;
 }
 
 /* Panel Tab/button */
 .paneltab {
-	position: absolute;
-	z-index: 1;
-	right: 120px;
-
-	padding: 0 10px;
-
-	text-align: center;
-	white-space: nowrap;
-
-	border: 2px solid #CCCCCC;
-	border-top: none;
-	border-radius: 0;
+	border-color: #CCCCCC;
 	background: #4A4E51;
 }
 
@@ -2451,100 +2233,105 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 }
 
 .paneltab a.open, .paneltab a.close {
-	display: block;
-
-	width: 100px;
-
-	cursor: pointer;
-
 	color: #F0F0F0;
 }
 
-/* sliding panel */
-#toppanel {
-	position: absolute;
-	z-index: 999;
-	top: 0;
-
-	width: 100%;
-	margin-right: auto;
-	margin-left: auto;
-
-	text-align: center;
+#panel {
+	border-color: #CCCCCC;
+	background: #FAFAFA;
+}
+/* -------------------------------------------------------
+ *	$ICONS
+ * -------------------------------------------------------
+ *
+ * Icons. The color file is the place for this since we
+ * can't style embedded material.
+ *
+ * -------------------------------------------------------
+ */
+.warnicon {
+	border-color: #E86100;
 }
 
-#panel {
-	position: relative;
-	z-index: 3;
+.iconline {
+	border-color: #27A348;
+	background: #B4E391;
+	background-image: linear-gradient(to bottom, #B4E391 0%, #61C419 50%, #B4E391 100%);
+}
 
-	display: none;
-	overflow: hidden;
-
-	width: 100%;
-	height: 130px;
-
-	border: 2px solid #CCCCCC;
-	background: #FAFAFA;
+.icoffline {
+	border-color: #828282;
+	background: #BBBBBB;
+	background-image: linear-gradient(to bottom, #BBBBBB 0%, #6F6F6F 50%, #BBBBBB 100%);
 }
 
 /* -------------------------------------------------------
- * $ICONS
+ *	$MEDIA
  * -------------------------------------------------------
+ * @TODO: This should be nearly empty for the colorized sheets.
+ *
+ * Experimental media queries.
+ * NOTE:
+ * When setting break points for media queries, don't set them in pixels.
+ * Use em instead.
+ * Why? Because the point of re-stacking/dropping content is to fit it all
+ * in the available space. This is dependent not just on width in pixels,
+ * but also on the user-selected text size that is set in the browser.
+ *
+ * If, for whatever reason (eyesight, pixel pitch, workstation arrangement, etc)
+ * a user requires text 50% larger than theme default, then their screen is
+ * effectively a lot smaller than its nominal resolution would indicate.
+ * If the break points are set in em, suddenly the media queries become equally
+ * responsive for all users, without any extra code being required.
+ *
+ * Testing em break points is just as easy as testing pixels,
+ * and it will make more people happier. This is cool. :)
+ *
+ * Of course, having comments to map em to px for each query is a good idea too.
  */
-.i-comments::before {
-	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' stroke='%23555555' fill='%23FFFFFF' viewBox='0 0 36 32'%3E%3Cpath d='M15 0c8.284 0 15 5.435 15 12.14s-6.716 12.138-15 12.138c-.796 0-1.576-.05-2.34-.147C9.44 27.34 5.72 27.918 2 28v-.785c2.008-.98 3.625-2.765 3.625-4.804 0-.283-.022-.562-.063-.835C2.17 19.35 0 15.95 0 12.14 0 5.436 6.716 0 15 0zm16.125 27.21c0 1.747 1.135 3.277 2.875 4.117V32c-3.223-.072-6.18-.566-8.973-3.316-.66.083-1.337.126-2.027.126-2.983 0-5.732-.805-7.925-2.157 4.52-.016 8.79-1.464 12.026-4.084 1.633-1.32 2.92-2.87 3.827-4.607.96-1.84 1.45-3.8 1.45-5.825 0-.327-.015-.652-.04-.975C34.604 13.038 36 15.59 36 18.405c0 3.265-1.88 6.18-4.82 8.086-.036.236-.055.476-.055.72z'/%3E%3C/svg%3E");
+/* This one does 1024 screens at default font size. */
+@media screen and (max-width: 64em) {
+	#menu_sidebar {
+		border-color: #AFAFAF;
+		background: #FEFEFE;
+		box-shadow: .2em .2em .2em rgba(0, 0, 0, 0.3);
+	}
+
+	.icon-menu {
+		border-color: #585858;
+	}
+
+	.icon-menu:hover {
+		border-color: #27A348;
+	}
+
+	.listlevel1#button_profile .linklevel1 {
+	}
+
+	.mlist li div.posts {
+		border-right-color: #CCCCCC;
+	}
+
+	.statusbar .insertoverlay {
+		background: #FEFEFE;
+	}
 }
-
-.i-comments-blank::before {
-	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' stroke='%23555555' fill='%23FFFFFF' viewBox='0 0 36 32'%3E%3Cpath d='M15 4c-1.583 0-3.112.248-4.543.738-1.34.46-2.535 1.107-3.547 1.926C5.034 8.182 4 10.127 4 12.138c0 1.125.315 2.217.935 3.247.646 1.073 1.622 2.056 2.82 2.842.952.624 1.593 1.623 1.762 2.748.028.187.05.375.068.564.085-.08.17-.16.254-.25.75-.75 1.77-1.17 2.82-1.17.16 0 .33.01.5.03.6.08 1.22.112 1.83.112 1.58 0 3.11-.248 4.54-.738 1.34-.46 2.535-1.11 3.547-1.928 1.88-1.516 2.91-3.46 2.91-5.47s-1.03-3.958-2.91-5.476c-1.01-.82-2.205-1.464-3.546-1.923C18.115 4.25 16.585 4 15 4zm0-4c8.284 0 15 5.435 15 12.14s-6.716 12.138-15 12.138c-.796 0-1.576-.05-2.34-.147C9.44 27.34 5.72 27.92 2 28v-.785c2.008-.98 3.625-2.765 3.625-4.804 0-.28-.022-.56-.063-.83C2.17 19.35 0 15.95 0 12.14 0 5.436 6.716 0 15 0zm16.125 27.21c0 1.747 1.135 3.277 2.875 4.117V32c-3.223-.072-6.18-.566-8.973-3.316-.66.083-1.337.126-2.027.126-2.983 0-5.732-.805-7.925-2.157 4.52-.016 8.79-1.464 12.026-4.084 1.64-1.32 2.92-2.87 3.83-4.61.96-1.84 1.45-3.8 1.45-5.83 0-.33-.01-.65-.04-.98 2.27 1.88 3.66 4.43 3.66 7.246 0 3.265-1.88 6.18-4.82 8.086-.03.24-.05.48-.05.72z'/%3E%3C/svg%3E");
-}
-
-.i-share::before {
-	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' stroke='%23EEEEEE' stroke-width='.07em' fill='green' viewBox='0 0 32 32'%3E%3Cpath d='M27 22c-1.4 0-2.7.6-3.6 1.53L9.95 16.8c.04-.27.06-.53.06-.8s0-.53-.02-.8L23.4 8.5c.92.94 2.2 1.52 3.6 1.52 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .27.02.54.06.8L8.6 12.52C7.67 11.6 6.4 11 5 11c-2.76 0-5 2.24-5 5s2.24 5 5 5c1.4 0 2.7-.58 3.6-1.52l13.46 6.73c-.04.3-.06.57-.06.8 0 2.8 2.24 5 5 5s5-2.2 5-5-2.24-5-5-5z'/%3E%3C/svg%3E");
-}
-
-.i-bell::before {
-	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' stroke='%23555555' stroke-width='.07em' fill='%23FFFFFF' viewBox='0 0 32 32'%3E%3Cpath d='M32.047 25c0-9-8-7-8-14 0-.58-.056-1.076-.158-1.498-.53-3.532-2.88-6.366-5.93-7.23.023-.123.04-.25.04-.382C18 .85 17.1 0 16 0s-2 .85-2 1.89c0 .13.014.258.04.382-3.42.97-5.965 4.416-6.038 8.545L8 11c0 7-8 5-8 14 0 2.382 5.33 4.375 12.468 4.878C13.14 31.14 14.47 32 16 32s2.86-.86 3.532-2.122C26.67 29.375 32 27.383 32 25v-.02l.047.02zm-6.227 1.69c-1.695.453-3.692.778-5.837.96C19.805 25.604 18.09 24 16 24s-3.806 1.605-3.985 3.65c-2.144-.18-4.142-.507-5.837-.96-2.332-.62-3.447-1.317-3.855-1.69.408-.372 1.523-1.068 3.855-1.69 2.712-.725 6.2-1.123 9.82-1.123s7.11.398 9.82 1.122c2.332.62 3.447 1.314 3.855 1.69-.408.37-1.523 1.065-3.855 1.69z'/%3E%3C/svg%3E");
-}
-
-.i-envelope::before {
-	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23FFFFFF' viewBox='0 0 32 32'%3E%3Cpath d='M32 12.68v14.178q0 1.18-.84 2.018t-2.017.84H2.857q-1.18 0-2.018-.84T0 26.858v-14.18q.786.876 1.804 1.555 6.464 4.393 8.875 6.16 1.013.75 1.65 1.17t1.69.858 1.96.44h.035q.91 0 1.963-.44t1.69-.852 1.65-1.17q3.037-2.196 8.894-6.16 1.02-.697 1.786-1.557zm0-5.25q0 1.41-.875 2.695t-2.18 2.196l-8.355 5.81q-.18.125-.76.545t-.967.68-.93.58-1.026.48-.894.163h-.036q-.41 0-.892-.16t-1.027-.483-.928-.58-.964-.68-.76-.545q-1.625-1.143-4.68-3.26T3.07 12.32q-1.11-.75-2.09-2.06t-.982-2.44q0-1.393.74-2.32t2.117-.93H29.14q1.162 0 2.01.84t.848 2.017z'/%3E%3C/svg%3E");
-}
-
-/*	$MEDIA		*/
-/* Experimental media queries.
-/* ------------------------------------------------------- */
-/* NOTE:
-/* When setting break points for media queries, don't set them in pixels.
-/* Use em instead.
-/* Why? Because the point of re-stacking/dropping content is to fit it all
-/* in the available space. This is dependent not just on width in pixels,
-/* but also on the user-selected text size that is set in the browser.
-/*
-/* If, for whatever reason (eyesight, pixel pitch, workstation arrangement, etc)
-/* a user requires text 50% larger than theme default, then their screen is
-/* effectively a lot smaller than its nominal resolution would indicate.
-/* If the break points are set in em, suddenly the media queries become equally
-/* responsive for all users, without any extra code being required.
-/*
-/* Testing em break points is just as easy as testing pixels,
-/* and it will make more people happier. This is cool. :)
-/*
-/* Of course, having comments to map em to px for each query is a good idea too.
-
-/* Smartphones (portrait & landscape) drop the stats (views/replys) and last post from the screen */
 
 /* This one does 800 screens at default font size. */
 @media screen and (max-width: 50em) {
+	.quote-read-more {
+		overflow: hidden;
+	}
+
 	#menu_sidebar {
-		border: 1px solid #AAAAAA;
+		border-color: #AAAAAA;
 		border-radius: 0;
-		background: #FFFFFF;
+		background: #FEFEFE;
 		box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 	}
 
 	#menu_nav {
-		height: 55px;
+		height: 45px;
 	}
 
 	#main_menu .menulevel2 {
@@ -2569,8 +2356,7 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 
 	#main_menu .linklevel1.active, #main_menu .linklevel1.active:hover {
 		height: 40px;
-
-		border: 1px solid transparent;
+		border-color: transparent;
 		background: transparent;
 	}
 
@@ -2590,7 +2376,7 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 /* This one does up to 540 screens. */
 @media screen and (max-width: 33.750em) {
 	#gotop, #gobottom {
-		border: 1px solid #222222;
+		border-color: #222222;
 	}
 
 	#gobottom {
@@ -2603,7 +2389,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 
 	#gotop:hover, #gobottom:hover {
 		text-decoration: none;
-
 		opacity: 1;
 		color: #444444;
 	}
@@ -2617,16 +2402,16 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 	}
 
 	.board_lastpost {
-		border-top: 1px solid #CCCCCC;
+		border-top-color: #CCCCCC;
 	}
 
 	.topic_listing > li {
-		border: 1px solid #AAAAAA;
+		border-color: #AAAAAA;
 		box-shadow: 3px 3px 6px #E5E5E5;
 	}
 
 	.poster:after, .posterarea:before {
-		border-bottom: 1px solid #BFBFBF;
+		border-bottom-color: #BFBFBF;
 	}
 
 	.poster_area_avatar, .poster_avatar img {
@@ -2643,21 +2428,20 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 		margin-top: -8px;
 	}
 
-	.forumposts .windowbg2 {
+	.forumposts .content {
 		background-color: #FAFAFA;
 	}
 
-	.forumposts, .forumposts .windowbg, .forumposts .windowbg2 {
+	.forumposts, .forumposts .content {
 		margin-top: 8px;
-
-		border: 1px solid #BFBFBF;
+		border-color: #BFBFBF;
 		border-radius: 0;
 		box-shadow: 3px 3px 6px #E5E5E5;
 	}
 
 	.forum_category, .forumposts, .content_category {
 		border: none;
-		background: #FFFFFF;
+		background: #FEFEFE;
 	}
 
 	.listlevel2.subsections .linklevel2::after {
@@ -2679,8 +2463,7 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 
 	.whos_online dd:nth-child(even), .whos_online dd:nth-child(odd) {
 		margin-top: 1px;
-
-		border-top: 1px solid #CCCCCC;
+		border-top-color: #CCCCCC;
 	}
 
 	.online_member {
@@ -2689,7 +2472,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 
 	.track_ip {
 		font-size: 0.7em;
-
 		float: right;
 	}
 

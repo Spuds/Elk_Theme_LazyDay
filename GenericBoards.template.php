@@ -9,7 +9,7 @@
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.1
+ * @version 1.1.9
  *
  */
 
@@ -155,7 +155,7 @@ function template_list_boards($boards, $id)
 		}
 
 		echo '
-						</p>
+						</aside>
 					</div>
 				</li>';
 
@@ -216,8 +216,8 @@ function template_pick_boards($form_name, $input_names = 'brd', $select_all = tr
 
 	if ($select_all)
 		echo '
-						<h3 class="secondary_header">
-							<span id="panel_toggle">&nbsp;
+						<h3 class="secondary_header panel_toggle">
+							<span>
 								<span id="advanced_panel_toggle" class="', $context['boards_check_all'] ? 'expand' : 'collapse', '" style="display: none;" title="', $txt['hide'], '"></span>
 							</span>
 							<a href="#" id="advanced_panel_link">', $txt['choose_board'], '</a>
@@ -244,7 +244,7 @@ function template_pick_boards($form_name, $input_names = 'brd', $select_all = tr
 				echo '
 										<li class="board" style="margin-', $context['right_to_left'] ? 'right' : 'left', ': ', $board['child_level'], 'em;">
 											<label for="', $input_names, $board['id'], '">
-												<input type="checkbox" id="', $input_names, $board['id'], '" name="', $input_names, '[', $board['id'], ']" value="', $board['id'], '"', $board['selected'] ? ' checked="checked"' : '', ' class="input_check" /> ', $board['name'], '
+												<input type="checkbox" id="', $input_names, $board['id'], '" name="', $input_names, '[', $board['id'], ']" value="', $board['id'], '"', $board['selected'] ? ' checked="checked"' : '', ' /> ', $board['name'], '
 											</label>
 										</li>';
 			}
@@ -264,7 +264,7 @@ function template_pick_boards($form_name, $input_names = 'brd', $select_all = tr
 						</div>
 						<div class="submitbutton">
 							<span class="floatleft">
-								<input type="checkbox" name="all" id="check_all" value=""', $context['boards_check_all'] ? ' checked="checked"' : '', ' onclick="invertAll(this, this.form, \'', $input_names, '\');" class="input_check" />
+								<input type="checkbox" name="all" id="check_all" value=""', $context['boards_check_all'] ? ' checked="checked"' : '', ' onclick="invertAll(this, this.form, \'', $input_names, '\');" />
 								<label for="check_all">
 									<em> ', $txt['check_all'], '</em>
 								</label>

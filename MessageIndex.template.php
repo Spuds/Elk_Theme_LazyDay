@@ -9,7 +9,7 @@
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.1.7
+ * @version 1.1.9
  *
  */
 
@@ -92,7 +92,7 @@ function template_topic_listing_above()
 	if (!empty($context['can_quick_mod']) && $options['display_quick_mod'] == 1)
 		echo '
 						<li class="listlevel1 quickmod_select_all">
-							<input type="checkbox" onclick="invertAll(this, document.getElementById(\'quickModForm\'), \'topics[]\');" class="input_check" />
+							<input type="checkbox" onclick="invertAll(this, document.getElementById(\'quickModForm\'), \'topics[]\');" />
 						</li>';
 
 	$current_header = $context['topics_headers'][$context['sort_by']];
@@ -181,7 +181,7 @@ function template_topic_listing()
 				echo '
 					<div class="board_avatar', ($topic['is_posted_in'] ? ' fred' : ''), '">
 						<a href="', $topic['last_post']['member']['href'], '">
-							<img class="avatar" src="', $topic['last_post']['member']['avatar']['href'], '" alt="" />
+							<img class="avatar" src="', $topic['last_post']['member']['avatar']['href'], '" alt="" loading="lazy" />
 						</a>
 					</div>';
 			else
@@ -255,7 +255,7 @@ function template_topic_listing()
 
 				if ($options['display_quick_mod'] == 1)
 					echo '
-						<input type="checkbox" name="topics[]" value="', $topic['id'], '" class="input_check" />';
+						<input type="checkbox" name="topics[]" value="', $topic['id'], '" />';
 				else
 				{
 					// Check permissions on each and show only the ones they are allowed to use.
@@ -308,7 +308,7 @@ function template_topic_listing()
 				<span id="quick_mod_jump_to">&nbsp;</span>';
 
 			echo '
-				<input type="submit" value="', $txt['quick_mod_go'], '" onclick="return document.forms.quickModForm.qaction.value != \'\' &amp;&amp; confirm(\'', $txt['quickmod_confirm'], '\');" class="button_submit" />
+				<input type="submit" value="', $txt['quick_mod_go'], '" onclick="return document.forms.quickModForm.qaction.value != \'\' &amp;&amp; confirm(\'', $txt['quickmod_confirm'], '\');" />
 			</div>';
 		}
 
@@ -337,7 +337,7 @@ function template_topic_listing_below()
 
 	echo '
 	<footer id="topic_icons" class="description">
-		<div class="qaction_row" id="message_index_jump_to">&nbsp;</div>';
+		<div class="qaction_row floatright" id="message_index_jump_to">&nbsp;</div>';
 
 	if (!$context['no_topic_listing'])
 		template_basicicons_legend();

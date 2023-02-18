@@ -7,7 +7,7 @@
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:		BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.1
+ * @version 1.1.9
  */
 
 /**
@@ -51,16 +51,20 @@ $(function() {
 	if (typeof elk_codefix === 'function')
 		elk_codefix();
 
+	// Remove "show more" from short quotes
+	if (typeof elk_quotefix === 'function')
+		elk_quotefix();
+
 	// Enable the ... page expansion
 	$('.expand_pages').expand_pages();
 
-	// Collapsabile fieldsets, pure candy
+	// Collapsible fieldsets, pure candy
 	$(document).on('click', 'legend', function(){
 		$(this).siblings().slideToggle("fast");
 		$(this).parent().toggleClass("collapsed");
 	});
 
-	$('legend', function () {
+	$('legend').each(function () {
 		if ($(this).data('collapsed'))
 			$(this).click();
 	});
@@ -94,9 +98,9 @@ $(function() {
 			if ($.isEmptyObject($this.data('bbc_img')))
 			{
 				$this.data('bbc_img', {
-						width: $this.css('width'),
-						height: $this.css('height'),
-						'max-width': $this.css('max-width'),
+					width: $this.css('width'),
+					height: $this.css('height'),
+					'max-width': $this.css('max-width'),
 					'max-height': $this.css('max-height')
 				});
 				$this.css({'width': $this.css('width') === 'auto' ? null : 'auto'});
@@ -134,14 +138,14 @@ $(function() {
 	});
 
 	// prepare avatars for the round thing
-	$("img.avatar").imageFit();
+	//$("img.avatar").imageFit();
 });
 
 /**
  * Keep the login/register button positioned on the wrapper
  */
 $(window).resize(function() {
-var head_pos = $('#wrapper').offset().left,
+let head_pos = $('#wrapper').offset().left,
 	x = head_pos + 60;
 
 	$("#toggle").css({right:x});
@@ -152,22 +156,9 @@ var head_pos = $('#wrapper').offset().left,
  */
 (function($) {
     $.fn.elk_QuickSearch = function() {
-		var iCount = 0,
-			$this = $(this);
+		var $this = $(this);
 
 		this.find('#quicksearch').focus(function(focusEvent) {
-			iCount++;
-
-			if (iCount === 1 && !('getElementsByClassName' in document)) {
-				// IE 8 issues
-				$this.find('input').keydown(function(e) {
-					if (e.keyCode === 13) {
-						$(this).parents('form').submit();
-						return false;
-					}
-				});
-			}
-
 			// Set the parent as active, show the search form
 			$this.addClass('active');
 			$this.find('#controls').slideDown(0);

@@ -9,7 +9,7 @@
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.1.4
+ * @version 1.1.9
  *
  */
 
@@ -155,7 +155,7 @@ function template_ic_recent_posts()
 			<li class="board_row hslice" id="recent_posts_content">
 				<h3 class="ic_section_header">
 					<a href="', $scripturl, '?action=recent">
-						<i class="fa fa-file-text-o fa-lg icon"></i>', $txt['recent_posts'], '
+						<i class="fa fa-file-text-o fa-lg icon"></i>', empty($settings['recent_post_topics']) ? $txt['recent_posts'] : $txt['recent_topics'], '
 					</a>
 				</h3>
 				<div class="entry-title" style="display: none;">', $context['forum_name_html_safe'], ' - ', $txt['recent_posts'], '</div>

@@ -9,7 +9,7 @@
  * copyright:    2011 Simple Machines (http://www.simplemachines.org)
  * license:    BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.1.7
+ * @version 1.1.9
  *
  */
 
@@ -88,11 +88,11 @@ function template_init()
 		// How do we get anchors only, where they will work? Spans and strong only where necessary?
 		'page_index_template' => array(
 			'base_link' => '<li class="linavPages"><a class="navPages" href="{base_link}" role="menuitem">%2$s</a></li>',
-			'previous_page' => '<span class="previous_page" role="menuitem">{prev_txt}</span>',
+			'previous_page' => '<span class="previous_page">{prev_txt}</span>',
 			'current_page' => '<li class="linavPages"><strong class="current_page" role="menuitem">%1$s</strong></li>',
-			'next_page' => '<span class="next_page" role="menuitem">{next_txt}</span>',
+			'next_page' => '<span class="next_page">{next_txt}</span>',
 			'expand_pages' => '<li class="linavPages expand_pages" role="menuitem" {custom}> <a href="#">...</a> </li>',
-			'all' => '<span class="linavPages all_pages" role="menuitem">{all_txt}</span>',
+			'all' => '<span class="linavPages all_pages">{all_txt}</span>',
 		),
 
 		// @todo find a better place if we are going to create a notifications template
@@ -155,13 +155,10 @@ function template_html_above()
 	echo '
 	<link href="//ajax.googleapis.com" rel="dns-prefetch" />';
 
-	// Output meta_description any other structured meta data
-	template_structured_meta();
-
 	echo '
 	<meta name="viewport" content="width=device-width" />
-	<meta name="mobile-web-app-capable" content="yes" />', !empty($context['meta_keywords']) ? '
-	<meta name="keywords" content="' . $context['meta_keywords'] . '" />' : '';
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="description" content="', $context['page_title_html_safe'], '" />';
 
 	// OpenID enabled? Advertise the location of our endpoint using YADIS protocol.
 	if (!empty($modSettings['enableOpenID']))
@@ -175,6 +172,13 @@ function template_html_above()
 	{
 		echo '
 	<meta name="robots" content="noindex" />';
+	}
+
+	// If we have any Open Graph data, here is where is inserted.
+	if (!empty($context['open_graph']))
+	{
+		echo '
+	' . implode("\n\t", $context['open_graph']);
 	}
 
 	// load in any css from addons or themes so they can overwrite if wanted
@@ -245,58 +249,7 @@ function template_html_above()
 </head>
 <body id="', $context['browser_body_id'], '" class="action_', !empty($context['current_action']) ? htmlspecialchars($context['current_action'], ENT_COMPAT, 'UTF-8') : (!empty($context['current_board']) ?
 		'messageindex' : (!empty($context['current_topic']) ? 'display' : 'home')),
-		!empty($context['current_board']) ? ' board_' . htmlspecialchars($context['current_board'], ENT_COMPAT, 'UTF-8') : '', '">';
-}
-
-/**
- * Prepare Structured Data such as open graph data for the page
- */
-function template_structured_meta()
-{
-	global $context, $boardurl, $settings;
-
-	// Supplied one, use it
-	if (!empty($context['description']))
-	{
-		$description = $context['description'];
-	}
-	// Build out a default that makes the most sense
-	else
-	{
-		$description = $context['page_title'];
-		if (strpos($context['page_title'], $context['forum_name']) === false)
-		{
-			$description .= ': ' . $context['forum_name'];
-		}
-		elseif (!empty($settings['site_slogan']))
-		{
-			$description .= ': ' . $settings['site_slogan'];
-		}
-	}
-
-	// If this is a topic view and the first page
-	if (!empty($context['current_topic']) && empty($context['current_page']) && !empty($context['get_message'][0]) && is_object($context['get_message'][0]))
-	{
-		// Grab the first post of the thread
-		$controller = $context['get_message'][0];
-		$first_post = $controller->{$context['get_message'][1]}();
-		$controller->{$context['get_message'][1]}('reset');
-
-		// Create a short description
-		$context['smd_data'] = $first_post;
-		$context['smd_data']['body'] = $context['page_title'] . '. ' . trim(preg_replace('~<[^>]+>~', ' ', $context['smd_data']['body']));
-		$context['smd_data']['description'] = empty($context['description']) ? Util::shorten_text(preg_replace('~\s\s+|&nbsp;|&quot;|&#039;~', ' ', $context['smd_data']['body']), 384, true) : $context['description'];
-		$description = $context['smd_data']['description'];
-	}
-
-	echo '
-	<meta name="description" content="', Util::shorten_text($description, 160, true), '" />
-	<meta property="og:title" content="', $context['page_title_html_safe'], '" />
-	<meta property="og:type" content="', !empty($context['current_topic']) ? 'article' : 'website', '" />
-	<meta property="og:url" content="', !empty($context['canonical_url']) ? $context['canonical_url'] : $boardurl, '" />
-	<meta property="og:image" content="', $context['header_logo_url_html_safe'], '" />
-	<meta property="og:sitename" content="', $context['forum_name_html_safe'], '" />
-	<meta property="og:description" content="', Util::htmlspecialchars($description), '" />';
+	!empty($context['current_board']) ? ' board_' . htmlspecialchars($context['current_board'], ENT_COMPAT, 'UTF-8') : '', '">';
 }
 
 /**
@@ -369,7 +322,7 @@ function template_login_bar()
 				<h2 class="category_header hdicon cat_img_login">
 					', $txt['login'], '
 				</h2>
-				<div class="roundframe">
+				<div class="well">
 					<form action="', $scripturl, '?action=login2;quicklogin" method="post" accept-charset="UTF-8" ', empty($context['disable_login_hashing']) ? ' onsubmit="hashLoginPassword(this, \'' . $context['session_id'] . '\');"' : '', '>
 						<div id="password_login">
 							<input type="text" name="user" size="10" class="input_text" placeholder="', $txt['username'], '" />
@@ -381,7 +334,7 @@ function template_login_bar()
 								<option value="43200">', $txt['one_month'], '</option>
 								<option value="-1" selected="selected">', $txt['forever'], '</option>
 							</select>
-							<input type="submit" value="', $txt['login'], '" class="button_submit" />
+							<input type="submit" value="', $txt['login'], '" />
 						</div>
 						<input type="hidden" name="hash_passwrd" value="" />
 						<input type="hidden" name="old_hash_passwrd" value="" />
@@ -555,6 +508,24 @@ function template_html_below()
 	// load in any javascript that could be deferred to the end of the page
 	theme()->template_javascript(true);
 
+	// Schema microdata about the organization?
+	if (!empty($context['smd_site']))
+	{
+		echo '
+	<script type="application/ld+json">
+	', json_encode($context['smd_site'], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE), '
+	</script>';
+	}
+
+	// Schema microdata about the post?
+	if (!empty($context['smd_article']))
+	{
+		echo '
+	<script type="application/ld+json">
+	', json_encode($context['smd_article'], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE), '
+	</script>';
+	}
+
 	// Anything special to put out?
 	if (!empty($context['insert_after_template']))
 	{
@@ -657,7 +628,7 @@ function template_menu()
 		}
 
 		echo '
-						<li id="button_', $act, '" class="listlevel1', !empty($button['sub_buttons']) ? ' subsections" aria-haspopup="true"' : '"', ' role="menuitem">
+						<li id="button_', $act, '" class="listlevel1', !empty($button['sub_buttons']) ? ' subsections" aria-haspopup="true"' : '"', '>
 							<a class="linklevel1', !empty($button['active_button']) ? ' active' : '', (!empty($button['indicator']) ? ' indicator' : ''), '" href="', $button['href'], '" ', isset($button['target']) ? 'target="' . $button['target'] . '"' : '', '>', (!empty($button['data-icon']) ? '<i class="icon icon-menu icon-lg ' . $button['data-icon'] . '" title="' . (!empty($button['alttitle']) ? $button['alttitle'] : $button['title']) . '"></i> ' : ''), '<span class="button_title" aria-hidden="true">', $button['title'], '</span></a>';
 
 		// Any 2nd level menus?
@@ -669,7 +640,7 @@ function template_menu()
 			foreach ($button['sub_buttons'] as $childact => $childbutton)
 			{
 				echo '
-								<li id="button_', $childact, '" class="listlevel2', !empty($childbutton['sub_buttons']) ? ' subsections" aria-haspopup="true"' : '"', ' role="menuitem">
+								<li id="button_', $childact, '" class="listlevel2', !empty($childbutton['sub_buttons']) ? ' subsections" aria-haspopup="true"' : '"', '>
 									<a class="linklevel2" href="', $childbutton['href'], '" ', isset($childbutton['target']) ? 'target="' . $childbutton['target'] . '"' : '', '>', $childbutton['title'], '</a>';
 
 				// 3rd level menus :)
@@ -681,7 +652,7 @@ function template_menu()
 					foreach ($childbutton['sub_buttons'] as $grandchildact => $grandchildbutton)
 					{
 						echo '
-										<li id="button_', $grandchildact, '" class="listlevel3" role="menuitem">
+										<li id="button_', $grandchildact, '" class="listlevel3">
 											<a class="linklevel3" href="', $grandchildbutton['href'], '" ', isset($grandchildbutton['target']) ? 'target="' . $grandchildbutton['target'] . '"' : '', '>', $grandchildbutton['title'], '</a>
 										</li>';
 					}
@@ -707,11 +678,10 @@ function template_menu()
 				</nav>';
 
 	// Define the upper_section toggle in javascript.
-	echo '
-				<script>
+	addInlineJavascript('
 					var oMainHeaderToggle = new elk_Toggle({
 						bToggleEnabled: true,
-						bCurrentlyCollapsed: ', empty($context['minmax_preferences']['upshrink']) ? 'false' : 'true', ',
+						bCurrentlyCollapsed: ' . (empty($context['minmax_preferences']['upshrink']) ? 'false' : 'true') . ',
 						aSwappableContainers: [
 							\'upper_container\'
 						],
@@ -719,13 +689,13 @@ function template_menu()
 							{
 								sId: \'upshrink\',
 								classExpanded: \'collapse\',
-								titleExpanded: ', JavaScriptEscape($txt['upshrink_description']), ',
+								titleExpanded: ' . JavaScriptEscape($txt['upshrink_description']) . ',
 								classCollapsed: \'expand\',
-								titleCollapsed: ', JavaScriptEscape($txt['upshrink_description']), '
+								titleCollapsed: ' . JavaScriptEscape($txt['upshrink_description']) . '
 							}
 						],
 						oThemeOptions: {
-							bUseThemeSettings: ', $context['user']['is_guest'] ? 'false' : 'true', ',
+							bUseThemeSettings: ' . ($context['user']['is_guest'] ? 'false' : 'true') . ',
 							sOptionName: \'minmax_preferences\',
 							sSessionId: elk_session_id,
 							sSessionVar: elk_session_var,
@@ -736,7 +706,7 @@ function template_menu()
 							sCookieName: \'upshrink\'
 						}
 					});
-				</script>';
+				', true);
 }
 
 /**
@@ -761,12 +731,6 @@ function template_button_strip($button_strip, $direction = '', $strip_options = 
 	if (!is_array($strip_options))
 	{
 		$strip_options = array();
-	}
-
-	// List the buttons in reverse order for RTL languages.
-	if ($context['right_to_left'])
-	{
-		$button_strip = array_reverse($button_strip, true);
 	}
 
 	// Create the buttons... now with cleaner markup (yay!).
@@ -803,9 +767,9 @@ function template_button_strip($button_strip, $direction = '', $strip_options = 
  *        - text => text to display in the button
  *        - custom => custom action to perform, generally used to add 'onclick' events (optional)
  *        - test => key to check in the $tests array before showing the button (optional)
- * 		- override => full and complete <li></li> to use for the button
+ *        - override => full and complete <li></li> to use for the button
  * - checkboxes can be shown as well as buttons,
- *		- use array('check' => array(checkbox => (true | always), name => value =>)
+ *        - use array('check' => array(checkbox => (true | always), name => value =>)
  *        - if true follows show moderation as checkbox setting, always will always show
  *        - name => name of the checkbox array, like delete, will have [] added for the form
  *        - value => value for the checkbox to return in the post
@@ -840,12 +804,12 @@ function template_quickbutton_strip($strip, $tests = array())
 			}
 			else
 			{
-			$buttons[] = '
+				$buttons[] = '
 						<li class="listlevel1">
 							<a href="' . $value['href'] . '" class="linklevel1 ' . $key . '_button"' . (isset($value['custom']) ? ' ' . $value['custom'] : '') . '>' . $value['text'] . '</a>
 						</li>';
+			}
 		}
-	}
 	}
 
 	// No buttons? No button strip either.
@@ -869,16 +833,14 @@ function template_basicicons_legend()
 	global $context, $modSettings, $txt;
 
 	echo '
-		<div>
-			<p class="floatleft">', !empty($modSettings['enableParticipation']) && $context['user']['is_logged'] ? '
-				<span class="topicicon img_profile"></span>' . $txt['participation_caption'] : '<span class="topicicon img_normal"> </span>' . $txt['normal_topic'], '<br />
-				' . (!empty($modSettings['pollMode']) ? '<span class="topicicon img_poll"> </span>' . $txt['poll'] : '') . '
-			</p>
-			<p>
-				<span class="topicicon img_locked"> </span>' . $txt['locked_topic'] . '<br />' . (!empty($modSettings['enableStickyTopics']) ? '
-				<span class="topicicon img_sticky"> </span>' . $txt['sticky_topic'] . '<br />' : '') . '
-			</p>
-		</div>';
+		<p class="floatleft">', !empty($modSettings['enableParticipation']) && $context['user']['is_logged'] ? '
+			<span class="icon i-participation"></span>' . $txt['participation_caption'] : '<span class="icon i-normal"> </span>' . $txt['normal_topic'], '<br />
+			' . (!empty($modSettings['pollMode']) ? '<span class="topicicon i-poll"> </span>' . $txt['poll'] : '') . '
+		</p>
+		<p>
+			<span class="icon i-locked"> </span>' . $txt['locked_topic'] . '<br />
+			<span class="icon i-sticky"> </span>' . $txt['sticky_topic'] . '<br />
+		</p>';
 }
 
 /**
@@ -1039,8 +1001,8 @@ function template_member_online($member, $link = true)
 	global $context;
 
 	return ((!empty($context['can_send_pm']) && $link) ? '<a href="' . $member['online']['href'] . '" title="' . $member['online']['text'] . '">' : '') .
-		   '<i class="' . ($member['online']['is_online'] ? 'iconline' : 'icoffline') . '" title="' . $member['online']['text'] . '"></i>' .
-		   ((!empty($context['can_send_pm']) && $link) ? '</a>' : '');
+		'<i class="' . ($member['online']['is_online'] ? 'iconline' : 'icoffline') . '" title="' . $member['online']['text'] . '"></i>' .
+		((!empty($context['can_send_pm']) && $link) ? '</a>' : '');
 }
 
 /**
@@ -1048,7 +1010,7 @@ function template_member_online($member, $link = true)
  * a mailto: href, which many sane board admins would prefer.
  *
  * @param array $member
- * @param bool  $text
+ * @param bool $text
  *
  * @return string
  */
@@ -1064,8 +1026,7 @@ function template_member_email($member, $text = false)
 			{
 				return '<a class="linkbutton" href="' . $scripturl . '?action=emailuser;sa=email;uid=' . $member['id'] . '">' . $txt['email'] . '</a>';
 			}
-
-			if ($member['show_email'] === 'yes_permission_override' || $member['show_email'] === 'yes')
+			elseif ($member['show_email'] === 'yes_permission_override' || $member['show_email'] === 'yes')
 			{
 				return '<a class="linkbutton" href="' . $scripturl . '?action=emailuser;sa=email;uid=' . $member['id'] . '">' . $member['email'] . '</a>';
 			}
@@ -1080,8 +1041,10 @@ function template_member_email($member, $text = false)
 			{
 				return '<a href="' . $scripturl . '?action=emailuser;sa=email;uid=' . $member['id'] . '" class="icon i-envelope-o' . ($member['online']['is_online'] ? '' : '-blank') . '" title="' . $txt['email'] . ' ' . $member['name'] . '"><s>' . $txt['email'] . ' ' . $member['name'] . '</s></a>';
 			}
-
-			return '<i class="icon i-envelope-o" title="' . $txt['email'] . ' ' . $txt['hidden'] . '"><s>' . $txt['email'] . ' ' . $txt['hidden'] . '</s></i>';
+			else
+			{
+				return '<i class="icon i-envelope-o" title="' . $txt['email'] . ' ' . $txt['hidden'] . '"><s>' . $txt['email'] . ' ' . $txt['hidden'] . '</s></i>';
+			}
 		}
 	}
 
